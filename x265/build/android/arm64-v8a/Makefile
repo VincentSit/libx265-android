@@ -39,22 +39,45 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/Cellar/cmake/3.16.1/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/Cellar/cmake/3.16.1/bin/cmake -E remove -f
+RM = /usr/local/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/vincentsit/Documents/GitHub/libx265-android/x265/source
+CMAKE_SOURCE_DIR = /home/ec2-user/ffmpeg/libx265-android/x265/source
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/arm64-v8a
+CMAKE_BINARY_DIR = /home/ec2-user/ffmpeg/libx265-android/x265/build/android/arm64-v8a
 
 #=============================================================================
 # Targets provided globally by CMake.
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/local/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/local/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/local/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -66,10 +89,22 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/local/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/local/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/local/Cellar/cmake/3.16.1/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/local/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -77,58 +112,23 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/Cellar/cmake/3.16.1/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/Cellar/cmake/3.16.1/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/Cellar/cmake/3.16.1/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/local/Cellar/cmake/3.16.1/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/local/Cellar/cmake/3.16.1/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/local/Cellar/cmake/3.16.1/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/usr/local/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local
 
 # Special rule for the target install/local
 install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/local/Cellar/cmake/3.16.1/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+	/usr/local/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/arm64-v8a/CMakeFiles /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/arm64-v8a/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ec2-user/ffmpeg/libx265-android/x265/build/android/arm64-v8a/CMakeFiles /home/ec2-user/ffmpeg/libx265-android/x265/build/android/arm64-v8a/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/arm64-v8a/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ec2-user/ffmpeg/libx265-android/x265/build/android/arm64-v8a/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -157,43 +157,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named x265-shared
+# Target rules for targets named x265-static
 
 # Build rule for target.
-x265-shared: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 x265-shared
-.PHONY : x265-shared
+x265-static: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 x265-static
+.PHONY : x265-static
 
 # fast build rule for target.
-x265-shared/fast:
-	$(MAKE) -f CMakeFiles/x265-shared.dir/build.make CMakeFiles/x265-shared.dir/build
-.PHONY : x265-shared/fast
-
-#=============================================================================
-# Target rules for targets named cli
-
-# Build rule for target.
-cli: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 cli
-.PHONY : cli
-
-# fast build rule for target.
-cli/fast:
-	$(MAKE) -f CMakeFiles/cli.dir/build.make CMakeFiles/cli.dir/build
-.PHONY : cli/fast
-
-#=============================================================================
-# Target rules for targets named uninstall
-
-# Build rule for target.
-uninstall: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 uninstall
-.PHONY : uninstall
-
-# fast build rule for target.
-uninstall/fast:
-	$(MAKE) -f CMakeFiles/uninstall.dir/build.make CMakeFiles/uninstall.dir/build
-.PHONY : uninstall/fast
+x265-static/fast:
+	$(MAKE) -f CMakeFiles/x265-static.dir/build.make CMakeFiles/x265-static.dir/build
+.PHONY : x265-static/fast
 
 #=============================================================================
 # Target rules for targets named clean-generated
@@ -209,17 +183,43 @@ clean-generated/fast:
 .PHONY : clean-generated/fast
 
 #=============================================================================
-# Target rules for targets named x265-static
+# Target rules for targets named x265-shared
 
 # Build rule for target.
-x265-static: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 x265-static
-.PHONY : x265-static
+x265-shared: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 x265-shared
+.PHONY : x265-shared
 
 # fast build rule for target.
-x265-static/fast:
-	$(MAKE) -f CMakeFiles/x265-static.dir/build.make CMakeFiles/x265-static.dir/build
-.PHONY : x265-static/fast
+x265-shared/fast:
+	$(MAKE) -f CMakeFiles/x265-shared.dir/build.make CMakeFiles/x265-shared.dir/build
+.PHONY : x265-shared/fast
+
+#=============================================================================
+# Target rules for targets named uninstall
+
+# Build rule for target.
+uninstall: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 uninstall
+.PHONY : uninstall
+
+# fast build rule for target.
+uninstall/fast:
+	$(MAKE) -f CMakeFiles/uninstall.dir/build.make CMakeFiles/uninstall.dir/build
+.PHONY : uninstall/fast
+
+#=============================================================================
+# Target rules for targets named cli
+
+# Build rule for target.
+cli: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 cli
+.PHONY : cli
+
+# fast build rule for target.
+cli/fast:
+	$(MAKE) -f CMakeFiles/cli.dir/build.make CMakeFiles/cli.dir/build
+.PHONY : cli/fast
 
 #=============================================================================
 # Target rules for targets named encoder
@@ -496,17 +496,17 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... list_install_components"
-	@echo "... edit_cache"
+	@echo "... x265-static"
 	@echo "... rebuild_cache"
+	@echo "... clean-generated"
 	@echo "... x265-shared"
+	@echo "... uninstall"
 	@echo "... cli"
 	@echo "... install/strip"
+	@echo "... list_install_components"
 	@echo "... install"
-	@echo "... uninstall"
+	@echo "... edit_cache"
 	@echo "... install/local"
-	@echo "... clean-generated"
-	@echo "... x265-static"
 	@echo "... encoder"
 	@echo "... common"
 	@echo "... input/input.o"

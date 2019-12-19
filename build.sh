@@ -3,11 +3,11 @@ mkdir x265/build/android
 cp -rf build_script/* x265/build/android
 
 
-export NDK_ROOT=$ANDROID_NDK_HOME
+export NDK_ROOT=$PWD/../ndk
 export ANDROID_API_VERSION=21 # Choose Android platform version. For arm64, minimum version requirement is 21.
 export NUMBER_OF_CORES=6
 export OUTPUT_PREFIX=$(pwd)/build
-export HOST_TAG=darwin-x86_64
+export HOST_TAG=linux-x86_64
 
 pushd x265/build/android/arm64-v8a
 bash build.sh

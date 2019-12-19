@@ -7,5 +7,5 @@ Name: x265
 Description: H.265/HEVC video encoder
 Version: 3.2.1
 Libs: -L${libdir} -lx265
-Libs.private: -lc++ -ldl
+Libs.private: -lc++ -lm -lgcc -ldl -lgcc -ldl
 Cflags: -I${includedir}

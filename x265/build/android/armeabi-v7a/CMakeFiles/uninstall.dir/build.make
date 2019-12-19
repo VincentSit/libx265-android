@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/Cellar/cmake/3.16.1/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/Cellar/cmake/3.16.1/bin/cmake -E remove -f
+RM = /usr/local/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/vincentsit/Documents/GitHub/libx265-android/x265/source
+CMAKE_SOURCE_DIR = /home/ec2-user/ffmpeg/libx265-android/x265/source
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a
+CMAKE_BINARY_DIR = /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a
 
 # Utility rule file for uninstall.
 
@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /Users/vincentsit/Documents/GitHub/libx265-android/x265/build
 include CMakeFiles/uninstall.dir/progress.make
 
 CMakeFiles/uninstall:
-	/usr/local/Cellar/cmake/3.16.1/bin/cmake -P /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/cmake/cmake_uninstall.cmake
+	/usr/local/bin/cmake -P /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/cmake/cmake_uninstall.cmake
 
 uninstall: CMakeFiles/uninstall
 uninstall: CMakeFiles/uninstall.dir/build.make
@@ -71,6 +71,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/vincentsit/Documents/GitHub/libx265-android/x265/source /Users/vincentsit/Documents/GitHub/libx265-android/x265/source /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ec2-user/ffmpeg/libx265-android/x265/source /home/ec2-user/ffmpeg/libx265-android/x265/source /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

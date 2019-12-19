@@ -1,7 +1,7 @@
 # My ENV
 
-Platform: macOS 10.14.6 (18G1012)   
-NDK version: 20.1.5948944   
+Platform: EC2   
+NDK version: android-ndk-r20-linux-x86_64.zip  
 x265 version in the repo: 3.2.1   
 
 # Prebuild

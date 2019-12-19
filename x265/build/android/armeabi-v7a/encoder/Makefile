@@ -39,57 +39,57 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/local/Cellar/cmake/3.16.1/bin/cmake
+CMAKE_COMMAND = /usr/local/bin/cmake
 
 # The command to remove a file.
-RM = /usr/local/Cellar/cmake/3.16.1/bin/cmake -E remove -f
+RM = /usr/local/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/vincentsit/Documents/GitHub/libx265-android/x265/source
+CMAKE_SOURCE_DIR = /home/ec2-user/ffmpeg/libx265-android/x265/source
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a
+CMAKE_BINARY_DIR = /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a
 
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target install/local
-install/local: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/local/Cellar/cmake/3.16.1/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local
-
-# Special rule for the target install/local
-install/local/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
-	/usr/local/Cellar/cmake/3.16.1/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
-.PHONY : install/local/fast
-
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/Cellar/cmake/3.16.1/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/usr/local/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip
 
 # Special rule for the target install/strip
 install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/local/Cellar/cmake/3.16.1/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+	/usr/local/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/local/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/usr/local/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
 
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/local/Cellar/cmake/3.16.1/bin/cmake -P cmake_install.cmake
+	/usr/local/bin/cmake -P cmake_install.cmake
 .PHONY : install
 
 # Special rule for the target install
 install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/local/Cellar/cmake/3.16.1/bin/cmake -P cmake_install.cmake
+	/usr/local/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
 # Special rule for the target list_install_components
@@ -105,7 +105,7 @@ list_install_components/fast: list_install_components
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/Cellar/cmake/3.16.1/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/local/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -115,8 +115,8 @@ rebuild_cache/fast: rebuild_cache
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/local/Cellar/cmake/3.16.1/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/local/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -126,14 +126,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(CMAKE_COMMAND) -E cmake_progress_start /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/encoder/CMakeFiles/progress.marks
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f CMakeFiles/Makefile2 encoder/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles 0
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(CMAKE_COMMAND) -E cmake_progress_start /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/encoder/CMakeFiles/progress.marks
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f CMakeFiles/Makefile2 encoder/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f CMakeFiles/Makefile2 encoder/clean
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f CMakeFiles/Makefile2 encoder/clean
 .PHONY : clean
 
 # The main clean target
@@ -143,22 +143,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f CMakeFiles/Makefile2 encoder/preinstall
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f CMakeFiles/Makefile2 encoder/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f CMakeFiles/Makefile2 encoder/preinstall
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f CMakeFiles/Makefile2 encoder/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 encoder/CMakeFiles/encoder.dir/rule:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f CMakeFiles/Makefile2 encoder/CMakeFiles/encoder.dir/rule
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f CMakeFiles/Makefile2 encoder/CMakeFiles/encoder.dir/rule
 .PHONY : encoder/CMakeFiles/encoder.dir/rule
 
 # Convenience name for target.
@@ -168,7 +168,7 @@ encoder: encoder/CMakeFiles/encoder.dir/rule
 
 # fast build rule for target.
 encoder/fast:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/build
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/build
 .PHONY : encoder/fast
 
 analysis.o: analysis.cpp.o
@@ -177,7 +177,7 @@ analysis.o: analysis.cpp.o
 
 # target to build an object file
 analysis.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/analysis.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/analysis.cpp.o
 .PHONY : analysis.cpp.o
 
 analysis.i: analysis.cpp.i
@@ -186,7 +186,7 @@ analysis.i: analysis.cpp.i
 
 # target to preprocess a source file
 analysis.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/analysis.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/analysis.cpp.i
 .PHONY : analysis.cpp.i
 
 analysis.s: analysis.cpp.s
@@ -195,7 +195,7 @@ analysis.s: analysis.cpp.s
 
 # target to generate assembly for a file
 analysis.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/analysis.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/analysis.cpp.s
 .PHONY : analysis.cpp.s
 
 api.o: api.cpp.o
@@ -204,7 +204,7 @@ api.o: api.cpp.o
 
 # target to build an object file
 api.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/api.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/api.cpp.o
 .PHONY : api.cpp.o
 
 api.i: api.cpp.i
@@ -213,7 +213,7 @@ api.i: api.cpp.i
 
 # target to preprocess a source file
 api.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/api.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/api.cpp.i
 .PHONY : api.cpp.i
 
 api.s: api.cpp.s
@@ -222,7 +222,7 @@ api.s: api.cpp.s
 
 # target to generate assembly for a file
 api.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/api.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/api.cpp.s
 .PHONY : api.cpp.s
 
 bitcost.o: bitcost.cpp.o
@@ -231,7 +231,7 @@ bitcost.o: bitcost.cpp.o
 
 # target to build an object file
 bitcost.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/bitcost.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/bitcost.cpp.o
 .PHONY : bitcost.cpp.o
 
 bitcost.i: bitcost.cpp.i
@@ -240,7 +240,7 @@ bitcost.i: bitcost.cpp.i
 
 # target to preprocess a source file
 bitcost.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/bitcost.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/bitcost.cpp.i
 .PHONY : bitcost.cpp.i
 
 bitcost.s: bitcost.cpp.s
@@ -249,7 +249,7 @@ bitcost.s: bitcost.cpp.s
 
 # target to generate assembly for a file
 bitcost.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/bitcost.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/bitcost.cpp.s
 .PHONY : bitcost.cpp.s
 
 dpb.o: dpb.cpp.o
@@ -258,7 +258,7 @@ dpb.o: dpb.cpp.o
 
 # target to build an object file
 dpb.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/dpb.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/dpb.cpp.o
 .PHONY : dpb.cpp.o
 
 dpb.i: dpb.cpp.i
@@ -267,7 +267,7 @@ dpb.i: dpb.cpp.i
 
 # target to preprocess a source file
 dpb.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/dpb.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/dpb.cpp.i
 .PHONY : dpb.cpp.i
 
 dpb.s: dpb.cpp.s
@@ -276,7 +276,7 @@ dpb.s: dpb.cpp.s
 
 # target to generate assembly for a file
 dpb.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/dpb.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/dpb.cpp.s
 .PHONY : dpb.cpp.s
 
 encoder.o: encoder.cpp.o
@@ -285,7 +285,7 @@ encoder.o: encoder.cpp.o
 
 # target to build an object file
 encoder.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/encoder.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/encoder.cpp.o
 .PHONY : encoder.cpp.o
 
 encoder.i: encoder.cpp.i
@@ -294,7 +294,7 @@ encoder.i: encoder.cpp.i
 
 # target to preprocess a source file
 encoder.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/encoder.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/encoder.cpp.i
 .PHONY : encoder.cpp.i
 
 encoder.s: encoder.cpp.s
@@ -303,7 +303,7 @@ encoder.s: encoder.cpp.s
 
 # target to generate assembly for a file
 encoder.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/encoder.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/encoder.cpp.s
 .PHONY : encoder.cpp.s
 
 entropy.o: entropy.cpp.o
@@ -312,7 +312,7 @@ entropy.o: entropy.cpp.o
 
 # target to build an object file
 entropy.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/entropy.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/entropy.cpp.o
 .PHONY : entropy.cpp.o
 
 entropy.i: entropy.cpp.i
@@ -321,7 +321,7 @@ entropy.i: entropy.cpp.i
 
 # target to preprocess a source file
 entropy.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/entropy.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/entropy.cpp.i
 .PHONY : entropy.cpp.i
 
 entropy.s: entropy.cpp.s
@@ -330,7 +330,7 @@ entropy.s: entropy.cpp.s
 
 # target to generate assembly for a file
 entropy.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/entropy.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/entropy.cpp.s
 .PHONY : entropy.cpp.s
 
 frameencoder.o: frameencoder.cpp.o
@@ -339,7 +339,7 @@ frameencoder.o: frameencoder.cpp.o
 
 # target to build an object file
 frameencoder.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/frameencoder.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/frameencoder.cpp.o
 .PHONY : frameencoder.cpp.o
 
 frameencoder.i: frameencoder.cpp.i
@@ -348,7 +348,7 @@ frameencoder.i: frameencoder.cpp.i
 
 # target to preprocess a source file
 frameencoder.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/frameencoder.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/frameencoder.cpp.i
 .PHONY : frameencoder.cpp.i
 
 frameencoder.s: frameencoder.cpp.s
@@ -357,7 +357,7 @@ frameencoder.s: frameencoder.cpp.s
 
 # target to generate assembly for a file
 frameencoder.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/frameencoder.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/frameencoder.cpp.s
 .PHONY : frameencoder.cpp.s
 
 framefilter.o: framefilter.cpp.o
@@ -366,7 +366,7 @@ framefilter.o: framefilter.cpp.o
 
 # target to build an object file
 framefilter.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/framefilter.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/framefilter.cpp.o
 .PHONY : framefilter.cpp.o
 
 framefilter.i: framefilter.cpp.i
@@ -375,7 +375,7 @@ framefilter.i: framefilter.cpp.i
 
 # target to preprocess a source file
 framefilter.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/framefilter.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/framefilter.cpp.i
 .PHONY : framefilter.cpp.i
 
 framefilter.s: framefilter.cpp.s
@@ -384,7 +384,7 @@ framefilter.s: framefilter.cpp.s
 
 # target to generate assembly for a file
 framefilter.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/framefilter.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/framefilter.cpp.s
 .PHONY : framefilter.cpp.s
 
 level.o: level.cpp.o
@@ -393,7 +393,7 @@ level.o: level.cpp.o
 
 # target to build an object file
 level.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/level.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/level.cpp.o
 .PHONY : level.cpp.o
 
 level.i: level.cpp.i
@@ -402,7 +402,7 @@ level.i: level.cpp.i
 
 # target to preprocess a source file
 level.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/level.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/level.cpp.i
 .PHONY : level.cpp.i
 
 level.s: level.cpp.s
@@ -411,7 +411,7 @@ level.s: level.cpp.s
 
 # target to generate assembly for a file
 level.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/level.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/level.cpp.s
 .PHONY : level.cpp.s
 
 motion.o: motion.cpp.o
@@ -420,7 +420,7 @@ motion.o: motion.cpp.o
 
 # target to build an object file
 motion.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/motion.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/motion.cpp.o
 .PHONY : motion.cpp.o
 
 motion.i: motion.cpp.i
@@ -429,7 +429,7 @@ motion.i: motion.cpp.i
 
 # target to preprocess a source file
 motion.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/motion.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/motion.cpp.i
 .PHONY : motion.cpp.i
 
 motion.s: motion.cpp.s
@@ -438,7 +438,7 @@ motion.s: motion.cpp.s
 
 # target to generate assembly for a file
 motion.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/motion.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/motion.cpp.s
 .PHONY : motion.cpp.s
 
 nal.o: nal.cpp.o
@@ -447,7 +447,7 @@ nal.o: nal.cpp.o
 
 # target to build an object file
 nal.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/nal.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/nal.cpp.o
 .PHONY : nal.cpp.o
 
 nal.i: nal.cpp.i
@@ -456,7 +456,7 @@ nal.i: nal.cpp.i
 
 # target to preprocess a source file
 nal.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/nal.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/nal.cpp.i
 .PHONY : nal.cpp.i
 
 nal.s: nal.cpp.s
@@ -465,7 +465,7 @@ nal.s: nal.cpp.s
 
 # target to generate assembly for a file
 nal.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/nal.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/nal.cpp.s
 .PHONY : nal.cpp.s
 
 ratecontrol.o: ratecontrol.cpp.o
@@ -474,7 +474,7 @@ ratecontrol.o: ratecontrol.cpp.o
 
 # target to build an object file
 ratecontrol.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/ratecontrol.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/ratecontrol.cpp.o
 .PHONY : ratecontrol.cpp.o
 
 ratecontrol.i: ratecontrol.cpp.i
@@ -483,7 +483,7 @@ ratecontrol.i: ratecontrol.cpp.i
 
 # target to preprocess a source file
 ratecontrol.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/ratecontrol.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/ratecontrol.cpp.i
 .PHONY : ratecontrol.cpp.i
 
 ratecontrol.s: ratecontrol.cpp.s
@@ -492,7 +492,7 @@ ratecontrol.s: ratecontrol.cpp.s
 
 # target to generate assembly for a file
 ratecontrol.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/ratecontrol.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/ratecontrol.cpp.s
 .PHONY : ratecontrol.cpp.s
 
 reference.o: reference.cpp.o
@@ -501,7 +501,7 @@ reference.o: reference.cpp.o
 
 # target to build an object file
 reference.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/reference.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/reference.cpp.o
 .PHONY : reference.cpp.o
 
 reference.i: reference.cpp.i
@@ -510,7 +510,7 @@ reference.i: reference.cpp.i
 
 # target to preprocess a source file
 reference.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/reference.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/reference.cpp.i
 .PHONY : reference.cpp.i
 
 reference.s: reference.cpp.s
@@ -519,7 +519,7 @@ reference.s: reference.cpp.s
 
 # target to generate assembly for a file
 reference.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/reference.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/reference.cpp.s
 .PHONY : reference.cpp.s
 
 sao.o: sao.cpp.o
@@ -528,7 +528,7 @@ sao.o: sao.cpp.o
 
 # target to build an object file
 sao.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/sao.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/sao.cpp.o
 .PHONY : sao.cpp.o
 
 sao.i: sao.cpp.i
@@ -537,7 +537,7 @@ sao.i: sao.cpp.i
 
 # target to preprocess a source file
 sao.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/sao.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/sao.cpp.i
 .PHONY : sao.cpp.i
 
 sao.s: sao.cpp.s
@@ -546,7 +546,7 @@ sao.s: sao.cpp.s
 
 # target to generate assembly for a file
 sao.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/sao.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/sao.cpp.s
 .PHONY : sao.cpp.s
 
 search.o: search.cpp.o
@@ -555,7 +555,7 @@ search.o: search.cpp.o
 
 # target to build an object file
 search.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/search.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/search.cpp.o
 .PHONY : search.cpp.o
 
 search.i: search.cpp.i
@@ -564,7 +564,7 @@ search.i: search.cpp.i
 
 # target to preprocess a source file
 search.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/search.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/search.cpp.i
 .PHONY : search.cpp.i
 
 search.s: search.cpp.s
@@ -573,7 +573,7 @@ search.s: search.cpp.s
 
 # target to generate assembly for a file
 search.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/search.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/search.cpp.s
 .PHONY : search.cpp.s
 
 sei.o: sei.cpp.o
@@ -582,7 +582,7 @@ sei.o: sei.cpp.o
 
 # target to build an object file
 sei.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/sei.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/sei.cpp.o
 .PHONY : sei.cpp.o
 
 sei.i: sei.cpp.i
@@ -591,7 +591,7 @@ sei.i: sei.cpp.i
 
 # target to preprocess a source file
 sei.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/sei.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/sei.cpp.i
 .PHONY : sei.cpp.i
 
 sei.s: sei.cpp.s
@@ -600,7 +600,7 @@ sei.s: sei.cpp.s
 
 # target to generate assembly for a file
 sei.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/sei.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/sei.cpp.s
 .PHONY : sei.cpp.s
 
 slicetype.o: slicetype.cpp.o
@@ -609,7 +609,7 @@ slicetype.o: slicetype.cpp.o
 
 # target to build an object file
 slicetype.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/slicetype.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/slicetype.cpp.o
 .PHONY : slicetype.cpp.o
 
 slicetype.i: slicetype.cpp.i
@@ -618,7 +618,7 @@ slicetype.i: slicetype.cpp.i
 
 # target to preprocess a source file
 slicetype.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/slicetype.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/slicetype.cpp.i
 .PHONY : slicetype.cpp.i
 
 slicetype.s: slicetype.cpp.s
@@ -627,7 +627,7 @@ slicetype.s: slicetype.cpp.s
 
 # target to generate assembly for a file
 slicetype.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/slicetype.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/slicetype.cpp.s
 .PHONY : slicetype.cpp.s
 
 weightPrediction.o: weightPrediction.cpp.o
@@ -636,7 +636,7 @@ weightPrediction.o: weightPrediction.cpp.o
 
 # target to build an object file
 weightPrediction.cpp.o:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/weightPrediction.cpp.o
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/weightPrediction.cpp.o
 .PHONY : weightPrediction.cpp.o
 
 weightPrediction.i: weightPrediction.cpp.i
@@ -645,7 +645,7 @@ weightPrediction.i: weightPrediction.cpp.i
 
 # target to preprocess a source file
 weightPrediction.cpp.i:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/weightPrediction.cpp.i
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/weightPrediction.cpp.i
 .PHONY : weightPrediction.cpp.i
 
 weightPrediction.s: weightPrediction.cpp.s
@@ -654,7 +654,7 @@ weightPrediction.s: weightPrediction.cpp.s
 
 # target to generate assembly for a file
 weightPrediction.cpp.s:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/weightPrediction.cpp.s
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(MAKE) -f encoder/CMakeFiles/encoder.dir/build.make encoder/CMakeFiles/encoder.dir/weightPrediction.cpp.s
 .PHONY : weightPrediction.cpp.s
 
 # Help Target
@@ -663,13 +663,13 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install/local"
 	@echo "... install/strip"
+	@echo "... install/local"
 	@echo "... install"
 	@echo "... list_install_components"
-	@echo "... encoder"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... encoder"
 	@echo "... analysis.o"
 	@echo "... analysis.i"
 	@echo "... analysis.s"
@@ -735,6 +735,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

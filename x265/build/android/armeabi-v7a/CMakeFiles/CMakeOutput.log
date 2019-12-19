@@ -1,6 +1,6 @@
-The system is: Darwin - 18.7.0 - x86_64
+The system is: Linux - 4.14.123-86.109.amzn1.x86_64 - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc 
+Compiler: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang 
 Build flags: 
 Id flags:  
 
@@ -10,10 +10,10 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is AppleClang, found in "/Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/3.16.1/CompilerIdC/a.out"
+The C compiler identification is Clang, found in "/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/3.16.1/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-Compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ 
+Compiler: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++ 
 Build flags: 
 Id flags:  
 
@@ -23,429 +23,488 @@ The output was:
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is AppleClang, found in "/Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/3.16.1/CompilerIdCXX/a.out"
+The CXX compiler identification is Clang, found in "/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/3.16.1/CompilerIdCXX/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
+Change Dir: /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_59d77/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_59d77.dir/build.make CMakeFiles/cmTC_59d77.dir/build
-Building C object CMakeFiles/cmTC_59d77.dir/testCCompiler.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTC_59d77.dir/testCCompiler.c.o   -c /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_59d77
-/usr/local/Cellar/cmake/3.16.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_59d77.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib  CMakeFiles/cmTC_59d77.dir/testCCompiler.c.o  -o cmTC_59d77 
+Run Build Command(s):/usr/bin/gmake cmTC_f22f6/fast && /usr/bin/gmake -f CMakeFiles/cmTC_f22f6.dir/build.make CMakeFiles/cmTC_f22f6.dir/build
+gmake[1]: Entering directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_f22f6.dir/testCCompiler.c.o
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang    -o CMakeFiles/cmTC_f22f6.dir/testCCompiler.c.o   -c /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_f22f6
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f22f6.dir/link.txt --verbose=1
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang      -rdynamic CMakeFiles/cmTC_f22f6.dir/testCCompiler.c.o  -o cmTC_f22f6 
+gmake[1]: Leaving directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
 
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
+Change Dir: /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_12557/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_12557.dir/build.make CMakeFiles/cmTC_12557.dir/build
-Building C object CMakeFiles/cmTC_12557.dir/CMakeCCompilerABI.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -v -Wl,-v -o CMakeFiles/cmTC_12557.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/CMakeCCompilerABI.c
-Apple clang version 11.0.0 (clang-1100.0.33.12)
-Target: x86_64-apple-darwin18.7.0
+Run Build Command(s):/usr/bin/gmake cmTC_a54e3/fast && /usr/bin/gmake -f CMakeFiles/cmTC_a54e3.dir/build.make CMakeFiles/cmTC_a54e3.dir/build
+gmake[1]: Entering directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_a54e3.dir/CMakeCCompilerABI.c.o
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang   -v -o CMakeFiles/cmTC_a54e3.dir/CMakeCCompilerABI.c.o   -c /usr/local/share/cmake-3.16/Modules/CMakeCCompilerABI.c
+Android (5220042 based on r346389c) clang version 8.0.7 (https://android.googlesource.com/toolchain/clang b55f2d4ebfd35bf643d27dbca1bb228957008617) (https://android.googlesource.com/toolchain/llvm 3c393fe7a7e13b0fba4ac75a01aa683d7a5b11cd) (based on LLVM 8.0.7svn)
+Target: armv7a-unknown-linux-android16
 Thread model: posix
-InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
-clang: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.14.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mthread-model posix -mdisable-fp-elim -fno-strict-return -masm-verbose -munwind-tables -target-cpu penryn -dwarf-column-info -debugger-tuning=lldb -ggnu-pubnames -target-linker-version 520 -v -coverage-notes-file /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_12557.dir/CMakeCCompilerABI.c.gcno -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0 -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -fdebug-compilation-dir /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -stack-protector 1 -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fobjc-runtime=macosx-10.14.0 -fmax-type-align=16 -fdiagnostics-show-option -o CMakeFiles/cmTC_12557.dir/CMakeCCompilerABI.c.o -x c /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/CMakeCCompilerABI.c
-clang -cc1 version 11.0.0 (clang-1100.0.33.12) default target x86_64-apple-darwin18.7.0
+InstalledDir: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin
+Found candidate GCC installation: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x
+Selected GCC installation: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x
+Candidate multilib: thumb;@mthumb
+Candidate multilib: armv7-a;@march=armv7-a
+Candidate multilib: armv7-a/thumb;@march=armv7-a@mthumb
+Candidate multilib: .;
+Selected multilib: armv7-a;@march=armv7-a
+ "/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/clang" -cc1 -triple armv7-unknown-linux-android16 -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mthread-model posix -mdisable-fp-elim -masm-verbose -mconstructor-aliases -fuse-init-array -target-cpu generic -target-feature +soft-float-abi -target-feature -fp-only-sp -target-feature +d16 -target-feature +vfp3 -target-feature -fp16 -target-feature -vfp4 -target-feature -fp-armv8 -target-feature -neon -target-feature -crypto -target-abi aapcs-linux -mfloat-abi soft -fallow-half-arguments-and-returns -dwarf-column-info -debugger-tuning=gdb -v -coverage-notes-file /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_a54e3.dir/CMakeCCompilerABI.c.gcno -resource-dir /home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7 -internal-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/local/include -internal-isystem /home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/include -internal-externc-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/arm-linux-androideabi -internal-externc-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/include -internal-externc-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include -fdebug-compilation-dir /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -fno-signed-char -fobjc-runtime=gcc -fdiagnostics-show-option -o CMakeFiles/cmTC_a54e3.dir/CMakeCCompilerABI.c.o -x c /usr/local/share/cmake-3.16/Modules/CMakeCCompilerABI.c
+clang -cc1 version 8.0.7 based upon LLVM 8.0.7svn default target x86_64-unknown-linux-gnu
+ignoring nonexistent directory "/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/include"
 #include "..." search starts here:
 #include <...> search starts here:
- /usr/local/include
- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include
- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
- /usr/include
- /System/Library/Frameworks (framework directory)
- /Library/Frameworks (framework directory)
+ /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/local/include
+ /home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/include
+ /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/arm-linux-androideabi
+ /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include
 End of search list.
-Linking C executable cmTC_12557
-/usr/local/Cellar/cmake/3.16.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_12557.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib -v -Wl,-v CMakeFiles/cmTC_12557.dir/CMakeCCompilerABI.c.o  -o cmTC_12557 
-Apple clang version 11.0.0 (clang-1100.0.33.12)
-Target: x86_64-apple-darwin18.7.0
+Linking C executable cmTC_a54e3
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a54e3.dir/link.txt --verbose=1
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang     -v -rdynamic CMakeFiles/cmTC_a54e3.dir/CMakeCCompilerABI.c.o  -o cmTC_a54e3 
+Android (5220042 based on r346389c) clang version 8.0.7 (https://android.googlesource.com/toolchain/clang b55f2d4ebfd35bf643d27dbca1bb228957008617) (https://android.googlesource.com/toolchain/llvm 3c393fe7a7e13b0fba4ac75a01aa683d7a5b11cd) (based on LLVM 8.0.7svn)
+Target: armv7a-unknown-linux-android16
 Thread model: posix
-InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.14.0 -o cmTC_12557 -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib -search_paths_first -headerpad_max_install_names -rpath /usr/local/opt/llvm/lib -v CMakeFiles/cmTC_12557.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a
-@(#)PROGRAM:ld  PROJECT:ld64-520
-BUILD 18:38:01 Oct 11 2019
-configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
-Library search paths:
-	/usr/local/opt/icu4c/lib
-	/usr/local/opt/llvm/lib
-	/usr/local/opt/llvm/lib
-	/usr/local/opt/libffi/lib
-	/usr/local/opt/readline/lib
-	/usr/local/opt/sqlite/lib
-	/usr/lib
-	/usr/local/lib
-Framework search paths:
-	/Library/Frameworks/
-	/System/Library/Frameworks/
+InstalledDir: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin
+Found candidate GCC installation: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x
+Selected GCC installation: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x
+Candidate multilib: thumb;@mthumb
+Candidate multilib: armv7-a;@march=armv7-a
+Candidate multilib: armv7-a/thumb;@march=armv7-a@mthumb
+Candidate multilib: .;
+Selected multilib: armv7-a;@march=armv7-a
+ "/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/bin/ld" -pie -export-dynamic -EL -z now -z relro -X --hash-style=both --enable-new-dtags --eh-frame-hdr -m armelf_linux_eabi -export-dynamic -dynamic-linker /system/bin/linker -o cmTC_a54e3 /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16/crtbegin_dynamic.o -L/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/lib/linux/arm -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/armv7-a -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/../lib/armv7-a -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16 -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/../lib -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/../../lib -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/armv7-a -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib CMakeFiles/cmTC_a54e3.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16/crtend_android.o
+gmake[1]: Leaving directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
 
 
 
 Parsed C implicit include dir info from above output: rv=done
   found start of include info
   found start of implicit include info
-    add: [/usr/local/include]
-    add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
-    add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
-    add: [/usr/include]
+    add: [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/local/include]
+    add: [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/include]
+    add: [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/arm-linux-androideabi]
+    add: [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include]
   end of search list found
-  collapse include dir [/usr/local/include] ==> [/usr/local/include]
-  collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
-  collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
-  collapse include dir [/usr/include] ==> [/usr/include]
-  implicit include dirs: [/usr/local/include;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include;/usr/include]
+  collapse include dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/local/include] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/local/include]
+  collapse include dir [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/include] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/include]
+  collapse include dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/arm-linux-androideabi] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/arm-linux-androideabi]
+  collapse include dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include]
+  implicit include dirs: [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/local/include;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/include;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/arm-linux-androideabi;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include]
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):/usr/bin/make cmTC_12557/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_12557.dir/build.make CMakeFiles/cmTC_12557.dir/build]
-  ignore line: [Building C object CMakeFiles/cmTC_12557.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -v -Wl -v -o CMakeFiles/cmTC_12557.dir/CMakeCCompilerABI.c.o   -c /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/CMakeCCompilerABI.c]
-  ignore line: [Apple clang version 11.0.0 (clang-1100.0.33.12)]
-  ignore line: [Target: x86_64-apple-darwin18.7.0]
+  ignore line: [Run Build Command(s):/usr/bin/gmake cmTC_a54e3/fast && /usr/bin/gmake -f CMakeFiles/cmTC_a54e3.dir/build.make CMakeFiles/cmTC_a54e3.dir/build]
+  ignore line: [gmake[1]: Entering directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_a54e3.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang   -v -o CMakeFiles/cmTC_a54e3.dir/CMakeCCompilerABI.c.o   -c /usr/local/share/cmake-3.16/Modules/CMakeCCompilerABI.c]
+  ignore line: [Android (5220042 based on r346389c) clang version 8.0.7 (https://android.googlesource.com/toolchain/clang b55f2d4ebfd35bf643d27dbca1bb228957008617) (https://android.googlesource.com/toolchain/llvm 3c393fe7a7e13b0fba4ac75a01aa683d7a5b11cd) (based on LLVM 8.0.7svn)]
+  ignore line: [Target: armv7a-unknown-linux-android16]
   ignore line: [Thread model: posix]
-  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
-  ignore line: [clang: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
-  ignore line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.14.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mthread-model posix -mdisable-fp-elim -fno-strict-return -masm-verbose -munwind-tables -target-cpu penryn -dwarf-column-info -debugger-tuning=lldb -ggnu-pubnames -target-linker-version 520 -v -coverage-notes-file /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_12557.dir/CMakeCCompilerABI.c.gcno -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0 -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -fdebug-compilation-dir /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -stack-protector 1 -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fobjc-runtime=macosx-10.14.0 -fmax-type-align=16 -fdiagnostics-show-option -o CMakeFiles/cmTC_12557.dir/CMakeCCompilerABI.c.o -x c /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/CMakeCCompilerABI.c]
-  ignore line: [clang -cc1 version 11.0.0 (clang-1100.0.33.12) default target x86_64-apple-darwin18.7.0]
+  ignore line: [InstalledDir: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin]
+  ignore line: [Found candidate GCC installation: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x]
+  ignore line: [Selected GCC installation: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x]
+  ignore line: [Candidate multilib: thumb]
+  ignore line: [@mthumb]
+  ignore line: [Candidate multilib: armv7-a]
+  ignore line: [@march=armv7-a]
+  ignore line: [Candidate multilib: armv7-a/thumb]
+  ignore line: [@march=armv7-a@mthumb]
+  ignore line: [Candidate multilib: .]
+  ignore line: []
+  ignore line: [Selected multilib: armv7-a]
+  ignore line: [@march=armv7-a]
+  ignore line: [ "/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/clang" -cc1 -triple armv7-unknown-linux-android16 -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -pic-is-pie -mthread-model posix -mdisable-fp-elim -masm-verbose -mconstructor-aliases -fuse-init-array -target-cpu generic -target-feature +soft-float-abi -target-feature -fp-only-sp -target-feature +d16 -target-feature +vfp3 -target-feature -fp16 -target-feature -vfp4 -target-feature -fp-armv8 -target-feature -neon -target-feature -crypto -target-abi aapcs-linux -mfloat-abi soft -fallow-half-arguments-and-returns -dwarf-column-info -debugger-tuning=gdb -v -coverage-notes-file /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_a54e3.dir/CMakeCCompilerABI.c.gcno -resource-dir /home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7 -internal-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/local/include -internal-isystem /home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/include -internal-externc-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/arm-linux-androideabi -internal-externc-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/include -internal-externc-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include -fdebug-compilation-dir /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -fno-signed-char -fobjc-runtime=gcc -fdiagnostics-show-option -o CMakeFiles/cmTC_a54e3.dir/CMakeCCompilerABI.c.o -x c /usr/local/share/cmake-3.16/Modules/CMakeCCompilerABI.c]
+  ignore line: [clang -cc1 version 8.0.7 based upon LLVM 8.0.7svn default target x86_64-unknown-linux-gnu]
+  ignore line: [ignoring nonexistent directory "/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/include"]
   ignore line: [#include "..." search starts here:]
   ignore line: [#include <...> search starts here:]
-  ignore line: [ /usr/local/include]
-  ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
-  ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
-  ignore line: [ /usr/include]
-  ignore line: [ /System/Library/Frameworks (framework directory)]
-  ignore line: [ /Library/Frameworks (framework directory)]
+  ignore line: [ /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/local/include]
+  ignore line: [ /home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/include]
+  ignore line: [ /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/arm-linux-androideabi]
+  ignore line: [ /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include]
   ignore line: [End of search list.]
-  ignore line: [Linking C executable cmTC_12557]
-  ignore line: [/usr/local/Cellar/cmake/3.16.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_12557.dir/link.txt --verbose=1]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl -search_paths_first -Wl -headerpad_max_install_names -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl -rpath /usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib -v -Wl -v CMakeFiles/cmTC_12557.dir/CMakeCCompilerABI.c.o  -o cmTC_12557 ]
-  ignore line: [Apple clang version 11.0.0 (clang-1100.0.33.12)]
-  ignore line: [Target: x86_64-apple-darwin18.7.0]
+  ignore line: [Linking C executable cmTC_a54e3]
+  ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a54e3.dir/link.txt --verbose=1]
+  ignore line: [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang     -v -rdynamic CMakeFiles/cmTC_a54e3.dir/CMakeCCompilerABI.c.o  -o cmTC_a54e3 ]
+  ignore line: [Android (5220042 based on r346389c) clang version 8.0.7 (https://android.googlesource.com/toolchain/clang b55f2d4ebfd35bf643d27dbca1bb228957008617) (https://android.googlesource.com/toolchain/llvm 3c393fe7a7e13b0fba4ac75a01aa683d7a5b11cd) (based on LLVM 8.0.7svn)]
+  ignore line: [Target: armv7a-unknown-linux-android16]
   ignore line: [Thread model: posix]
-  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
-  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.14.0 -o cmTC_12557 -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib -search_paths_first -headerpad_max_install_names -rpath /usr/local/opt/llvm/lib -v CMakeFiles/cmTC_12557.dir/CMakeCCompilerABI.c.o -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
-    arg [-demangle] ==> ignore
-    arg [-lto_library] ==> ignore, skip following value
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib] ==> skip value of -lto_library
-    arg [-dynamic] ==> ignore
-    arg [-arch] ==> ignore
-    arg [x86_64] ==> ignore
-    arg [-macosx_version_min] ==> ignore
-    arg [10.14.0] ==> ignore
+  ignore line: [InstalledDir: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin]
+  ignore line: [Found candidate GCC installation: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x]
+  ignore line: [Selected GCC installation: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x]
+  ignore line: [Candidate multilib: thumb]
+  ignore line: [@mthumb]
+  ignore line: [Candidate multilib: armv7-a]
+  ignore line: [@march=armv7-a]
+  ignore line: [Candidate multilib: armv7-a/thumb]
+  ignore line: [@march=armv7-a@mthumb]
+  ignore line: [Candidate multilib: .]
+  ignore line: []
+  ignore line: [Selected multilib: armv7-a]
+  ignore line: [@march=armv7-a]
+  link line: [ "/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/bin/ld" -pie -export-dynamic -EL -z now -z relro -X --hash-style=both --enable-new-dtags --eh-frame-hdr -m armelf_linux_eabi -export-dynamic -dynamic-linker /system/bin/linker -o cmTC_a54e3 /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16/crtbegin_dynamic.o -L/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/lib/linux/arm -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/armv7-a -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/../lib/armv7-a -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16 -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/../lib -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/../../lib -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/armv7-a -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib CMakeFiles/cmTC_a54e3.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16/crtend_android.o]
+    arg [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/bin/ld] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-EL] ==> ignore
+    arg [-znow] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-X] ==> ignore
+    arg [--hash-style=both] ==> ignore
+    arg [--enable-new-dtags] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/system/bin/linker] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_12557] ==> ignore
-    arg [-L/usr/local/opt/icu4c/lib] ==> dir [/usr/local/opt/icu4c/lib]
-    arg [-L/usr/local/opt/llvm/lib] ==> dir [/usr/local/opt/llvm/lib]
-    arg [-L/usr/local/opt/llvm/lib] ==> dir [/usr/local/opt/llvm/lib]
-    arg [-L/usr/local/opt/libffi/lib] ==> dir [/usr/local/opt/libffi/lib]
-    arg [-L/usr/local/opt/readline/lib] ==> dir [/usr/local/opt/readline/lib]
-    arg [-L/usr/local/opt/sqlite/lib] ==> dir [/usr/local/opt/sqlite/lib]
-    arg [-search_paths_first] ==> ignore
-    arg [-headerpad_max_install_names] ==> ignore
-    arg [-rpath] ==> ignore
-    arg [/usr/local/opt/llvm/lib] ==> ignore
-    arg [-v] ==> ignore
-    arg [CMakeFiles/cmTC_12557.dir/CMakeCCompilerABI.c.o] ==> ignore
-    arg [-lSystem] ==> lib [System]
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
-  Library search paths: [;/usr/local/opt/icu4c/lib;/usr/local/opt/llvm/lib;/usr/local/opt/llvm/lib;/usr/local/opt/libffi/lib;/usr/local/opt/readline/lib;/usr/local/opt/sqlite/lib;/usr/lib;/usr/local/lib]
-  Framework search paths: [;/Library/Frameworks/;/System/Library/Frameworks/]
-  remove lib [System]
-  remove lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
-  collapse library dir [/usr/local/opt/icu4c/lib] ==> [/usr/local/opt/icu4c/lib]
-  collapse library dir [/usr/local/opt/llvm/lib] ==> [/usr/local/opt/llvm/lib]
-  collapse library dir [/usr/local/opt/llvm/lib] ==> [/usr/local/opt/llvm/lib]
-  collapse library dir [/usr/local/opt/libffi/lib] ==> [/usr/local/opt/libffi/lib]
-  collapse library dir [/usr/local/opt/readline/lib] ==> [/usr/local/opt/readline/lib]
-  collapse library dir [/usr/local/opt/sqlite/lib] ==> [/usr/local/opt/sqlite/lib]
-  collapse library dir [/usr/local/opt/icu4c/lib] ==> [/usr/local/opt/icu4c/lib]
-  collapse library dir [/usr/local/opt/llvm/lib] ==> [/usr/local/opt/llvm/lib]
-  collapse library dir [/usr/local/opt/llvm/lib] ==> [/usr/local/opt/llvm/lib]
-  collapse library dir [/usr/local/opt/libffi/lib] ==> [/usr/local/opt/libffi/lib]
-  collapse library dir [/usr/local/opt/readline/lib] ==> [/usr/local/opt/readline/lib]
-  collapse library dir [/usr/local/opt/sqlite/lib] ==> [/usr/local/opt/sqlite/lib]
-  collapse library dir [/usr/lib] ==> [/usr/lib]
-  collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
-  collapse framework dir [/Library/Frameworks/] ==> [/Library/Frameworks]
-  collapse framework dir [/System/Library/Frameworks/] ==> [/System/Library/Frameworks]
-  implicit libs: []
-  implicit dirs: [/usr/local/opt/icu4c/lib;/usr/local/opt/llvm/lib;/usr/local/opt/libffi/lib;/usr/local/opt/readline/lib;/usr/local/opt/sqlite/lib;/usr/lib;/usr/local/lib]
-  implicit fwks: [/Library/Frameworks;/System/Library/Frameworks]
+    arg [cmTC_a54e3] ==> ignore
+    arg [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16/crtbegin_dynamic.o] ==> ignore
+    arg [-L/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/lib/linux/arm] ==> dir [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/lib/linux/arm]
+    arg [-L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/armv7-a] ==> dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/armv7-a]
+    arg [-L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/../lib/armv7-a] ==> dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/../lib/armv7-a]
+    arg [-L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16] ==> dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16]
+    arg [-L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi] ==> dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi]
+    arg [-L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/../lib] ==> dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/../lib]
+    arg [-L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/../../lib] ==> dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/../../lib]
+    arg [-L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/armv7-a] ==> dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/armv7-a]
+    arg [-L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib] ==> dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib]
+    arg [CMakeFiles/cmTC_a54e3.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [-ldl] ==> lib [dl]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-ldl] ==> lib [dl]
+    arg [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16/crtend_android.o] ==> ignore
+  collapse library dir [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/lib/linux/arm] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/lib/linux/arm]
+  collapse library dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/armv7-a] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.9.x/armv7-a]
+  collapse library dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/../lib/armv7-a] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/arm-linux-androideabi/lib/armv7-a]
+  collapse library dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/16]
+  collapse library dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi]
+  collapse library dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/../lib] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib]
+  collapse library dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/../../lib] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib]
+  collapse library dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/armv7-a] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/arm-linux-androideabi/lib/armv7-a]
+  collapse library dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib]
+  implicit libs: [gcc;dl;c;gcc;dl]
+  implicit dirs: [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/lib/linux/arm;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.9.x/armv7-a;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/arm-linux-androideabi/lib/armv7-a;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/16;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib]
+  implicit fwks: []
 
 
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
+Change Dir: /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_3ef51/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_3ef51.dir/build.make CMakeFiles/cmTC_3ef51.dir/build
-Building CXX object CMakeFiles/cmTC_3ef51.dir/testCXXCompiler.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++     -o CMakeFiles/cmTC_3ef51.dir/testCXXCompiler.cxx.o -c /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_3ef51
-/usr/local/Cellar/cmake/3.16.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3ef51.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib  CMakeFiles/cmTC_3ef51.dir/testCXXCompiler.cxx.o  -o cmTC_3ef51 
+Run Build Command(s):/usr/bin/gmake cmTC_cf4e1/fast && /usr/bin/gmake -f CMakeFiles/cmTC_cf4e1.dir/build.make CMakeFiles/cmTC_cf4e1.dir/build
+gmake[1]: Entering directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_cf4e1.dir/testCXXCompiler.cxx.o
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++     -o CMakeFiles/cmTC_cf4e1.dir/testCXXCompiler.cxx.o -c /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_cf4e1
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_cf4e1.dir/link.txt --verbose=1
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++       -rdynamic CMakeFiles/cmTC_cf4e1.dir/testCXXCompiler.cxx.o  -o cmTC_cf4e1 
+gmake[1]: Leaving directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
 
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
+Change Dir: /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_ac864/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ac864.dir/build.make CMakeFiles/cmTC_ac864.dir/build
-Building CXX object CMakeFiles/cmTC_ac864.dir/CMakeCXXCompilerABI.cpp.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -v -Wl,-v -o CMakeFiles/cmTC_ac864.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/CMakeCXXCompilerABI.cpp
-Apple clang version 11.0.0 (clang-1100.0.33.12)
-Target: x86_64-apple-darwin18.7.0
+Run Build Command(s):/usr/bin/gmake cmTC_4a5c0/fast && /usr/bin/gmake -f CMakeFiles/cmTC_4a5c0.dir/build.make CMakeFiles/cmTC_4a5c0.dir/build
+gmake[1]: Entering directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_4a5c0.dir/CMakeCXXCompilerABI.cpp.o
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++    -v -o CMakeFiles/cmTC_4a5c0.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp
+Android (5220042 based on r346389c) clang version 8.0.7 (https://android.googlesource.com/toolchain/clang b55f2d4ebfd35bf643d27dbca1bb228957008617) (https://android.googlesource.com/toolchain/llvm 3c393fe7a7e13b0fba4ac75a01aa683d7a5b11cd) (based on LLVM 8.0.7svn)
+Target: armv7a-unknown-linux-android16
 Thread model: posix
-InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
-clang: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.14.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mthread-model posix -mdisable-fp-elim -fno-strict-return -masm-verbose -munwind-tables -target-cpu penryn -dwarf-column-info -debugger-tuning=lldb -ggnu-pubnames -target-linker-version 520 -v -coverage-notes-file /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_ac864.dir/CMakeCXXCompilerABI.cpp.gcno -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0 -stdlib=libc++ -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1 -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -fdeprecated-macro -fdebug-compilation-dir /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -stack-protector 1 -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fobjc-runtime=macosx-10.14.0 -fcxx-exceptions -fexceptions -fmax-type-align=16 -fdiagnostics-show-option -o CMakeFiles/cmTC_ac864.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/CMakeCXXCompilerABI.cpp
-clang -cc1 version 11.0.0 (clang-1100.0.33.12) default target x86_64-apple-darwin18.7.0
-ignoring nonexistent directory "/usr/include/c++/v1"
+InstalledDir: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin
+Found candidate GCC installation: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x
+Selected GCC installation: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x
+Candidate multilib: thumb;@mthumb
+Candidate multilib: armv7-a;@march=armv7-a
+Candidate multilib: armv7-a/thumb;@march=armv7-a@mthumb
+Candidate multilib: .;
+Selected multilib: armv7-a;@march=armv7-a
+ "/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++" -cc1 -triple armv7-unknown-linux-android16 -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mthread-model posix -mdisable-fp-elim -masm-verbose -mconstructor-aliases -fuse-init-array -target-cpu generic -target-feature +soft-float-abi -target-feature -fp-only-sp -target-feature +d16 -target-feature +vfp3 -target-feature -fp16 -target-feature -vfp4 -target-feature -fp-armv8 -target-feature -neon -target-feature -crypto -target-abi aapcs-linux -mfloat-abi soft -fallow-half-arguments-and-returns -dwarf-column-info -debugger-tuning=gdb -v -coverage-notes-file /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_4a5c0.dir/CMakeCXXCompilerABI.cpp.gcno -resource-dir /home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7 -internal-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/c++/v1 -internal-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/local/include -internal-isystem /home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/include -internal-externc-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/arm-linux-androideabi -internal-externc-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/include -internal-externc-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include -fdeprecated-macro -fdebug-compilation-dir /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -fno-signed-char -fobjc-runtime=gcc -fcxx-exceptions -fexceptions -fdiagnostics-show-option -o CMakeFiles/cmTC_4a5c0.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/local/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp
+clang -cc1 version 8.0.7 based upon LLVM 8.0.7svn default target x86_64-unknown-linux-gnu
+ignoring nonexistent directory "/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/include"
 #include "..." search starts here:
 #include <...> search starts here:
- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1
- /usr/local/include
- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include
- /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include
- /usr/include
- /System/Library/Frameworks (framework directory)
- /Library/Frameworks (framework directory)
+ /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/c++/v1
+ /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/local/include
+ /home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/include
+ /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/arm-linux-androideabi
+ /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include
 End of search list.
-Linking CXX executable cmTC_ac864
-/usr/local/Cellar/cmake/3.16.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ac864.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib -v -Wl,-v CMakeFiles/cmTC_ac864.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_ac864 
-Apple clang version 11.0.0 (clang-1100.0.33.12)
-Target: x86_64-apple-darwin18.7.0
+Linking CXX executable cmTC_4a5c0
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4a5c0.dir/link.txt --verbose=1
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++      -v -rdynamic CMakeFiles/cmTC_4a5c0.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_4a5c0 
+Android (5220042 based on r346389c) clang version 8.0.7 (https://android.googlesource.com/toolchain/clang b55f2d4ebfd35bf643d27dbca1bb228957008617) (https://android.googlesource.com/toolchain/llvm 3c393fe7a7e13b0fba4ac75a01aa683d7a5b11cd) (based on LLVM 8.0.7svn)
+Target: armv7a-unknown-linux-android16
 Thread model: posix
-InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.14.0 -o cmTC_ac864 -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib -search_paths_first -headerpad_max_install_names -rpath /usr/local/opt/llvm/lib -v CMakeFiles/cmTC_ac864.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a
-@(#)PROGRAM:ld  PROJECT:ld64-520
-BUILD 18:38:01 Oct 11 2019
-configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
-Library search paths:
-	/usr/local/opt/icu4c/lib
-	/usr/local/opt/llvm/lib
-	/usr/local/opt/llvm/lib
-	/usr/local/opt/libffi/lib
-	/usr/local/opt/readline/lib
-	/usr/local/opt/sqlite/lib
-	/usr/lib
-	/usr/local/lib
-Framework search paths:
-	/Library/Frameworks/
-	/System/Library/Frameworks/
+InstalledDir: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin
+Found candidate GCC installation: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x
+Selected GCC installation: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x
+Candidate multilib: thumb;@mthumb
+Candidate multilib: armv7-a;@march=armv7-a
+Candidate multilib: armv7-a/thumb;@march=armv7-a@mthumb
+Candidate multilib: .;
+Selected multilib: armv7-a;@march=armv7-a
+ "/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/bin/ld" -pie -export-dynamic -EL -z now -z relro -X --hash-style=both --enable-new-dtags --eh-frame-hdr -m armelf_linux_eabi -export-dynamic -dynamic-linker /system/bin/linker -o cmTC_4a5c0 /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16/crtbegin_dynamic.o -L/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/lib/linux/arm -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/armv7-a -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/../lib/armv7-a -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16 -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/../lib -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/../../lib -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/armv7-a -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib CMakeFiles/cmTC_4a5c0.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lm -lgcc -ldl -lc -lgcc -ldl /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16/crtend_android.o
+gmake[1]: Leaving directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
 
 
 
 Parsed CXX implicit include dir info from above output: rv=done
   found start of include info
   found start of implicit include info
-    add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1]
-    add: [/usr/local/include]
-    add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
-    add: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
-    add: [/usr/include]
+    add: [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/c++/v1]
+    add: [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/local/include]
+    add: [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/include]
+    add: [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/arm-linux-androideabi]
+    add: [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include]
   end of search list found
-  collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1]
-  collapse include dir [/usr/local/include] ==> [/usr/local/include]
-  collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
-  collapse include dir [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include] ==> [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
-  collapse include dir [/usr/include] ==> [/usr/include]
-  implicit include dirs: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1;/usr/local/include;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include;/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include;/usr/include]
+  collapse include dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/c++/v1] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/c++/v1]
+  collapse include dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/local/include] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/local/include]
+  collapse include dir [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/include] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/include]
+  collapse include dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/arm-linux-androideabi] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/arm-linux-androideabi]
+  collapse include dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include]
+  implicit include dirs: [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/c++/v1;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/local/include;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/include;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/arm-linux-androideabi;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include]
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):/usr/bin/make cmTC_ac864/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_ac864.dir/build.make CMakeFiles/cmTC_ac864.dir/build]
-  ignore line: [Building CXX object CMakeFiles/cmTC_ac864.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -v -Wl -v -o CMakeFiles/cmTC_ac864.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Apple clang version 11.0.0 (clang-1100.0.33.12)]
-  ignore line: [Target: x86_64-apple-darwin18.7.0]
+  ignore line: [Run Build Command(s):/usr/bin/gmake cmTC_4a5c0/fast && /usr/bin/gmake -f CMakeFiles/cmTC_4a5c0.dir/build.make CMakeFiles/cmTC_4a5c0.dir/build]
+  ignore line: [gmake[1]: Entering directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp']
+  ignore line: [Building CXX object CMakeFiles/cmTC_4a5c0.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++    -v -o CMakeFiles/cmTC_4a5c0.dir/CMakeCXXCompilerABI.cpp.o -c /usr/local/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Android (5220042 based on r346389c) clang version 8.0.7 (https://android.googlesource.com/toolchain/clang b55f2d4ebfd35bf643d27dbca1bb228957008617) (https://android.googlesource.com/toolchain/llvm 3c393fe7a7e13b0fba4ac75a01aa683d7a5b11cd) (based on LLVM 8.0.7svn)]
+  ignore line: [Target: armv7a-unknown-linux-android16]
   ignore line: [Thread model: posix]
-  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
-  ignore line: [clang: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
-  ignore line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.14.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mthread-model posix -mdisable-fp-elim -fno-strict-return -masm-verbose -munwind-tables -target-cpu penryn -dwarf-column-info -debugger-tuning=lldb -ggnu-pubnames -target-linker-version 520 -v -coverage-notes-file /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_ac864.dir/CMakeCXXCompilerABI.cpp.gcno -resource-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0 -stdlib=libc++ -internal-isystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1 -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -fdeprecated-macro -fdebug-compilation-dir /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -stack-protector 1 -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fobjc-runtime=macosx-10.14.0 -fcxx-exceptions -fexceptions -fmax-type-align=16 -fdiagnostics-show-option -o CMakeFiles/cmTC_ac864.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [clang -cc1 version 11.0.0 (clang-1100.0.33.12) default target x86_64-apple-darwin18.7.0]
-  ignore line: [ignoring nonexistent directory "/usr/include/c++/v1"]
+  ignore line: [InstalledDir: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin]
+  ignore line: [Found candidate GCC installation: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x]
+  ignore line: [Selected GCC installation: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x]
+  ignore line: [Candidate multilib: thumb]
+  ignore line: [@mthumb]
+  ignore line: [Candidate multilib: armv7-a]
+  ignore line: [@march=armv7-a]
+  ignore line: [Candidate multilib: armv7-a/thumb]
+  ignore line: [@march=armv7-a@mthumb]
+  ignore line: [Candidate multilib: .]
+  ignore line: []
+  ignore line: [Selected multilib: armv7-a]
+  ignore line: [@march=armv7-a]
+  ignore line: [ "/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++" -cc1 -triple armv7-unknown-linux-android16 -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -pic-is-pie -mthread-model posix -mdisable-fp-elim -masm-verbose -mconstructor-aliases -fuse-init-array -target-cpu generic -target-feature +soft-float-abi -target-feature -fp-only-sp -target-feature +d16 -target-feature +vfp3 -target-feature -fp16 -target-feature -vfp4 -target-feature -fp-armv8 -target-feature -neon -target-feature -crypto -target-abi aapcs-linux -mfloat-abi soft -fallow-half-arguments-and-returns -dwarf-column-info -debugger-tuning=gdb -v -coverage-notes-file /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_4a5c0.dir/CMakeCXXCompilerABI.cpp.gcno -resource-dir /home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7 -internal-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/c++/v1 -internal-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/local/include -internal-isystem /home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/include -internal-externc-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/arm-linux-androideabi -internal-externc-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/include -internal-externc-isystem /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include -fdeprecated-macro -fdebug-compilation-dir /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -fno-signed-char -fobjc-runtime=gcc -fcxx-exceptions -fexceptions -fdiagnostics-show-option -o CMakeFiles/cmTC_4a5c0.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/local/share/cmake-3.16/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [clang -cc1 version 8.0.7 based upon LLVM 8.0.7svn default target x86_64-unknown-linux-gnu]
+  ignore line: [ignoring nonexistent directory "/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/include"]
   ignore line: [#include "..." search starts here:]
   ignore line: [#include <...> search starts here:]
-  ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1]
-  ignore line: [ /usr/local/include]
-  ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/include]
-  ignore line: [ /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include]
-  ignore line: [ /usr/include]
-  ignore line: [ /System/Library/Frameworks (framework directory)]
-  ignore line: [ /Library/Frameworks (framework directory)]
+  ignore line: [ /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/c++/v1]
+  ignore line: [ /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/local/include]
+  ignore line: [ /home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/include]
+  ignore line: [ /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include/arm-linux-androideabi]
+  ignore line: [ /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/include]
   ignore line: [End of search list.]
-  ignore line: [Linking CXX executable cmTC_ac864]
-  ignore line: [/usr/local/Cellar/cmake/3.16.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ac864.dir/link.txt --verbose=1]
-  ignore line: [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -Wl -search_paths_first -Wl -headerpad_max_install_names -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl -rpath /usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib -v -Wl -v CMakeFiles/cmTC_ac864.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_ac864 ]
-  ignore line: [Apple clang version 11.0.0 (clang-1100.0.33.12)]
-  ignore line: [Target: x86_64-apple-darwin18.7.0]
+  ignore line: [Linking CXX executable cmTC_4a5c0]
+  ignore line: [/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4a5c0.dir/link.txt --verbose=1]
+  ignore line: [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++      -v -rdynamic CMakeFiles/cmTC_4a5c0.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_4a5c0 ]
+  ignore line: [Android (5220042 based on r346389c) clang version 8.0.7 (https://android.googlesource.com/toolchain/clang b55f2d4ebfd35bf643d27dbca1bb228957008617) (https://android.googlesource.com/toolchain/llvm 3c393fe7a7e13b0fba4ac75a01aa683d7a5b11cd) (based on LLVM 8.0.7svn)]
+  ignore line: [Target: armv7a-unknown-linux-android16]
   ignore line: [Thread model: posix]
-  ignore line: [InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin]
-  link line: [ "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld" -demangle -lto_library /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib -dynamic -arch x86_64 -macosx_version_min 10.14.0 -o cmTC_ac864 -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib -search_paths_first -headerpad_max_install_names -rpath /usr/local/opt/llvm/lib -v CMakeFiles/cmTC_ac864.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lSystem /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld] ==> ignore
-    arg [-demangle] ==> ignore
-    arg [-lto_library] ==> ignore, skip following value
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libLTO.dylib] ==> skip value of -lto_library
-    arg [-dynamic] ==> ignore
-    arg [-arch] ==> ignore
-    arg [x86_64] ==> ignore
-    arg [-macosx_version_min] ==> ignore
-    arg [10.14.0] ==> ignore
+  ignore line: [InstalledDir: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin]
+  ignore line: [Found candidate GCC installation: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x]
+  ignore line: [Selected GCC installation: /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x]
+  ignore line: [Candidate multilib: thumb]
+  ignore line: [@mthumb]
+  ignore line: [Candidate multilib: armv7-a]
+  ignore line: [@march=armv7-a]
+  ignore line: [Candidate multilib: armv7-a/thumb]
+  ignore line: [@march=armv7-a@mthumb]
+  ignore line: [Candidate multilib: .]
+  ignore line: []
+  ignore line: [Selected multilib: armv7-a]
+  ignore line: [@march=armv7-a]
+  link line: [ "/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/bin/ld" -pie -export-dynamic -EL -z now -z relro -X --hash-style=both --enable-new-dtags --eh-frame-hdr -m armelf_linux_eabi -export-dynamic -dynamic-linker /system/bin/linker -o cmTC_4a5c0 /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16/crtbegin_dynamic.o -L/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/lib/linux/arm -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/armv7-a -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/../lib/armv7-a -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16 -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/../lib -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/../../lib -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/armv7-a -L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib CMakeFiles/cmTC_4a5c0.dir/CMakeCXXCompilerABI.cpp.o -lc++ -lm -lgcc -ldl -lc -lgcc -ldl /home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16/crtend_android.o]
+    arg [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/bin/ld] ==> ignore
+    arg [-pie] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-EL] ==> ignore
+    arg [-znow] ==> ignore
+    arg [-zrelro] ==> ignore
+    arg [-X] ==> ignore
+    arg [--hash-style=both] ==> ignore
+    arg [--enable-new-dtags] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [armelf_linux_eabi] ==> ignore
+    arg [-export-dynamic] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/system/bin/linker] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_ac864] ==> ignore
-    arg [-L/usr/local/opt/icu4c/lib] ==> dir [/usr/local/opt/icu4c/lib]
-    arg [-L/usr/local/opt/llvm/lib] ==> dir [/usr/local/opt/llvm/lib]
-    arg [-L/usr/local/opt/llvm/lib] ==> dir [/usr/local/opt/llvm/lib]
-    arg [-L/usr/local/opt/libffi/lib] ==> dir [/usr/local/opt/libffi/lib]
-    arg [-L/usr/local/opt/readline/lib] ==> dir [/usr/local/opt/readline/lib]
-    arg [-L/usr/local/opt/sqlite/lib] ==> dir [/usr/local/opt/sqlite/lib]
-    arg [-search_paths_first] ==> ignore
-    arg [-headerpad_max_install_names] ==> ignore
-    arg [-rpath] ==> ignore
-    arg [/usr/local/opt/llvm/lib] ==> ignore
-    arg [-v] ==> ignore
-    arg [CMakeFiles/cmTC_ac864.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [cmTC_4a5c0] ==> ignore
+    arg [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16/crtbegin_dynamic.o] ==> ignore
+    arg [-L/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/lib/linux/arm] ==> dir [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/lib/linux/arm]
+    arg [-L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/armv7-a] ==> dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/armv7-a]
+    arg [-L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/../lib/armv7-a] ==> dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/../lib/armv7-a]
+    arg [-L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16] ==> dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16]
+    arg [-L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi] ==> dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi]
+    arg [-L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/../lib] ==> dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/../lib]
+    arg [-L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/../../lib] ==> dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/../../lib]
+    arg [-L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/armv7-a] ==> dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/armv7-a]
+    arg [-L/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib] ==> dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib]
+    arg [CMakeFiles/cmTC_4a5c0.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lc++] ==> lib [c++]
-    arg [-lSystem] ==> lib [System]
-    arg [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
-  Library search paths: [;/usr/local/opt/icu4c/lib;/usr/local/opt/llvm/lib;/usr/local/opt/llvm/lib;/usr/local/opt/libffi/lib;/usr/local/opt/readline/lib;/usr/local/opt/sqlite/lib;/usr/lib;/usr/local/lib]
-  Framework search paths: [;/Library/Frameworks/;/System/Library/Frameworks/]
-  remove lib [System]
-  remove lib [/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/11.0.0/lib/darwin/libclang_rt.osx.a]
-  collapse library dir [/usr/local/opt/icu4c/lib] ==> [/usr/local/opt/icu4c/lib]
-  collapse library dir [/usr/local/opt/llvm/lib] ==> [/usr/local/opt/llvm/lib]
-  collapse library dir [/usr/local/opt/llvm/lib] ==> [/usr/local/opt/llvm/lib]
-  collapse library dir [/usr/local/opt/libffi/lib] ==> [/usr/local/opt/libffi/lib]
-  collapse library dir [/usr/local/opt/readline/lib] ==> [/usr/local/opt/readline/lib]
-  collapse library dir [/usr/local/opt/sqlite/lib] ==> [/usr/local/opt/sqlite/lib]
-  collapse library dir [/usr/local/opt/icu4c/lib] ==> [/usr/local/opt/icu4c/lib]
-  collapse library dir [/usr/local/opt/llvm/lib] ==> [/usr/local/opt/llvm/lib]
-  collapse library dir [/usr/local/opt/llvm/lib] ==> [/usr/local/opt/llvm/lib]
-  collapse library dir [/usr/local/opt/libffi/lib] ==> [/usr/local/opt/libffi/lib]
-  collapse library dir [/usr/local/opt/readline/lib] ==> [/usr/local/opt/readline/lib]
-  collapse library dir [/usr/local/opt/sqlite/lib] ==> [/usr/local/opt/sqlite/lib]
-  collapse library dir [/usr/lib] ==> [/usr/lib]
-  collapse library dir [/usr/local/lib] ==> [/usr/local/lib]
-  collapse framework dir [/Library/Frameworks/] ==> [/Library/Frameworks]
-  collapse framework dir [/System/Library/Frameworks/] ==> [/System/Library/Frameworks]
-  implicit libs: [c++]
-  implicit dirs: [/usr/local/opt/icu4c/lib;/usr/local/opt/llvm/lib;/usr/local/opt/libffi/lib;/usr/local/opt/readline/lib;/usr/local/opt/sqlite/lib;/usr/lib;/usr/local/lib]
-  implicit fwks: [/Library/Frameworks;/System/Library/Frameworks]
+    arg [-lm] ==> lib [m]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-ldl] ==> lib [dl]
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-ldl] ==> lib [dl]
+    arg [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16/crtend_android.o] ==> ignore
+  collapse library dir [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/lib/linux/arm] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/lib/linux/arm]
+  collapse library dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/armv7-a] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.9.x/armv7-a]
+  collapse library dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/../lib/armv7-a] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/arm-linux-androideabi/lib/armv7-a]
+  collapse library dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/16] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/16]
+  collapse library dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi]
+  collapse library dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/../lib] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib]
+  collapse library dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib/arm-linux-androideabi/../../lib] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib]
+  collapse library dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../lib/gcc/arm-linux-androideabi/4.9.x/../../../../arm-linux-androideabi/lib/armv7-a] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/arm-linux-androideabi/lib/armv7-a]
+  collapse library dir [/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/../sysroot/usr/lib] ==> [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib]
+  implicit libs: [c++;m;gcc;dl;c;gcc;dl]
+  implicit dirs: [/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib64/clang/8.0.7/lib/linux/arm;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/lib/gcc/arm-linux-androideabi/4.9.x/armv7-a;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/arm-linux-androideabi/lib/armv7-a;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi/16;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib/arm-linux-androideabi;/home/ec2-user/ffmpeg/ndk/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/lib]
+  implicit fwks: []
 
 
 Determining if files inttypes.h exist passed with the following output:
-Change Dir: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
+Change Dir: /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_0e9c0/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_0e9c0.dir/build.make CMakeFiles/cmTC_0e9c0.dir/build
-Building C object CMakeFiles/cmTC_0e9c0.dir/HAVE_INT_TYPES_H.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTC_0e9c0.dir/HAVE_INT_TYPES_H.c.o   -c /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CheckIncludeFiles/HAVE_INT_TYPES_H.c
-Linking C executable cmTC_0e9c0
-/usr/local/Cellar/cmake/3.16.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0e9c0.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib  CMakeFiles/cmTC_0e9c0.dir/HAVE_INT_TYPES_H.c.o  -o cmTC_0e9c0 
+Run Build Command(s):/usr/bin/gmake cmTC_49279/fast && /usr/bin/gmake -f CMakeFiles/cmTC_49279.dir/build.make CMakeFiles/cmTC_49279.dir/build
+gmake[1]: Entering directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_49279.dir/HAVE_INT_TYPES_H.c.o
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang    -o CMakeFiles/cmTC_49279.dir/HAVE_INT_TYPES_H.c.o   -c /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CheckIncludeFiles/HAVE_INT_TYPES_H.c
+Linking C executable cmTC_49279
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_49279.dir/link.txt --verbose=1
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang      -rdynamic CMakeFiles/cmTC_49279.dir/HAVE_INT_TYPES_H.c.o  -o cmTC_49279 
+gmake[1]: Leaving directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
 
 
 
 Performing C++ SOURCE FILE Test CC_HAS_NO_STRICT_OVERFLOW succeeded with the following output:
-Change Dir: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
+Change Dir: /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_28c08/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_28c08.dir/build.make CMakeFiles/cmTC_28c08.dir/build
-Building CXX object CMakeFiles/cmTC_28c08.dir/src.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -DCC_HAS_NO_STRICT_OVERFLOW   -Wno-strict-overflow -o CMakeFiles/cmTC_28c08.dir/src.cxx.o -c /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/src.cxx
-Linking CXX executable cmTC_28c08
-/usr/local/Cellar/cmake/3.16.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_28c08.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -DCC_HAS_NO_STRICT_OVERFLOW -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib  CMakeFiles/cmTC_28c08.dir/src.cxx.o  -o cmTC_28c08 
+Run Build Command(s):/usr/bin/gmake cmTC_3ef43/fast && /usr/bin/gmake -f CMakeFiles/cmTC_3ef43.dir/build.make CMakeFiles/cmTC_3ef43.dir/build
+gmake[1]: Entering directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_3ef43.dir/src.cxx.o
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++    -DCC_HAS_NO_STRICT_OVERFLOW   -Wno-strict-overflow -o CMakeFiles/cmTC_3ef43.dir/src.cxx.o -c /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_3ef43
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3ef43.dir/link.txt --verbose=1
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++   -DCC_HAS_NO_STRICT_OVERFLOW    -rdynamic CMakeFiles/cmTC_3ef43.dir/src.cxx.o  -o cmTC_3ef43 
+gmake[1]: Leaving directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
 
 
 Source file was:
 int main() { return 0; }
 Performing C++ SOURCE FILE Test CC_HAS_NO_NARROWING succeeded with the following output:
-Change Dir: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
+Change Dir: /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_f7a84/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_f7a84.dir/build.make CMakeFiles/cmTC_f7a84.dir/build
-Building CXX object CMakeFiles/cmTC_f7a84.dir/src.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -DCC_HAS_NO_NARROWING   -Wno-narrowing -o CMakeFiles/cmTC_f7a84.dir/src.cxx.o -c /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/src.cxx
-Linking CXX executable cmTC_f7a84
-/usr/local/Cellar/cmake/3.16.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f7a84.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -DCC_HAS_NO_NARROWING -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib  CMakeFiles/cmTC_f7a84.dir/src.cxx.o  -o cmTC_f7a84 
+Run Build Command(s):/usr/bin/gmake cmTC_4b3ac/fast && /usr/bin/gmake -f CMakeFiles/cmTC_4b3ac.dir/build.make CMakeFiles/cmTC_4b3ac.dir/build
+gmake[1]: Entering directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_4b3ac.dir/src.cxx.o
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++    -DCC_HAS_NO_NARROWING   -Wno-narrowing -o CMakeFiles/cmTC_4b3ac.dir/src.cxx.o -c /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_4b3ac
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4b3ac.dir/link.txt --verbose=1
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++   -DCC_HAS_NO_NARROWING    -rdynamic CMakeFiles/cmTC_4b3ac.dir/src.cxx.o  -o cmTC_4b3ac 
+gmake[1]: Leaving directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
 
 
 Source file was:
 int main() { return 0; }
 Performing C++ SOURCE FILE Test CC_HAS_NO_ARRAY_BOUNDS succeeded with the following output:
-Change Dir: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
+Change Dir: /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_caf2d/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_caf2d.dir/build.make CMakeFiles/cmTC_caf2d.dir/build
-Building CXX object CMakeFiles/cmTC_caf2d.dir/src.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -DCC_HAS_NO_ARRAY_BOUNDS   -Wno-array-bounds -o CMakeFiles/cmTC_caf2d.dir/src.cxx.o -c /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/src.cxx
-Linking CXX executable cmTC_caf2d
-/usr/local/Cellar/cmake/3.16.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_caf2d.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -DCC_HAS_NO_ARRAY_BOUNDS -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib  CMakeFiles/cmTC_caf2d.dir/src.cxx.o  -o cmTC_caf2d 
+Run Build Command(s):/usr/bin/gmake cmTC_f44a0/fast && /usr/bin/gmake -f CMakeFiles/cmTC_f44a0.dir/build.make CMakeFiles/cmTC_f44a0.dir/build
+gmake[1]: Entering directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_f44a0.dir/src.cxx.o
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++    -DCC_HAS_NO_ARRAY_BOUNDS   -Wno-array-bounds -o CMakeFiles/cmTC_f44a0.dir/src.cxx.o -c /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_f44a0
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f44a0.dir/link.txt --verbose=1
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++   -DCC_HAS_NO_ARRAY_BOUNDS    -rdynamic CMakeFiles/cmTC_f44a0.dir/src.cxx.o  -o cmTC_f44a0 
+gmake[1]: Leaving directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
 
 
 Source file was:
 int main() { return 0; }
 Performing C++ SOURCE FILE Test CC_HAS_FAST_MATH succeeded with the following output:
-Change Dir: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
+Change Dir: /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_92788/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_92788.dir/build.make CMakeFiles/cmTC_92788.dir/build
-Building CXX object CMakeFiles/cmTC_92788.dir/src.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -DCC_HAS_FAST_MATH   -ffast-math -o CMakeFiles/cmTC_92788.dir/src.cxx.o -c /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/src.cxx
-Linking CXX executable cmTC_92788
-/usr/local/Cellar/cmake/3.16.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92788.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -DCC_HAS_FAST_MATH -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib  CMakeFiles/cmTC_92788.dir/src.cxx.o  -o cmTC_92788 
+Run Build Command(s):/usr/bin/gmake cmTC_79844/fast && /usr/bin/gmake -f CMakeFiles/cmTC_79844.dir/build.make CMakeFiles/cmTC_79844.dir/build
+gmake[1]: Entering directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_79844.dir/src.cxx.o
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++    -DCC_HAS_FAST_MATH   -ffast-math -o CMakeFiles/cmTC_79844.dir/src.cxx.o -c /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_79844
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_79844.dir/link.txt --verbose=1
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++   -DCC_HAS_FAST_MATH    -rdynamic CMakeFiles/cmTC_79844.dir/src.cxx.o  -o cmTC_79844 
+gmake[1]: Leaving directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
 
 
 Source file was:
 int main() { return 0; }
 Performing C++ SOURCE FILE Test CC_HAS_STACK_REALIGN succeeded with the following output:
-Change Dir: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
+Change Dir: /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_2d1ba/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_2d1ba.dir/build.make CMakeFiles/cmTC_2d1ba.dir/build
-Building CXX object CMakeFiles/cmTC_2d1ba.dir/src.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -DCC_HAS_STACK_REALIGN   -mstackrealign -o CMakeFiles/cmTC_2d1ba.dir/src.cxx.o -c /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/src.cxx
-Linking CXX executable cmTC_2d1ba
-/usr/local/Cellar/cmake/3.16.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2d1ba.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -DCC_HAS_STACK_REALIGN -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib  CMakeFiles/cmTC_2d1ba.dir/src.cxx.o  -o cmTC_2d1ba 
+Run Build Command(s):/usr/bin/gmake cmTC_093a5/fast && /usr/bin/gmake -f CMakeFiles/cmTC_093a5.dir/build.make CMakeFiles/cmTC_093a5.dir/build
+gmake[1]: Entering directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_093a5.dir/src.cxx.o
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++    -DCC_HAS_STACK_REALIGN   -mstackrealign -o CMakeFiles/cmTC_093a5.dir/src.cxx.o -c /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_093a5
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_093a5.dir/link.txt --verbose=1
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++   -DCC_HAS_STACK_REALIGN    -rdynamic CMakeFiles/cmTC_093a5.dir/src.cxx.o  -o cmTC_093a5 
+gmake[1]: Leaving directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
 
 
 Source file was:
 int main() { return 0; }
 Performing C++ SOURCE FILE Test CC_HAS_FNO_EXCEPTIONS_FLAG succeeded with the following output:
-Change Dir: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
+Change Dir: /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_fd790/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_fd790.dir/build.make CMakeFiles/cmTC_fd790.dir/build
-Building CXX object CMakeFiles/cmTC_fd790.dir/src.cxx.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++    -DCC_HAS_FNO_EXCEPTIONS_FLAG   -fno-exceptions -o CMakeFiles/cmTC_fd790.dir/src.cxx.o -c /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/src.cxx
-Linking CXX executable cmTC_fd790
-/usr/local/Cellar/cmake/3.16.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fd790.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++   -DCC_HAS_FNO_EXCEPTIONS_FLAG -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib  CMakeFiles/cmTC_fd790.dir/src.cxx.o  -o cmTC_fd790 
+Run Build Command(s):/usr/bin/gmake cmTC_0e81a/fast && /usr/bin/gmake -f CMakeFiles/cmTC_0e81a.dir/build.make CMakeFiles/cmTC_0e81a.dir/build
+gmake[1]: Entering directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_0e81a.dir/src.cxx.o
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++    -DCC_HAS_FNO_EXCEPTIONS_FLAG   -fno-exceptions -o CMakeFiles/cmTC_0e81a.dir/src.cxx.o -c /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/src.cxx
+Linking CXX executable cmTC_0e81a
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0e81a.dir/link.txt --verbose=1
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang++   -DCC_HAS_FNO_EXCEPTIONS_FLAG    -rdynamic CMakeFiles/cmTC_0e81a.dir/src.cxx.o  -o cmTC_0e81a 
+gmake[1]: Leaving directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
 
 
 Source file was:
 int main() { return 0; }
 Determining if the strtok_r exist passed with the following output:
-Change Dir: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
+Change Dir: /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_1a0c8/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_1a0c8.dir/build.make CMakeFiles/cmTC_1a0c8.dir/build
-Building C object CMakeFiles/cmTC_1a0c8.dir/CheckSymbolExists.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTC_1a0c8.dir/CheckSymbolExists.c.o   -c /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_1a0c8
-/usr/local/Cellar/cmake/3.16.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1a0c8.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib  CMakeFiles/cmTC_1a0c8.dir/CheckSymbolExists.c.o  -o cmTC_1a0c8 
+Run Build Command(s):/usr/bin/gmake cmTC_2ea27/fast && /usr/bin/gmake -f CMakeFiles/cmTC_2ea27.dir/build.make CMakeFiles/cmTC_2ea27.dir/build
+gmake[1]: Entering directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2ea27.dir/CheckSymbolExists.c.o
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang    -o CMakeFiles/cmTC_2ea27.dir/CheckSymbolExists.c.o   -c /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_2ea27
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2ea27.dir/link.txt --verbose=1
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang      -rdynamic CMakeFiles/cmTC_2ea27.dir/CheckSymbolExists.c.o  -o cmTC_2ea27 
+gmake[1]: Leaving directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
 
 
-File /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <string.h>
 
@@ -460,14 +519,16 @@ int main(int argc, char** argv)
 #endif
 }
 Determining if files getopt.h exist passed with the following output:
-Change Dir: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
+Change Dir: /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_be0f9/fast && /Applications/Xcode.app/Contents/Developer/usr/bin/make -f CMakeFiles/cmTC_be0f9.dir/build.make CMakeFiles/cmTC_be0f9.dir/build
-Building C object CMakeFiles/cmTC_be0f9.dir/HAVE_GETOPT_H.c.o
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc    -o CMakeFiles/cmTC_be0f9.dir/HAVE_GETOPT_H.c.o   -c /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CheckIncludeFiles/HAVE_GETOPT_H.c
-Linking C executable cmTC_be0f9
-/usr/local/Cellar/cmake/3.16.1/bin/cmake -E cmake_link_script CMakeFiles/cmTC_be0f9.dir/link.txt --verbose=1
-/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc   -Wl,-search_paths_first -Wl,-headerpad_max_install_names -L/usr/local/opt/icu4c/lib -L/usr/local/opt/llvm/lib -L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib -L/usr/local/opt/libffi/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/sqlite/lib  CMakeFiles/cmTC_be0f9.dir/HAVE_GETOPT_H.c.o  -o cmTC_be0f9 
+Run Build Command(s):/usr/bin/gmake cmTC_393d7/fast && /usr/bin/gmake -f CMakeFiles/cmTC_393d7.dir/build.make CMakeFiles/cmTC_393d7.dir/build
+gmake[1]: Entering directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_393d7.dir/HAVE_GETOPT_H.c.o
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang    -o CMakeFiles/cmTC_393d7.dir/HAVE_GETOPT_H.c.o   -c /home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CheckIncludeFiles/HAVE_GETOPT_H.c
+Linking C executable cmTC_393d7
+/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_393d7.dir/link.txt --verbose=1
+/home/ec2-user/ffmpeg/libx265-android/../ndk/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi16-clang      -rdynamic CMakeFiles/cmTC_393d7.dir/HAVE_GETOPT_H.c.o  -o cmTC_393d7 
+gmake[1]: Leaving directory `/home/ec2-user/ffmpeg/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeTmp'
 
 
 
