@@ -97,6 +97,8 @@ struct CTURow
     volatile uint32_t completed;
     volatile uint32_t avgQPComputed;
 
+    volatile int      reEncode;
+
     /* called at the start of each frame to initialize state */
     void init(Entropy& initContext, unsigned int sid)
     {
@@ -105,6 +107,7 @@ struct CTURow
         completed = 0;
         avgQPComputed = 0;
         sliceId = sid;
+        reEncode = 0;
         memset(&rowStats, 0, sizeof(rowStats));
         rowGoOnCoder.load(initContext);
     }
@@ -147,6 +150,7 @@ public:
     uint32_t                 m_filterRowDelay;
     uint32_t                 m_filterRowDelayCus;
     uint32_t                 m_refLagRows;
+    bool                     m_bUseSao;
 
     CTURow*                  m_rows;
     uint16_t                 m_sliceAddrBits;

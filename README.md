@@ -1,3 +1,14 @@
+# My ENV
+
+Platform: macOS 10.14.6 (18G1012)   
+NDK version: 20.1.5948944   
+x265 version in the repo: 3.2.1   
+
+# Prebuild
+
+See build folder.
+
+
 # libx265-android
 ndk compile version of libx265: You can download the origin source code from https://bitbucket.org/multicoreware/x265/ . Because the license of origin source code was GNU GPL v2.0, I set the license of this repository as GPL v2.0.
 
@@ -18,6 +29,7 @@ Latest Android Studio doesn't support MIPS architecture anymore. Therefore, I re
 1. set the NDK_ROOT variable.
 ```bash
     export NDK_ROOT=path/to/your/ndk/root/dir
+    export HOST_TAG=darwin-x86_64
 ```
 2. change the build.sh file.
 ```bash

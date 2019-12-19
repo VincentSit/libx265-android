@@ -73,6 +73,8 @@ static const struct option long_options[] =
     { "input-csp",      required_argument, NULL, 0 },
     { "interlace",      required_argument, NULL, 0 },
     { "no-interlace",         no_argument, NULL, 0 },
+    { "field",                no_argument, NULL, 0 },
+    { "no-field",             no_argument, NULL, 0 },
     { "fps",            required_argument, NULL, 0 },
     { "seek",           required_argument, NULL, 0 },
     { "frame-skip",     required_argument, NULL, 0 },
@@ -93,6 +95,9 @@ static const struct option long_options[] =
     { "max-merge",      required_argument, NULL, 0 },
     { "no-temporal-mvp",      no_argument, NULL, 0 },
     { "temporal-mvp",         no_argument, NULL, 0 },
+    { "hme",                  no_argument, NULL, 0 },
+    { "no-hme",               no_argument, NULL, 0 },
+    { "hme-search",     required_argument, NULL, 0 },
     { "rdpenalty",      required_argument, NULL, 0 },
     { "no-rect",              no_argument, NULL, 0 },
     { "rect",                 no_argument, NULL, 0 },
@@ -124,6 +129,8 @@ static const struct option long_options[] =
     { "scenecut",       required_argument, NULL, 0 },
     { "no-scenecut",          no_argument, NULL, 0 },
     { "scenecut-bias",  required_argument, NULL, 0 },
+    { "fades",                no_argument, NULL, 0 },
+    { "no-fades",             no_argument, NULL, 0 },
     { "radl",           required_argument, NULL, 0 },
     { "ctu-info",       required_argument, NULL, 0 },
     { "intra-refresh",        no_argument, NULL, 0 },
@@ -193,6 +200,7 @@ static const struct option long_options[] =
     { "no-deblock",           no_argument, NULL, 0 },
     { "deblock",        required_argument, NULL, 0 },
     { "no-sao",               no_argument, NULL, 0 },
+    { "selective-sao",  required_argument, NULL, 0 },
     { "sao",                  no_argument, NULL, 0 },
     { "no-sao-non-deblock",   no_argument, NULL, 0 },
     { "sao-non-deblock",      no_argument, NULL, 0 },
@@ -242,6 +250,7 @@ static const struct option long_options[] =
     { "no-info",              no_argument, NULL, 0 },
     { "zones",          required_argument, NULL, 0 },
     { "qpfile",         required_argument, NULL, 0 },
+    { "zonefile",       required_argument, NULL, 0 },
     { "lambda-file",    required_argument, NULL, 0 },
     { "b-intra",              no_argument, NULL, 0 },
     { "no-b-intra",           no_argument, NULL, 0 },
@@ -288,13 +297,14 @@ static const struct option long_options[] =
     { "dhdr10-info",    required_argument, NULL, 0 },
     { "dhdr10-opt",           no_argument, NULL, 0},
     { "no-dhdr10-opt",        no_argument, NULL, 0},
-    { "refine-mv",            no_argument, NULL, 0 },
-    { "no-refine-mv",         no_argument, NULL, 0 },
+    { "dolby-vision-profile",  required_argument, NULL, 0 },
+    { "refine-mv",      required_argument, NULL, 0 },
+    { "refine-ctu-distortion", required_argument, NULL, 0 },
     { "force-flush",    required_argument, NULL, 0 },
     { "splitrd-skip",         no_argument, NULL, 0 },
     { "no-splitrd-skip",      no_argument, NULL, 0 },
     { "lowpass-dct",          no_argument, NULL, 0 },
-    { "refine-mv-type", required_argument, NULL, 0 },
+    { "refine-analysis-type", required_argument, NULL, 0 },
     { "copy-pic",             no_argument, NULL, 0 },
     { "no-copy-pic",          no_argument, NULL, 0 },
     { "max-ausize-factor", required_argument, NULL, 0 },
@@ -305,6 +315,32 @@ static const struct option long_options[] =
     { "atc-sei", required_argument, NULL, 0 },
     { "pic-struct", required_argument, NULL, 0 },
     { "nalu-file", required_argument, NULL, 0 },
+    { "dolby-vision-rpu", required_argument, NULL, 0 },
+    { "hrd-concat",          no_argument, NULL, 0},
+    { "no-hrd-concat",       no_argument, NULL, 0 },
+    { "hevc-aq", no_argument, NULL, 0 },
+    { "no-hevc-aq", no_argument, NULL, 0 },
+    { "qp-adaptation-range", required_argument, NULL, 0 },
+#ifdef SVT_HEVC
+    { "svt",     no_argument, NULL, 0 },
+    { "no-svt",  no_argument, NULL, 0 },
+    { "svt-hme",     no_argument, NULL, 0 },
+    { "no-svt-hme",  no_argument, NULL, 0 },
+    { "svt-search-width",      required_argument, NULL, 0 },
+    { "svt-search-height",     required_argument, NULL, 0 },
+    { "svt-compressed-ten-bit-format",    no_argument, NULL, 0 },
+    { "no-svt-compressed-ten-bit-format", no_argument, NULL, 0 },
+    { "svt-speed-control",     no_argument  , NULL, 0 },
+    { "no-svt-speed-control",  no_argument  , NULL, 0 },
+    { "svt-preset-tuner",  required_argument  , NULL, 0 },
+    { "svt-hierarchical-level",  required_argument  , NULL, 0 },
+    { "svt-base-layer-switch-mode",  required_argument  , NULL, 0 },
+    { "svt-pred-struct",  required_argument  , NULL, 0 },
+    { "svt-fps-in-vps",  no_argument  , NULL, 0 },
+    { "no-svt-fps-in-vps",  no_argument  , NULL, 0 },
+#endif
+    { "cll", no_argument, NULL, 0 },
+    { "no-cll", no_argument, NULL, 0 },
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 },
     { 0, 0, 0, 0 },
@@ -355,10 +391,14 @@ static void showHelp(x265_param *param)
     H0("   --dhdr10-info <filename>      JSON file containing the Creative Intent Metadata to be encoded as Dynamic Tone Mapping\n");
     H0("   --[no-]dhdr10-opt             Insert tone mapping SEI only for IDR frames and when the tone mapping information changes. Default disabled\n");
 #endif
+    H0("   --dolby-vision-profile <float|integer> Specifies Dolby Vision profile ID. Currently only profile 5, profile 8.1 and profile 8.2 enabled. Specified as '5' or '50'. Default 0 (disabled).\n");
+    H0("   --dolby-vision-rpu <filename> File containing Dolby Vision RPU metadata.\n"
+       "                                 If given, x265's Dolby Vision metadata parser will fill the RPU field of input pictures with the metadata read from the file. Default NULL(disabled).\n");
     H0("   --nalu-file <filename>        Text file containing SEI messages in the following format : <POC><space><PREFIX><space><NAL UNIT TYPE>/<SEI TYPE><space><SEI Payload>\n");
     H0("-f/--frames <integer>            Maximum number of frames to encode. Default all\n");
     H0("   --seek <integer>              First frame to encode\n");
     H1("   --[no-]interlace <bff|tff>    Indicate input pictures are interlace fields in temporal order. Default progressive\n");
+    H0("   --[no-]field                  Enable or disable field coding. Default %s\n", OPT( param->bField));
     H1("   --dither                      Enable dither if downscaling to 8 bit pixels. Default disabled\n");
     H0("   --[no-]copy-pic               Copy buffers of input picture in frame. Default %s\n", OPT(param->bCopyPicToFrame));
     H0("\nQuality reporting metrics:\n");
@@ -427,6 +467,8 @@ static void showHelp(x265_param *param)
     H0("   --[no-]amp                    Enable asymmetric motion partitions, requires --rect. Default %s\n", OPT(param->bEnableAMP));
     H0("   --[no-]limit-modes            Limit rectangular and asymmetric motion predictions. Default %d\n", param->limitModes);
     H1("   --[no-]temporal-mvp           Enable temporal MV predictors. Default %s\n", OPT(param->bEnableTemporalMvp));
+    H1("   --[no-]hme                    Enable Hierarchical Motion Estimation. Default %s\n", OPT(param->bEnableHME));
+    H1("   --hme-search <string>         Motion search-method for HME L0,L1 and L2. Default(L0,L1,L2) is %d,%d,%d\n", param->hmeSearchMethod[0], param->hmeSearchMethod[1], param->hmeSearchMethod[2]);
     H0("\nSpatial / intra options:\n");
     H0("   --[no-]strong-intra-smoothing Enable strong intra smoothing for 32x32 blocks. Default %s\n", OPT(param->bEnableStrongIntraSmoothing));
     H0("   --[no-]constrained-intra      Constrained intra prediction (use only intra coded reference pixels) Default %s\n", OPT(param->bEnableConstrainedIntra));
@@ -441,6 +483,7 @@ static void showHelp(x265_param *param)
     H0("   --no-scenecut                 Disable adaptive I-frame decision\n");
     H0("   --scenecut <integer>          How aggressively to insert extra I-frames. Default %d\n", param->scenecutThreshold);
     H1("   --scenecut-bias <0..100.0>    Bias for scenecut detection. Default %.2f\n", param->scenecutBias);
+    H0("   --[no-]fades                  Enable detection and handling of fade-in regions. Default %s\n", OPT(param->bEnableFades));
     H0("   --radl <integer>              Number of RADL pictures allowed in front of IDR. Default %d\n", param->radl);
     H0("   --intra-refresh               Use Periodic Intra Refresh instead of IDR frames\n");
     H0("   --rc-lookahead <integer>      Number of frames for frame-type lookahead (determines encoder latency) Default %d\n", param->lookaheadDepth);
@@ -458,6 +501,7 @@ static void showHelp(x265_param *param)
     H1("                                 0 - flush the encoder only when all the input pictures are over.\n");
     H1("                                 1 - flush all the frames even when the input is not over. Slicetype decision may change with this option.\n");
     H1("                                 2 - flush the slicetype decided frames only.\n");
+    H0("   --[no-]-hrd-concat            Set HRD concatenation flag for the first keyframe in the buffering period SEI. Default %s\n", OPT(param->bEnableHRDConcatFlag));
     H0("\nRate control, Adaptive Quantization:\n");
     H0("   --bitrate <integer>           Target bitrate (kbps) for ABR (implied). Default %d\n", param->rc.bitrate);
     H1("-q/--qp <integer>                QP for P slices in CQP mode (implied). --ipratio and --pbration determine other slice QPs\n");
@@ -488,7 +532,7 @@ static void showHelp(x265_param *param)
     H0("   --analysis-load <filename>    Load analysis buffers from the file specified. Default Disabled\n");
     H0("   --analysis-reuse-file <filename>    Specify file name used for either dumping or reading analysis data. Deault x265_analysis.dat\n");
     H0("   --analysis-reuse-level <1..10>      Level of analysis reuse indicates amount of info stored/reused in save/load mode, 1:least..10:most. Default %d\n", param->analysisReuseLevel);
-    H0("   --refine-mv-type <string>     Reuse MV information received through API call. Supported option is avc. Default disabled - %d\n", param->bMVType);
+    H0("   --refine-analysis-type <string>     Reuse anlaysis information received through API call. Supported options are avc and hevc. Default disabled - %d\n", param->bAnalysisType);
     H0("   --scale-factor <int>          Specify factor by which input video is scaled down for analysis save mode. Default %d\n", param->scaleFactor);
     H0("   --refine-intra <0..4>         Enable intra refinement for encode that uses analysis-load.\n"
         "                                    - 0 : Forces both mode and depth from the save encode.\n"
@@ -505,10 +549,16 @@ static void showHelp(x265_param *param)
         "                                    - 3 : Functionality of (1) + irrespective of size evaluate all inter modes.\n"
         "                                Default:%d\n", param->interRefine);
     H0("   --[no-]dynamic-refine         Dynamically changes refine-inter level for each CU. Default %s\n", OPT(param->bDynamicRefine));
-    H0("   --[no-]refine-mv              Enable mv refinement for load mode. Default %s\n", OPT(param->mvRefine));
-    H0("   --aq-mode <integer>           Mode for Adaptive Quantization - 0:none 1:uniform AQ 2:auto variance 3:auto variance with bias to dark scenes. Default %d\n", param->rc.aqMode);
+    H0("   --refine-mv <1..3>            Enable mv refinement for load mode. Default %d\n", param->mvRefine);
+    H0("   --refine-ctu-distortion       Store/normalize ctu distortion in analysis-save/load.\n"
+        "                                    - 0 : Disabled.\n"
+        "                                    - 1 : Store/Load ctu distortion to/from the file specified in analysis-save/load.\n"
+        "                                Default 0 - Disabled\n");
+    H0("   --aq-mode <integer>           Mode for Adaptive Quantization - 0:none 1:uniform AQ 2:auto variance 3:auto variance with bias to dark scenes 4:auto variance with edge information. Default %d\n", param->rc.aqMode);
+    H0("   --[no-]hevc-aq                Mode for HEVC Adaptive Quantization. Default %s\n", OPT(param->rc.hevcAq));
     H0("   --aq-strength <float>         Reduces blocking and blurring in flat and textured areas (0 to 3.0). Default %.2f\n", param->rc.aqStrength);
-    H0("   --[no-]aq-motion              Adaptive Quantization based on the relative motion of each CU w.r.t., frame. Default %s\n", OPT(param->bOptCUDeltaQP));
+    H0("   --qp-adaptation-range <float> Delta QP range by QP adaptation based on a psycho-visual model (1.0 to 6.0). Default %.2f\n", param->rc.qpAdaptationRange);
+    H0("   --[no-]aq-motion              Block level QP adaptation based on the relative motion between the block and the frame. Default %s\n", OPT(param->bAQMotion));
     H0("   --qg-size <int>               Specifies the size of the quantization group (64, 32, 16, 8). Default %d\n", param->rc.qgSize);
     H0("   --[no-]cutree                 Enable cutree for Adaptive Quantization. Default %s\n", OPT(param->rc.cuTree));
     H0("   --[no-]rc-grain               Enable ratecontrol mode to handle grains specifically. turned on with tune grain. Default %s\n", OPT(param->rc.bEnableGrain));
@@ -528,6 +578,7 @@ static void showHelp(x265_param *param)
     H1("                                   where <option> is either\n");
     H1("                                       q=<integer> (force QP)\n");
     H1("                                   or  b=<float> (bitrate multiplier)\n");
+    H0("   --zonefile <filename>         Zone file containing the zone boundaries and the parameters to be reconfigured.\n");
     H1("   --lambda-file <string>        Specify a file containing replacement values for the lambda tables\n");
     H1("                                 MAX_MAX_QP+1 floats for lambda table, then again for lambda2 table\n");
     H1("                                 Blank lines and lines starting with hash(#) are ignored\n");
@@ -539,6 +590,7 @@ static void showHelp(x265_param *param)
     H0("   --[no-]sao                    Enable Sample Adaptive Offset. Default %s\n", OPT(param->bEnableSAO));
     H1("   --[no-]sao-non-deblock        Use non-deblocked pixels, else right/bottom boundary areas skipped. Default %s\n", OPT(param->bSaoNonDeblocked));
     H0("   --[no-]limit-sao              Limit Sample Adaptive Offset types. Default %s\n", OPT(param->bLimitSAO));
+    H0("   --selective-sao <int>         Enable slice-level SAO filter. Default %d\n", param->selectiveSAO);
     H0("\nVUI options:\n");
     H0("   --sar <width:height|int>      Sample Aspect Ratio, the ratio of width to height of an individual pixel.\n");
     H0("                                 Choose from 0=undef, 1=1:1(\"square\"), 2=12:11, 3=10:11, 4=16:11,\n");
@@ -558,7 +610,8 @@ static void showHelp(x265_param *param)
     H1("   --chromaloc <integer>         Specify chroma sample location (0 to 5). Default of %d\n", param->vui.chromaSampleLocTypeTopField);
     H0("   --master-display <string>     SMPTE ST 2086 master display color volume info SEI (HDR)\n");
     H0("                                    format: G(x,y)B(x,y)R(x,y)WP(x,y)L(max,min)\n");
-    H0("   --max-cll <string>            Emit content light level info SEI as \"cll,fall\" (HDR)\n");
+    H0("   --max-cll <string>            Specify content light level info SEI as \"cll,fall\" (HDR).\n");
+    H0("   --[no-]cll                    Emit content light level info SEI. Default %s\n", OPT(param->bEmitCLL));
     H0("   --[no-]hdr                    Control dumping of HDR SEI packet. If max-cll or master-display has non-zero values, this is enabled. Default %s\n", OPT(param->bEmitHDRSEI));
     H0("   --[no-]hdr-opt                Add luma and chroma offsets for HDR/WCG content. Default %s\n", OPT(param->bHDROpt));
     H0("   --min-luma <integer>          Minimum luma plane value of input source picture\n");
@@ -585,6 +638,19 @@ static void showHelp(x265_param *param)
     H1("   --recon-depth <integer>       Bit-depth of reconstructed raw image file. Defaults to input bit depth, or 8 if Y4M\n");
     H1("   --recon-y4m-exec <string>     pipe reconstructed frames to Y4M viewer, ex:\"ffplay -i pipe:0 -autoexit\"\n");
     H0("   --lowpass-dct                 Use low-pass subband dct approximation. Default %s\n", OPT(param->bLowPassDct));
+#ifdef SVT_HEVC
+    H0("   --[no]svt                     Enable SVT HEVC encoder %s\n", OPT(param->bEnableSvtHevc));
+    H0("   --[no-]svt-hme                Enable Hierarchial motion estimation(HME) in SVT HEVC encoder \n");
+    H0("   --svt-search-width            Motion estimation search area width for SVT HEVC encoder \n");
+    H0("   --svt-search-height           Motion estimation search area height for SVT HEVC encoder \n");
+    H0("   --[no-]svt-compressed-ten-bit-format  Enable 8+2 encoding mode for 10bit input in SVT HEVC encoder \n");
+    H0("   --[no-]svt-speed-control      Enable speed control functionality to achieve real time encoding speed for  SVT HEVC encoder \n");
+    H0("   --svt-preset-tuner            Enable additional faster presets of SVT; This only has to be used on top of x265's ultrafast preset. Accepts values in the range of 0-2 \n");
+    H0("   --svt-hierarchical-level      Hierarchical layer for SVT-HEVC encoder; Accepts inputs in the range 0-3 \n");
+    H0("   --svt-base-layer-switch-mode  Select whether B/P slice should be used in base layer for SVT-HEVC encoder. 0-Use B-frames; 1-Use P frames in the base layer \n");
+    H0("   --svt-pred-struct             Select pred structure for SVT HEVC encoder;  Accepts inputs in the range 0-2 \n");
+    H0("   --[no-]svt-fps-in-vps         Enable VPS timing info for SVT HEVC encoder  \n");
+#endif
     H1("\nExecutable return codes:\n");
     H1("    0 - encode successful\n");
     H1("    1 - unable to parse command line\n");

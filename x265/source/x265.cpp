@@ -31,6 +31,7 @@
 #include "input/input.h"
 #include "output/output.h"
 #include "output/reconplay.h"
+#include "svt.h"
 
 #if HAVE_VLD
 /* Visual Leak Detector */
@@ -65,6 +66,8 @@ static void sigint_handler(int)
 {
     b_ctrl_c = 1;
 }
+#define START_CODE 0x00000001
+#define START_CODE_BYTES 4
 
 struct CLIOptions
 {
@@ -72,6 +75,8 @@ struct CLIOptions
     ReconFile* recon;
     OutputFile* output;
     FILE*       qpfile;
+    FILE*       zoneFile;
+    FILE*    dolbyVisionRpu;    /* File containing Dolby Vision BL RPU metadata */
     const char* reconPlayCmd;
     const x265_api* api;
     x265_param* param;
@@ -94,6 +99,8 @@ struct CLIOptions
         recon = NULL;
         output = NULL;
         qpfile = NULL;
+        zoneFile = NULL;
+        dolbyVisionRpu = NULL;
         reconPlayCmd = NULL;
         api = NULL;
         param = NULL;
@@ -110,7 +117,9 @@ struct CLIOptions
     void destroy();
     void printStatus(uint32_t frameNum);
     bool parse(int argc, char **argv);
+    bool parseZoneParam(int argc, char **argv, x265_param* globalParam, int zonefileCount);
     bool parseQPFile(x265_picture &pic_org);
+    bool parseZoneFile();
 };
 
 void CLIOptions::destroy()
@@ -124,6 +133,12 @@ void CLIOptions::destroy()
     if (qpfile)
         fclose(qpfile);
     qpfile = NULL;
+    if (zoneFile)
+        fclose(zoneFile);
+    zoneFile = NULL;
+    if (dolbyVisionRpu)
+        fclose(dolbyVisionRpu);
+    dolbyVisionRpu = NULL;
     if (output)
         output->release();
     output = NULL;
@@ -156,6 +171,110 @@ void CLIOptions::printStatus(uint32_t frameNum)
     prevUpdateTime = time;
 }
 
+bool CLIOptions::parseZoneParam(int argc, char **argv, x265_param* globalParam, int zonefileCount)
+{
+    bool bError = false;
+    int bShowHelp = false;
+    int outputBitDepth = 0;
+    const char *profile = NULL;
+
+    /* Presets are applied before all other options. */
+    for (optind = 0;;)
+    {
+        int c = getopt_long(argc, argv, short_options, long_options, NULL);
+        if (c == -1)
+            break;
+        else if (c == 'D')
+            outputBitDepth = atoi(optarg);
+        else if (c == 'P')
+            profile = optarg;
+        else if (c == '?')
+            bShowHelp = true;
+    }
+
+    if (!outputBitDepth && profile)
+    {
+        /* try to derive the output bit depth from the requested profile */
+        if (strstr(profile, "10"))
+            outputBitDepth = 10;
+        else if (strstr(profile, "12"))
+            outputBitDepth = 12;
+        else
+            outputBitDepth = 8;
+    }
+
+    api = x265_api_get(outputBitDepth);
+    if (!api)
+    {
+        x265_log(NULL, X265_LOG_WARNING, "falling back to default bit-depth\n");
+        api = x265_api_get(0);
+    }
+
+    if (bShowHelp)
+    {
+        printVersion(globalParam, api);
+        showHelp(globalParam);
+    }
+
+    globalParam->rc.zones[zonefileCount].zoneParam = api->param_alloc();
+    if (!globalParam->rc.zones[zonefileCount].zoneParam)
+    {
+        x265_log(NULL, X265_LOG_ERROR, "param alloc failed\n");
+        return true;
+    }
+
+    memcpy(globalParam->rc.zones[zonefileCount].zoneParam, globalParam, sizeof(x265_param));
+
+    for (optind = 0;;)
+    {
+        int long_options_index = -1;
+        int c = getopt_long(argc, argv, short_options, long_options, &long_options_index);
+        if (c == -1)
+            break;
+
+        if (long_options_index < 0 && c > 0)
+        {
+            for (size_t i = 0; i < sizeof(long_options) / sizeof(long_options[0]); i++)
+            {
+                if (long_options[i].val == c)
+                {
+                    long_options_index = (int)i;
+                    break;
+                }
+            }
+
+            if (long_options_index < 0)
+            {
+                /* getopt_long might have already printed an error message */
+                if (c != 63)
+                    x265_log(NULL, X265_LOG_WARNING, "internal error: short option '%c' has no long option\n", c);
+                return true;
+            }
+        }
+        if (long_options_index < 0)
+        {
+            x265_log(NULL, X265_LOG_WARNING, "short option '%c' unrecognized\n", c);
+            return true;
+        }
+
+        bError |= !!api->zone_param_parse(globalParam->rc.zones[zonefileCount].zoneParam, long_options[long_options_index].name, optarg);
+
+        if (bError)
+        {
+            const char *name = long_options_index > 0 ? long_options[long_options_index].name : argv[optind - 2];
+            x265_log(NULL, X265_LOG_ERROR, "invalid argument: %s = %s\n", name, optarg);
+            return true;
+        }
+    }
+
+    if (optind < argc)
+    {
+        x265_log(param, X265_LOG_WARNING, "extra unused command arguments given <%s>\n", argv[optind]);
+        return true;
+    }
+    return false;
+}
+
 bool CLIOptions::parse(int argc, char **argv)
 {
     bool bError = false;
@@ -169,6 +288,7 @@ bool CLIOptions::parse(int argc, char **argv)
     const char *preset = NULL;
     const char *tune = NULL;
     const char *profile = NULL;
+    int svtEnabled = 0;
 
     if (argc <= 1)
     {
@@ -179,7 +299,8 @@ bool CLIOptions::parse(int argc, char **argv)
     /* Presets are applied before all other options. */
     for (optind = 0;; )
     {
-        int c = getopt_long(argc, argv, short_options, long_options, NULL);
+        int optionsIndex = -1;
+        int c = getopt_long(argc, argv, short_options, long_options, &optionsIndex);
         if (c == -1)
             break;
         else if (c == 'p')
@@ -192,6 +313,8 @@ bool CLIOptions::parse(int argc, char **argv)
             profile = optarg;
         else if (c == '?')
             bShowHelp = true;
+        else if (!c && !strcmp(long_options[optionsIndex].name, "svt"))
+            svtEnabled = 1;
     }
 
     if (!outputBitDepth && profile)
@@ -238,6 +361,9 @@ bool CLIOptions::parse(int argc, char **argv)
         printVersion(param, api);
         showHelp(param);
     }
+
+    //Set enable SVT-HEVC encoder first if found in the command line
+    if (svtEnabled) api->param_parse(param, "svt", NULL);
 
     for (optind = 0;; )
     {
@@ -305,11 +431,27 @@ bool CLIOptions::parse(int argc, char **argv)
             OPT("tune")    /* handled above */;
             OPT("output-depth")   /* handled above */;
             OPT("recon-y4m-exec") reconPlayCmd = optarg;
+            OPT("svt")    /* handled above */;
             OPT("qpfile")
             {
                 this->qpfile = x265_fopen(optarg, "rb");
                 if (!this->qpfile)
                     x265_log_file(param, X265_LOG_ERROR, "%s qpfile not found or error in opening qp file\n", optarg);
+            }
+            OPT("dolby-vision-rpu")
+            {
+                this->dolbyVisionRpu = x265_fopen(optarg, "rb");
+                if (!this->dolbyVisionRpu)
+                {
+                    x265_log_file(param, X265_LOG_ERROR, "Dolby Vision RPU metadata file %s not found or error in opening file\n", optarg);
+                    return true;
+                }
+            }
+            OPT("zonefile")
+            {
+                this->zoneFile = x265_fopen(optarg, "rb");
+                if (!this->zoneFile)
+                    x265_log_file(param, X265_LOG_ERROR, "%s zone file not found or error in opening zone file\n", optarg);
             }
             OPT("fullhelp")
             {
@@ -359,6 +501,18 @@ bool CLIOptions::parse(int argc, char **argv)
         return true;
     }
 
+#ifdef SVT_HEVC
+    if (svtEnabled)
+    {
+        EB_H265_ENC_CONFIGURATION* svtParam = (EB_H265_ENC_CONFIGURATION*)param->svtHevcParam;
+        param->sourceWidth = svtParam->sourceWidth;
+        param->sourceHeight = svtParam->sourceHeight;
+        param->fpsNum = svtParam->frameRateNumerator;
+        param->fpsDenom = svtParam->frameRateDenominator;
+        svtParam->encoderBitDepth = inputBitDepth;
+    }
+#endif
+
     InputFileInfo info;
     info.filename = inputfn;
     info.depth = inputBitDepth;
@@ -403,10 +557,32 @@ bool CLIOptions::parse(int argc, char **argv)
     if (this->framesToBeEncoded == 0 && info.frameCount > (int)seek)
         this->framesToBeEncoded = info.frameCount - seek;
     param->totalFrames = this->framesToBeEncoded;
+
+#ifdef SVT_HEVC
+    if (svtEnabled)
+    {
+        EB_H265_ENC_CONFIGURATION* svtParam = (EB_H265_ENC_CONFIGURATION*)param->svtHevcParam;
+        svtParam->sourceWidth = param->sourceWidth;
+        svtParam->sourceHeight = param->sourceHeight;
+        svtParam->frameRateNumerator = param->fpsNum;
+        svtParam->frameRateDenominator = param->fpsDenom;
+        svtParam->framesToBeEncoded = param->totalFrames;
+		svtParam->encoderColorFormat = (EB_COLOR_FORMAT)param->internalCsp;
+    }
+#endif
     
     /* Force CFR until we have support for VFR */
     info.timebaseNum = param->fpsDenom;
     info.timebaseDenom = param->fpsNum;
+
+    if (param->bField && param->interlaceMode)
+    {   // Field FPS
+        param->fpsNum *= 2;
+        // Field height
+        param->sourceHeight = param->sourceHeight >> 1;
+        // Number of fields to encode
+        param->totalFrames *= 2;
+    }
 
     if (api->param_apply_profile(param, profile))
         return true;
@@ -519,6 +695,59 @@ bool CLIOptions::parseQPFile(x265_picture &pic_org)
     return 1;
 }
 
+bool CLIOptions::parseZoneFile()
+{
+    char line[256];
+    char* argLine;
+    param->rc.zonefileCount = 0;
+
+    while (fgets(line, sizeof(line), zoneFile))
+    {
+        if (!((*line == '#') || (strcmp(line, "\r\n") == 0)))
+            param->rc.zonefileCount++;
+    }
+
+    rewind(zoneFile);
+    param->rc.zones = X265_MALLOC(x265_zone, param->rc.zonefileCount);
+    for (int i = 0; i < param->rc.zonefileCount; i++)
+    {
+        while (fgets(line, sizeof(line), zoneFile))
+        {
+            if (*line == '#' || (strcmp(line, "\r\n") == 0))
+                continue;
+            param->rc.zones[i].zoneParam = X265_MALLOC(x265_param, 1);
+            int index = (int)strcspn(line, "\r\n");
+            line[index] = '\0';
+            argLine = line;
+            while (isspace((unsigned char)*argLine)) argLine++;
+            char* start = strchr(argLine, ' ');
+            start++;
+            param->rc.zones[i].startFrame = atoi(argLine);
+            int argCount = 0;
+            char **args = (char**)malloc(256 * sizeof(char *));
+            // Adding a dummy string to avoid file parsing error
+            args[argCount++] = (char *)"x265";
+            char* token = strtok(start, " ");
+            while (token) 
+            {
+                args[argCount++] = token;
+                token = strtok(NULL, " ");
+            }
+            args[argCount] = NULL;
+            CLIOptions cliopt;
+            if (cliopt.parseZoneParam(argCount, args,param, i))
+            {
+                cliopt.destroy();
+                if (cliopt.api)
+                    cliopt.api->param_free(cliopt.param);
+                exit(1);
+            }
+            break;
+        }
+    }
+    return 1;
+}
+
 #ifdef _WIN32
 /* Copy of x264 code, which allows for Unicode characters in the command line.
  * Retrieve command line arguments as UTF-8. */
@@ -551,6 +780,59 @@ static int get_argv_utf8(int *argc_ptr, char ***argv_ptr)
     return ret;
 }
 #endif
+
+/* Parse the RPU file and extract the RPU corresponding to the current picture 
+ * and fill the rpu field of the input picture */
+static int rpuParser(x265_picture * pic, FILE * ptr)
+{
+    uint8_t byteVal;
+    uint32_t code = 0;
+    int bytesRead = 0;
+    pic->rpu.payloadSize = 0;
+
+    if (!pic->pts)
+    {
+        while (bytesRead++ < 4 && fread(&byteVal, sizeof(uint8_t), 1, ptr))
+            code = (code << 8) | byteVal;
+      
+        if (code != START_CODE)
+        {
+            x265_log(NULL, X265_LOG_ERROR, "Invalid Dolby Vision RPU startcode in POC %d\n", pic->pts);
+            return 1;
+        }
+    } 
+
+    bytesRead = 0;
+    while (fread(&byteVal, sizeof(uint8_t), 1, ptr))
+    {
+        code = (code << 8) | byteVal;
+        if (bytesRead++ < 3)
+            continue;
+        if (bytesRead >= 1024)
+        {
+            x265_log(NULL, X265_LOG_ERROR, "Invalid Dolby Vision RPU size in POC %d\n", pic->pts);
+            return 1;
+        }
+        
+        if (code != START_CODE)
+            pic->rpu.payload[pic->rpu.payloadSize++] = (code >> (3 * 8)) & 0xFF;
+        else
+            return 0;       
+    }
+
+    int ShiftBytes = START_CODE_BYTES - (bytesRead - pic->rpu.payloadSize);
+    int bytesLeft = bytesRead - pic->rpu.payloadSize;
+    code = (code << ShiftBytes * 8);
+    for (int i = 0; i < bytesLeft; i++)
+    {
+        pic->rpu.payload[pic->rpu.payloadSize++] = (code >> (3 * 8)) & 0xFF;
+        code = (code << 8);
+    }
+    if (!pic->rpu.payloadSize)
+        x265_log(NULL, X265_LOG_WARNING, "Dolby Vision RPU not found for POC %d\n", pic->pts);
+    return 0;
+}
+
 
 /* CLI return codes:
  *
@@ -598,6 +880,16 @@ int main(int argc, char **argv)
     if (cliopt.reconPlayCmd)
         reconPlay = new ReconPlay(cliopt.reconPlayCmd, *param);
 
+    if (cliopt.zoneFile)
+    {
+        if (!cliopt.parseZoneFile())
+        {
+            x265_log(NULL, X265_LOG_ERROR, "Unable to parse zonefile\n");
+            fclose(cliopt.zoneFile);
+            cliopt.zoneFile = NULL;
+        }
+    }
+
     /* note: we could try to acquire a different libx265 API here based on
      * the profile found during option parsing, but it must be done before
      * opening an encoder */
@@ -630,9 +922,13 @@ int main(int argc, char **argv)
     x265_stats stats;
     uint32_t nal;
     int16_t *errorBuf = NULL;
+    bool bDolbyVisionRPU = false;
+    uint8_t *rpuPayload = NULL;
     int ret = 0;
+    int inputPicNum = 1;
+    x265_picture picField1, picField2;
 
-    if (!param->bRepeatHeaders)
+    if (!param->bRepeatHeaders && !param->bEnableSvtHevc)
     {
         if (api->encoder_headers(encoder, &p_nal, &nal) < 0)
         {
@@ -644,8 +940,25 @@ int main(int argc, char **argv)
             cliopt.totalbytes += cliopt.output->writeHeaders(p_nal, nal);
     }
 
-    api->picture_init(param, pic_in);
+    if (param->bField && param->interlaceMode)
+    {
+        api->picture_init(param, &picField1);
+        api->picture_init(param, &picField2);
+        // return back the original height of input
+        param->sourceHeight *= 2;
+        api->picture_init(param, pic_in);
+    }
+    else
+        api->picture_init(param, pic_in);
 
+    if (param->dolbyProfile && cliopt.dolbyVisionRpu)
+    {
+        rpuPayload = X265_MALLOC(uint8_t, 1024);
+        pic_in->rpu.payload = rpuPayload;
+        if (pic_in->rpu.payload)
+            bDolbyVisionRPU = true;
+    }
+    
     if (cliopt.bDither)
     {
         errorBuf = X265_MALLOC(int16_t, param->sourceWidth + 1);
@@ -658,7 +971,7 @@ int main(int argc, char **argv)
     // main encoder loop
     while (pic_in && !b_ctrl_c)
     {
-        pic_orig.poc = inFrameCount;
+        pic_orig.poc = (param->bField && param->interlaceMode) ? inFrameCount * 2 : inFrameCount;
         if (cliopt.qpfile)
         {
             if (!cliopt.parseQPFile(pic_orig))
@@ -685,35 +998,130 @@ int main(int argc, char **argv)
             }
             /* Overwrite PTS */
             pic_in->pts = pic_in->poc;
-        }
 
-        int numEncoded = api->encoder_encode(encoder, &p_nal, &nal, pic_in, pic_recon);
-        if (numEncoded < 0)
-        {
-            b_ctrl_c = 1;
-            ret = 4;
-            break;
-        }
-
-        if (reconPlay && numEncoded)
-            reconPlay->writePicture(*pic_recon);
-
-        outFrameCount += numEncoded;
-
-        if (numEncoded && pic_recon && cliopt.recon)
-            cliopt.recon->writePicture(pic_out);
-        if (nal)
-        {
-            cliopt.totalbytes += cliopt.output->writeFrame(p_nal, nal, pic_out);
-            if (pts_queue)
+            // convert to field
+            if (param->bField && param->interlaceMode)
             {
-                pts_queue->push(-pic_out.pts);
-                if (pts_queue->size() > 2)
-                    pts_queue->pop();
+                int height = pic_in->height >> 1;
+                
+                int static bCreated = 0;
+                if (bCreated == 0)
+                {
+                    bCreated = 1;
+                    inputPicNum = 2;
+                    picField1.fieldNum = 1;
+                    picField2.fieldNum = 2;
+
+                    picField1.bitDepth = picField2.bitDepth = pic_in->bitDepth;
+                    picField1.colorSpace = picField2.colorSpace = pic_in->colorSpace;
+                    picField1.height = picField2.height = pic_in->height >> 1;
+                    picField1.framesize = picField2.framesize = pic_in->framesize >> 1;
+
+                    size_t fieldFrameSize = (size_t)pic_in->framesize >> 1;
+                    char* field1Buf = X265_MALLOC(char, fieldFrameSize);
+                    char* field2Buf = X265_MALLOC(char, fieldFrameSize);
+  
+                    int stride = picField1.stride[0] = picField2.stride[0] = pic_in->stride[0];
+                    uint64_t framesize = stride * (height >> x265_cli_csps[pic_in->colorSpace].height[0]);
+                    picField1.planes[0] = field1Buf;
+                    picField2.planes[0] = field2Buf;
+                    for (int i = 1; i < x265_cli_csps[pic_in->colorSpace].planes; i++)
+                    {
+                        picField1.planes[i] = field1Buf + framesize;
+                        picField2.planes[i] = field2Buf + framesize;
+
+                        stride = picField1.stride[i] = picField2.stride[i] = pic_in->stride[i];
+                        framesize += (stride * (height >> x265_cli_csps[pic_in->colorSpace].height[i]));
+                    }
+                    assert(framesize  == picField1.framesize);
+                }
+
+                picField1.pts = picField1.poc = pic_in->poc;
+                picField2.pts = picField2.poc = pic_in->poc + 1;
+
+                picField1.userSEI = picField2.userSEI = pic_in->userSEI;
+
+                //if (pic_in->userData)
+                //{
+                //    // Have to handle userData here
+                //}
+
+                if (pic_in->framesize)
+                {
+                    for (int i = 0; i < x265_cli_csps[pic_in->colorSpace].planes; i++)
+                    {
+                        char* srcP1 = (char*)pic_in->planes[i];
+                        char* srcP2 = (char*)pic_in->planes[i] + pic_in->stride[i];
+                        char* p1 = (char*)picField1.planes[i];
+                        char* p2 = (char*)picField2.planes[i];
+
+                        int stride = picField1.stride[i];
+
+                        for (int y = 0; y < (height >> x265_cli_csps[pic_in->colorSpace].height[i]); y++)
+                        {
+                            memcpy(p1, srcP1, stride);
+                            memcpy(p2, srcP2, stride);
+                            srcP1 += 2*stride;
+                            srcP2 += 2*stride;
+                            p1 += stride;
+                            p2 += stride;
+                        }
+                    }
+                }
+            }
+
+            if (bDolbyVisionRPU)
+            {
+                if (param->bField && param->interlaceMode)
+                {
+                    if (rpuParser(&picField1, cliopt.dolbyVisionRpu) > 0)
+                        goto fail;
+                    if (rpuParser(&picField2, cliopt.dolbyVisionRpu) > 0)
+                        goto fail;
+                }
+                else
+                {
+                    if (rpuParser(pic_in, cliopt.dolbyVisionRpu) > 0)
+                        goto fail;
+                }
             }
         }
+                
+        for (int inputNum = 0; inputNum < inputPicNum; inputNum++)
+        {  
+            x265_picture *picInput = NULL;
+            if (inputPicNum == 2)
+                picInput = pic_in ? (inputNum ? &picField2 : &picField1) : NULL;
+            else
+                picInput = pic_in;
 
-        cliopt.printStatus(outFrameCount);
+            int numEncoded = api->encoder_encode( encoder, &p_nal, &nal, picInput, pic_recon );
+            if( numEncoded < 0 )
+            {
+                b_ctrl_c = 1;
+                ret = 4;
+                break;
+            }
+
+            if (reconPlay && numEncoded)
+                reconPlay->writePicture(*pic_recon);
+
+            outFrameCount += numEncoded;
+
+            if (numEncoded && pic_recon && cliopt.recon)
+                cliopt.recon->writePicture(pic_out);
+            if (nal)
+            {
+                cliopt.totalbytes += cliopt.output->writeFrame(p_nal, nal, pic_out);
+                if (pts_queue)
+                {
+                    pts_queue->push(-pic_out.pts);
+                    if (pts_queue->size() > 2)
+                        pts_queue->pop();
+                }
+            }
+            cliopt.printStatus( outFrameCount );
+        }
     }
 
     /* Flush the encoder */
@@ -749,6 +1157,13 @@ int main(int argc, char **argv)
             break;
     }
   
+    if (bDolbyVisionRPU)
+    {
+        if(fgetc(cliopt.dolbyVisionRpu) != EOF)
+            x265_log(NULL, X265_LOG_WARNING, "Dolby Vision RPU count is greater than frame count\n");
+        x265_log(NULL, X265_LOG_INFO, "VES muxing with Dolby Vision RPU file successful\n");
+    }
+
     /* clear progress report */
     if (cliopt.bProgress)
         fprintf(stderr, "%*s\r", 80, " ");
@@ -790,6 +1205,7 @@ fail:
     api->param_free(param);
 
     X265_FREE(errorBuf);
+    X265_FREE(rpuPayload);
 
     SetConsoleTitle(orgConsoleTitle);
     SetThreadExecutionState(ES_CONTINUOUS);

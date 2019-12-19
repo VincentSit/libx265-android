@@ -1,0 +1,5 @@
+repo: 09fe40627f03a0f9c3e6ac78b22ac93da23f9fdf
+node: b5c86a64bbbede216b25092def72272ecde5523a
+branch: Release_3.2
+latesttag: 3.2.1
+latesttagdistance: 1

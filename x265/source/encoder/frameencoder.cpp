@@ -335,7 +335,7 @@ void FrameEncoder::threadMain()
             while (!m_frame->m_ctuInfo)
                 m_frame->m_copied.wait();
         }
-        if ((m_param->bMVType == AVC_INFO) && !m_param->analysisSave && !m_param->analysisLoad && !(IS_X265_TYPE_I(m_frame->m_lowres.sliceType)))
+        if ((m_param->bAnalysisType == AVC_INFO) && !m_param->analysisSave && !m_param->analysisLoad && !(IS_X265_TYPE_I(m_frame->m_lowres.sliceType)))
         {
             while (((m_frame->m_analysisData.interData == NULL && m_frame->m_analysisData.intraData == NULL) || (uint32_t)m_frame->m_poc != m_frame->m_analysisData.poc))
                 m_frame->m_copyMVType.wait();
@@ -634,14 +634,22 @@ void FrameEncoder::compressFrame()
         if (!m_param->bEnableWavefront)
             m_backupStreams = new Bitstream[numSubstreams];
         m_substreamSizes = X265_MALLOC(uint32_t, numSubstreams);
-        if (!m_param->bEnableSAO)
+        if (!slice->m_bUseSao)
+        {
             for (uint32_t i = 0; i < numSubstreams; i++)
                 m_rows[i].rowGoOnCoder.setBitstream(&m_outStreams[i]);
+        }
     }
     else
     {
         for (uint32_t i = 0; i < numSubstreams; i++)
+        {
             m_outStreams[i].resetBits();
+            if (!slice->m_bUseSao)
+                m_rows[i].rowGoOnCoder.setBitstream(&m_outStreams[i]);
+            else
+                m_rows[i].rowGoOnCoder.setBitstream(NULL);
+        }
     }
 
     m_rce.encodeOrder = m_frame->m_encodeOrder;
@@ -657,6 +665,8 @@ void FrameEncoder::compressFrame()
             bpSei->m_auCpbRemovalDelayDelta = 1;
             bpSei->m_cpbDelayOffset = 0;
             bpSei->m_dpbDelayOffset = 0;
+            bpSei->m_concatenationFlag = (m_param->bEnableHRDConcatFlag && !m_frame->m_poc) ? true : false;
+
             // hrdFullness() calculates the initial CPB removal delay and offset
             m_top->m_rateControl->hrdFullness(bpSei);
             bpSei->writeSEImessages(m_bs, *slice->m_sps, NAL_UNIT_PREFIX_SEI, m_nalList, m_param->bSingleSeiNal);
@@ -684,10 +694,25 @@ void FrameEncoder::compressFrame()
 
         if (vui->frameFieldInfoPresentFlag)
         {
-            if (m_param->interlaceMode == 2)
-                sei->m_picStruct = (poc & 1) ? 1 /* top */ : 2 /* bottom */;
-            else if (m_param->interlaceMode == 1)
-                sei->m_picStruct = (poc & 1) ? 2 /* bottom */ : 1 /* top */;
+            if (m_param->interlaceMode > 0)
+            {
+                if( m_param->interlaceMode == 2 )
+                {   
+                    // m_picStruct should be set to 3 or 4 when field feature is enabled
+                    if (m_param->bField)
+                        // 3: Top field, bottom field, in that order; 4: Bottom field, top field, in that order
+                        sei->m_picStruct = (slice->m_fieldNum == 1) ? 4 : 3;
+                    else
+                        sei->m_picStruct = (poc & 1) ? 1 /* top */ : 2 /* bottom */;
+                }     
+                else if (m_param->interlaceMode == 1)
+                {
+                    if (m_param->bField)
+                        sei->m_picStruct = (slice->m_fieldNum == 1) ? 3: 4;
+                    else
+                        sei->m_picStruct = (poc & 1) ? 2 /* bottom */ : 1 /* top */;
+                }
+            }
             else
                 sei->m_picStruct = m_param->pictureStructure;
 
@@ -964,7 +989,7 @@ void FrameEncoder::compressFrame()
     m_entropyCoder.setBitstream(&m_bs);
 
     // finish encode of each CTU row, only required when SAO is enabled
-    if (m_param->bEnableSAO)
+    if (slice->m_bUseSao)
         encodeSlice(0);
 
     m_entropyCoder.setBitstream(&m_bs);
@@ -1061,6 +1086,14 @@ void FrameEncoder::compressFrame()
         bytes += m_nalList.m_nal[m_nalList.m_numNal - 1].sizeBytes;
         bytes -= 3; //exclude start code prefix
         m_accessUnitBits = bytes << 3;
+    }
+
+    if (m_frame->m_rpu.payloadSize)
+    {
+        m_bs.resetBits();
+        for (int i = 0; i < m_frame->m_rpu.payloadSize; i++)
+            m_bs.write(m_frame->m_rpu.payload[i], 8);
+        m_nalList.serialize(NAL_UNIT_UNSPECIFIED, m_bs);
     }
 
     m_endCompressTime = x265_mdate();
@@ -1196,7 +1229,7 @@ void FrameEncoder::encodeSlice(uint32_t sliceAddr)
     const uint32_t lastCUAddr = (slice->m_endCUAddr + m_param->num4x4Partitions - 1) / m_param->num4x4Partitions;
     const uint32_t numSubstreams = m_param->bEnableWavefront ? slice->m_sps->numCuInHeight : 1;
 
-    SAOParam* saoParam = slice->m_sps->bUseSAO ? m_frame->m_encData->m_saoParam : NULL;
+    SAOParam* saoParam = slice->m_sps->bUseSAO && slice->m_bUseSao ? m_frame->m_encData->m_saoParam : NULL;
     for (uint32_t cuAddr = sliceAddr; cuAddr < lastCUAddr; cuAddr++)
     {
         uint32_t col = cuAddr % widthInLCUs;
@@ -1396,8 +1429,8 @@ void FrameEncoder::processRowEncoder(int intRow, ThreadLocalData& tld)
     }
 
     // Initialize restrict on MV range in slices
-    tld.analysis.m_sliceMinY = -(int16_t)(rowInSlice * m_param->maxCUSize * 4) + 3 * 4;
-    tld.analysis.m_sliceMaxY = (int16_t)((endRowInSlicePlus1 - 1 - row) * (m_param->maxCUSize * 4) - 4 * 4);
+    tld.analysis.m_sliceMinY = -(int32_t)(rowInSlice * m_param->maxCUSize * 4) + 3 * 4;
+    tld.analysis.m_sliceMaxY = (int32_t)((endRowInSlicePlus1 - 1 - row) * (m_param->maxCUSize * 4) - 4 * 4);
 
     // Handle single row slice
     if (tld.analysis.m_sliceMaxY < tld.analysis.m_sliceMinY)
@@ -1490,11 +1523,11 @@ void FrameEncoder::processRowEncoder(int intRow, ThreadLocalData& tld)
             curRow.bufferedEntropy.loadContexts(rowCoder);
 
         /* SAO parameter estimation using non-deblocked pixels for CTU bottom and right boundary areas */
-        if (m_param->bEnableSAO && m_param->bSaoNonDeblocked)
+        if (slice->m_bUseSao && m_param->bSaoNonDeblocked)
             m_frameFilter.m_parallelFilter[row].m_sao.calcSaoStatsCu_BeforeDblk(m_frame, col, row);
 
         /* Deblock with idle threading */
-        if (m_param->bEnableLoopFilter | m_param->bEnableSAO)
+        if (m_param->bEnableLoopFilter | slice->m_bUseSao)
         {
             // NOTE: in VBV mode, we may reencode anytime, so we can't do Deblock stage-Horizon and SAO
             if (!bIsVbv)
@@ -1599,11 +1632,11 @@ void FrameEncoder::processRowEncoder(int intRow, ThreadLocalData& tld)
             if (!m_param->bEnableWavefront && col == numCols - 1)
             {
                 double qpBase = curEncData.m_cuStat[cuAddr].baseQp;
-                int reEncode = m_top->m_rateControl->rowVbvRateControl(m_frame, row, &m_rce, qpBase, m_sliceBaseRow, sliceId);
+                curRow.reEncode = m_top->m_rateControl->rowVbvRateControl(m_frame, row, &m_rce, qpBase, m_sliceBaseRow, sliceId);
                 qpBase = x265_clip3((double)m_param->rc.qpMin, (double)m_param->rc.qpMax, qpBase);
                 curEncData.m_rowStat[row].rowQp = qpBase;
                 curEncData.m_rowStat[row].rowQpScale = x265_qp2qScale(qpBase);
-                if (reEncode < 0)
+                if (curRow.reEncode < 0)
                 {
                     x265_log(m_param, X265_LOG_DEBUG, "POC %d row %d - encode restart required for VBV, to %.2f from %.2f\n",
                         m_frame->m_poc, row, qpBase, curEncData.m_cuStat[cuAddr].baseQp);
@@ -1642,17 +1675,19 @@ void FrameEncoder::processRowEncoder(int intRow, ThreadLocalData& tld)
                             curEncData.m_rowStat[r].sumQpRc += curEncData.m_cuStat[c].baseQp;
                             curEncData.m_rowStat[r].numEncodedCUs = c;
                         }
+                        if (curRow.reEncode < 0)
+                            break;
                         startCuAddr = EndCuAddr - numCols;
                         EndCuAddr = startCuAddr + 1;
                     }
                 }
                 double qpBase = curEncData.m_cuStat[cuAddr].baseQp;
-                int reEncode = m_top->m_rateControl->rowVbvRateControl(m_frame, row, &m_rce, qpBase, m_sliceBaseRow, sliceId);
+                curRow.reEncode = m_top->m_rateControl->rowVbvRateControl(m_frame, row, &m_rce, qpBase, m_sliceBaseRow, sliceId);
                 qpBase = x265_clip3((double)m_param->rc.qpMin, (double)m_param->rc.qpMax, qpBase);
                 curEncData.m_rowStat[row].rowQp = qpBase;
                 curEncData.m_rowStat[row].rowQpScale = x265_qp2qScale(qpBase);
 
-                if (reEncode < 0)
+                if (curRow.reEncode < 0)
                 {
                     x265_log(m_param, X265_LOG_DEBUG, "POC %d row %d - encode restart required for VBV, to %.2f from %.2f\n",
                              m_frame->m_poc, row, qpBase, curEncData.m_cuStat[cuAddr].baseQp);
@@ -1806,12 +1841,12 @@ void FrameEncoder::processRowEncoder(int intRow, ThreadLocalData& tld)
 
     /* flush row bitstream (if WPP and no SAO) or flush frame if no WPP and no SAO */
     /* end_of_sub_stream_one_bit / end_of_slice_segment_flag */
-    if (!m_param->bEnableSAO && (m_param->bEnableWavefront || bLastRowInSlice))
-        rowCoder.finishSlice();
+       if (!slice->m_bUseSao && (m_param->bEnableWavefront || bLastRowInSlice))
+               rowCoder.finishSlice();
 
 
     /* Processing left Deblock block with current threading */
-    if ((m_param->bEnableLoopFilter | m_param->bEnableSAO) & (rowInSlice >= 2))
+    if ((m_param->bEnableLoopFilter | slice->m_bUseSao) & (rowInSlice >= 2))
     {
         /* Check conditional to start previous row process with current threading */
         if (m_frameFilter.m_parallelFilter[row - 2].m_lastDeblocked.get() == (int)numCols)

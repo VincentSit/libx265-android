@@ -1,0 +1,832 @@
+➜  libx265-android git:(master) ✗ bash ./build.sh
+~/Documents/GitHub/libx265-android/x265/build/android/arm64-v8a ~/Documents/GitHub/libx265-android
+-- cmake version 3.16.1
+CMake Deprecation Warning at CMakeLists.txt:10 (cmake_policy):
+  The OLD behavior for policy CMP0025 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+CMake Deprecation Warning at CMakeLists.txt:16 (cmake_policy):
+  The OLD behavior for policy CMP0054 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+-- Android: Targeting API '21' with architecture 'arm64', ABI 'arm64-v8a', and processor 'aarch64'
+-- Android: Selected unified Clang toolchain
+-- The C compiler identification is Clang 8.0.7
+-- The CXX compiler identification is Clang 8.0.7
+CMake Error at /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/Platform/Android-Common.cmake:80 (message):
+  Android: STL 'gnustl_static' not supported by this NDK.
+Call Stack (most recent call first):
+  /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/Platform/Android-Clang.cmake:27 (include)
+  /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/Platform/Android-Clang-C.cmake:1 (include)
+  /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/CMakeCInformation.cmake:48 (include)
+  CMakeLists.txt:19 (project)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/arm64-v8a/CMakeFiles/CMakeOutput.log".
+You have changed variables that require your cache to be deleted.
+Configure will be re-run and you may have to reset some variables.
+The following variables have changed:
+CMAKE_C_COMPILER= /Users/vincentsit/Library/Android/sdk/ndk/20.1.5948944/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android21-clang
+CMAKE_CXX_COMPILER= /Users/vincentsit/Library/Android/sdk/ndk/20.1.5948944/toolchains/llvm/prebuilt/darwin-x86_64/bin/aarch64-linux-android21-clang++
+
+-- Generating done
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    ENABLE_SHARED
+    NEON_ANDROID
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
+sed: CMakeFiles/cli.dir/link.txt: No such file or directory
+sed: CMakeFiles/x265-shared.dir/link.txt: No such file or directory
+sed: CMakeFiles/x265-static.dir/link.txt: No such file or directory
+-- cmake version 3.16.1
+CMake Deprecation Warning at CMakeLists.txt:10 (cmake_policy):
+  The OLD behavior for policy CMP0025 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+CMake Deprecation Warning at CMakeLists.txt:16 (cmake_policy):
+  The OLD behavior for policy CMP0054 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+-- The C compiler identification is AppleClang 11.0.0.11000033
+-- The CXX compiler identification is AppleClang 11.0.0.11000033
+-- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
+-- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detected x86_64 target processor
+-- Could NOT find NUMA (missing: NUMA_ROOT_DIR NUMA_INCLUDE_DIR NUMA_LIBRARY)
+-- Looking for include file inttypes.h
+-- Looking for include file inttypes.h - found
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW - Success
+-- Performing Test CC_HAS_NO_NARROWING
+-- Performing Test CC_HAS_NO_NARROWING - Success
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS - Success
+-- Performing Test CC_HAS_FAST_MATH
+-- Performing Test CC_HAS_FAST_MATH - Success
+-- Performing Test CC_HAS_STACK_REALIGN
+-- Performing Test CC_HAS_STACK_REALIGN - Success
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG - Success
+-- Found nasm: /usr/bin/nasm
+-- Nasm version  is too old. 2.13.0 or later required
+-- x265 version 3.2.1+1-b5c86a64bbbe
+-- Looking for strtok_r
+-- Looking for strtok_r - found
+-- Looking for include file getopt.h
+-- Looking for include file getopt.h - found
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/arm64-v8a
+Scanning dependencies of target common
+Scanning dependencies of target encoder
+[  1%] Building CXX object common/CMakeFiles/common.dir/primitives.cpp.o
+[  8%] Building CXX object common/CMakeFiles/common.dir/ipfilter.cpp.o
+[  8%] Building CXX object common/CMakeFiles/common.dir/lowpassdct.cpp.o
+[  8%] Building CXX object common/CMakeFiles/common.dir/pixel.cpp.o
+[  8%] Building CXX object common/CMakeFiles/common.dir/dct.cpp.o
+[ 10%] Building CXX object encoder/CMakeFiles/encoder.dir/analysis.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/analysis.cpp:33:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/analysis.h:30:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/predict.h:30:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/quant.h:29:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 11%] Building CXX object encoder/CMakeFiles/encoder.dir/search.cpp.o
+[ 13%] Building CXX object encoder/CMakeFiles/encoder.dir/bitcost.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/search.cpp:30:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/search.h:29:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/predict.h:30:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/quant.h:29:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 15%] Building CXX object common/CMakeFiles/common.dir/intrapred.cpp.o
+[ 16%] Building CXX object encoder/CMakeFiles/encoder.dir/motion.cpp.o
+[ 18%] Building CXX object encoder/CMakeFiles/encoder.dir/slicetype.cpp.o
+1 warning generated.
+[ 20%] Building CXX object common/CMakeFiles/common.dir/loopfilter.cpp.o
+1 warning generated.
+[ 21%] Building CXX object common/CMakeFiles/common.dir/constants.cpp.o
+[ 23%] Building CXX object encoder/CMakeFiles/encoder.dir/frameencoder.cpp.o
+[ 25%] Building CXX object encoder/CMakeFiles/encoder.dir/framefilter.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/frameencoder.cpp:32:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/encoder.h:30:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/framefilter.cpp:28:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/encoder.h:30:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 26%] Building CXX object common/CMakeFiles/common.dir/cpu.cpp.o
+[ 28%] Building CXX object encoder/CMakeFiles/encoder.dir/level.cpp.o
+1 warning generated.
+[ 30%] Building CXX object common/CMakeFiles/common.dir/version.cpp.o
+[ 31%] Building CXX object common/CMakeFiles/common.dir/threading.cpp.o
+[ 33%] Building CXX object encoder/CMakeFiles/encoder.dir/nal.cpp.o
+[ 35%] Building CXX object common/CMakeFiles/common.dir/threadpool.cpp.o
+[ 36%] Building CXX object encoder/CMakeFiles/encoder.dir/sei.cpp.o
+1 warning generated.
+[ 38%] Building CXX object common/CMakeFiles/common.dir/wavefront.cpp.o
+[ 40%] Building CXX object common/CMakeFiles/common.dir/md5.cpp.o
+[ 41%] Building CXX object encoder/CMakeFiles/encoder.dir/sao.cpp.o
+[ 43%] Building CXX object common/CMakeFiles/common.dir/bitstream.cpp.o
+[ 45%] Building CXX object encoder/CMakeFiles/encoder.dir/entropy.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/entropy.cpp:27:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 46%] Building CXX object encoder/CMakeFiles/encoder.dir/dpb.cpp.o
+[ 48%] Building CXX object encoder/CMakeFiles/encoder.dir/ratecontrol.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/ratecontrol.cpp:36:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/encoder.h:30:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 50%] Building CXX object common/CMakeFiles/common.dir/yuv.cpp.o
+[ 51%] Building CXX object encoder/CMakeFiles/encoder.dir/reference.cpp.o
+[ 53%] Building CXX object common/CMakeFiles/common.dir/shortyuv.cpp.o
+1 warning generated.
+[ 55%] Building CXX object common/CMakeFiles/common.dir/picyuv.cpp.o
+[ 56%] Building CXX object encoder/CMakeFiles/encoder.dir/encoder.cpp.o
+[ 58%] Building CXX object encoder/CMakeFiles/encoder.dir/api.cpp.o
+[ 60%] Building CXX object encoder/CMakeFiles/encoder.dir/weightPrediction.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/encoder.cpp:36:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/encoder.h:30:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 61%] Building CXX object common/CMakeFiles/common.dir/common.cpp.o
+1 warning generated.
+[ 63%] Building CXX object common/CMakeFiles/common.dir/param.cpp.o
+[ 65%] Building CXX object common/CMakeFiles/common.dir/frame.cpp.o
+[ 66%] Building CXX object common/CMakeFiles/common.dir/framedata.cpp.o
+[ 68%] Building CXX object common/CMakeFiles/common.dir/cudata.cpp.o
+[ 70%] Building CXX object common/CMakeFiles/common.dir/slice.cpp.o
+[ 71%] Building CXX object common/CMakeFiles/common.dir/lowres.cpp.o
+[ 73%] Building CXX object common/CMakeFiles/common.dir/piclist.cpp.o
+[ 75%] Building CXX object common/CMakeFiles/common.dir/predict.cpp.o
+[ 76%] Building CXX object common/CMakeFiles/common.dir/scalinglist.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/predict.cpp:29:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/predict.h:30:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/quant.h:29:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 78%] Building CXX object common/CMakeFiles/common.dir/quant.cpp.o
+[ 80%] Building CXX object common/CMakeFiles/common.dir/deblock.cpp.o
+1 warning generated.
+1 warning generated.
+[ 80%] Built target encoder
+[ 80%] Built target common
+Scanning dependencies of target x265-shared
+Scanning dependencies of target x265-static
+[ 81%] Linking CXX static library libx265.a
+[ 83%] Linking CXX shared library libx265.dylib
+[ 83%] Built target x265-shared
+Scanning dependencies of target cli
+[ 83%] Built target x265-static
+[ 90%] Building CXX object CMakeFiles/cli.dir/input/input.cpp.o
+[ 91%] Building CXX object CMakeFiles/cli.dir/input/yuv.cpp.o
+[ 91%] Building CXX object CMakeFiles/cli.dir/input/y4m.cpp.o
+[ 91%] Building CXX object CMakeFiles/cli.dir/output/reconplay.cpp.o
+[ 91%] Building CXX object CMakeFiles/cli.dir/output/raw.cpp.o
+[ 93%] Building CXX object CMakeFiles/cli.dir/output/output.cpp.o
+[ 95%] Building CXX object CMakeFiles/cli.dir/output/y4m.cpp.o
+[ 96%] Building CXX object CMakeFiles/cli.dir/output/yuv.cpp.o
+[ 98%] Building CXX object CMakeFiles/cli.dir/x265.cpp.o
+[100%] Linking CXX executable x265
+[100%] Built target cli
+[ 30%] Built target encoder
+[ 80%] Built target common
+[ 81%] Built target x265-shared
+[ 98%] Built target cli
+[100%] Built target x265-static
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/arm64-v8a/usr/local/lib/libx265.a
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/arm64-v8a/usr/local/include/x265.h
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/arm64-v8a/usr/local/include/x265_config.h
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/arm64-v8a/usr/local/lib/libx265.179.dylib
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/arm64-v8a/usr/local/lib/libx265.dylib
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/arm64-v8a/usr/local/lib/pkgconfig/x265.pc
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/arm64-v8a/usr/local/bin/x265
+~/Documents/GitHub/libx265-android
+~/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a ~/Documents/GitHub/libx265-android
+-- cmake version 3.16.1
+CMake Deprecation Warning at CMakeLists.txt:10 (cmake_policy):
+  The OLD behavior for policy CMP0025 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+CMake Deprecation Warning at CMakeLists.txt:16 (cmake_policy):
+  The OLD behavior for policy CMP0054 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+-- Android: Targeting API '16' with architecture 'arm', ABI 'armeabi-v7a', and processor 'armv7-a'
+-- Android: Selected unified Clang toolchain
+-- The C compiler identification is Clang 8.0.7
+-- The CXX compiler identification is Clang 8.0.7
+CMake Error at /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/Platform/Android-Common.cmake:80 (message):
+  Android: STL 'gnustl_static' not supported by this NDK.
+Call Stack (most recent call first):
+  /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/Platform/Android-Clang.cmake:27 (include)
+  /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/Platform/Android-Clang-C.cmake:1 (include)
+  /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/CMakeCInformation.cmake:48 (include)
+  CMakeLists.txt:19 (project)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a/CMakeFiles/CMakeOutput.log".
+You have changed variables that require your cache to be deleted.
+Configure will be re-run and you may have to reset some variables.
+The following variables have changed:
+CMAKE_C_COMPILER= /Users/vincentsit/Library/Android/sdk/ndk/20.1.5948944/toolchains/llvm/prebuilt/darwin-x86_64/bin/armv7a-linux-androideabi16-clang
+CMAKE_CXX_COMPILER= /Users/vincentsit/Library/Android/sdk/ndk/20.1.5948944/toolchains/llvm/prebuilt/darwin-x86_64/bin/armv7a-linux-androideabi16-clang++
+
+-- Generating done
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    ENABLE_SHARED
+    NEON_ANDROID
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
+sed: CMakeFiles/cli.dir/link.txt: No such file or directory
+sed: CMakeFiles/x265-shared.dir/link.txt: No such file or directory
+sed: CMakeFiles/x265-static.dir/link.txt: No such file or directory
+-- cmake version 3.16.1
+CMake Deprecation Warning at CMakeLists.txt:10 (cmake_policy):
+  The OLD behavior for policy CMP0025 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+CMake Deprecation Warning at CMakeLists.txt:16 (cmake_policy):
+  The OLD behavior for policy CMP0054 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+-- The C compiler identification is AppleClang 11.0.0.11000033
+-- The CXX compiler identification is AppleClang 11.0.0.11000033
+-- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
+-- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detected x86_64 target processor
+-- Could NOT find NUMA (missing: NUMA_ROOT_DIR NUMA_INCLUDE_DIR NUMA_LIBRARY)
+-- Looking for include file inttypes.h
+-- Looking for include file inttypes.h - found
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW - Success
+-- Performing Test CC_HAS_NO_NARROWING
+-- Performing Test CC_HAS_NO_NARROWING - Success
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS - Success
+-- Performing Test CC_HAS_FAST_MATH
+-- Performing Test CC_HAS_FAST_MATH - Success
+-- Performing Test CC_HAS_STACK_REALIGN
+-- Performing Test CC_HAS_STACK_REALIGN - Success
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG - Success
+-- Found nasm: /usr/bin/nasm
+-- Nasm version  is too old. 2.13.0 or later required
+-- x265 version 3.2.1+1-b5c86a64bbbe
+-- Looking for strtok_r
+-- Looking for strtok_r - found
+-- Looking for include file getopt.h
+-- Looking for include file getopt.h - found
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/armeabi-v7a
+Scanning dependencies of target encoder
+Scanning dependencies of target common
+[  5%] Building CXX object common/CMakeFiles/common.dir/dct.cpp.o
+[  5%] Building CXX object common/CMakeFiles/common.dir/primitives.cpp.o
+[  5%] Building CXX object common/CMakeFiles/common.dir/pixel.cpp.o
+[  6%] Building CXX object common/CMakeFiles/common.dir/lowpassdct.cpp.o
+[  8%] Building CXX object common/CMakeFiles/common.dir/ipfilter.cpp.o
+[ 10%] Building CXX object encoder/CMakeFiles/encoder.dir/analysis.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/analysis.cpp:33:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/analysis.h:30:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/predict.h:30:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/quant.h:29:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 11%] Building CXX object encoder/CMakeFiles/encoder.dir/search.cpp.o
+[ 13%] Building CXX object encoder/CMakeFiles/encoder.dir/bitcost.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/search.cpp:30:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/search.h:29:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/predict.h:30:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/quant.h:29:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 15%] Building CXX object common/CMakeFiles/common.dir/intrapred.cpp.o
+[ 16%] Building CXX object encoder/CMakeFiles/encoder.dir/motion.cpp.o
+[ 18%] Building CXX object encoder/CMakeFiles/encoder.dir/slicetype.cpp.o
+1 warning generated.
+[ 20%] Building CXX object common/CMakeFiles/common.dir/loopfilter.cpp.o
+1 warning generated.
+[ 21%] Building CXX object encoder/CMakeFiles/encoder.dir/frameencoder.cpp.o
+[ 23%] Building CXX object common/CMakeFiles/common.dir/constants.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/frameencoder.cpp:32:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/encoder.h:30:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 25%] Building CXX object encoder/CMakeFiles/encoder.dir/framefilter.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/framefilter.cpp:28:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/encoder.h:30:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 26%] Building CXX object common/CMakeFiles/common.dir/cpu.cpp.o
+[ 28%] Building CXX object encoder/CMakeFiles/encoder.dir/level.cpp.o
+1 warning generated.
+[ 30%] Building CXX object common/CMakeFiles/common.dir/version.cpp.o
+[ 31%] Building CXX object common/CMakeFiles/common.dir/threading.cpp.o
+[ 33%] Building CXX object encoder/CMakeFiles/encoder.dir/nal.cpp.o
+[ 35%] Building CXX object common/CMakeFiles/common.dir/threadpool.cpp.o
+1 warning generated.
+[ 36%] Building CXX object common/CMakeFiles/common.dir/wavefront.cpp.o
+[ 38%] Building CXX object encoder/CMakeFiles/encoder.dir/sei.cpp.o
+[ 40%] Building CXX object common/CMakeFiles/common.dir/md5.cpp.o
+[ 41%] Building CXX object common/CMakeFiles/common.dir/bitstream.cpp.o
+[ 43%] Building CXX object encoder/CMakeFiles/encoder.dir/sao.cpp.o
+[ 45%] Building CXX object common/CMakeFiles/common.dir/yuv.cpp.o
+[ 46%] Building CXX object encoder/CMakeFiles/encoder.dir/entropy.cpp.o
+[ 48%] Building CXX object encoder/CMakeFiles/encoder.dir/dpb.cpp.o
+[ 50%] Building CXX object encoder/CMakeFiles/encoder.dir/ratecontrol.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/entropy.cpp:27:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/ratecontrol.cpp:36:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/encoder.h:30:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 51%] Building CXX object common/CMakeFiles/common.dir/shortyuv.cpp.o
+[ 53%] Building CXX object encoder/CMakeFiles/encoder.dir/reference.cpp.o
+[ 55%] Building CXX object common/CMakeFiles/common.dir/picyuv.cpp.o
+[ 56%] Building CXX object encoder/CMakeFiles/encoder.dir/encoder.cpp.o
+1 warning generated.
+[ 58%] Building CXX object common/CMakeFiles/common.dir/common.cpp.o
+[ 60%] Building CXX object common/CMakeFiles/common.dir/param.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/encoder.cpp:36:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/encoder.h:30:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 61%] Building CXX object encoder/CMakeFiles/encoder.dir/api.cpp.o
+[ 63%] Building CXX object encoder/CMakeFiles/encoder.dir/weightPrediction.cpp.o
+1 warning generated.
+[ 65%] Building CXX object common/CMakeFiles/common.dir/frame.cpp.o
+[ 66%] Building CXX object common/CMakeFiles/common.dir/framedata.cpp.o
+[ 68%] Building CXX object common/CMakeFiles/common.dir/cudata.cpp.o
+[ 70%] Building CXX object common/CMakeFiles/common.dir/slice.cpp.o
+[ 71%] Building CXX object common/CMakeFiles/common.dir/lowres.cpp.o
+[ 73%] Building CXX object common/CMakeFiles/common.dir/piclist.cpp.o
+[ 75%] Building CXX object common/CMakeFiles/common.dir/predict.cpp.o
+[ 76%] Building CXX object common/CMakeFiles/common.dir/scalinglist.cpp.o
+[ 78%] Building CXX object common/CMakeFiles/common.dir/quant.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/predict.cpp:29:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/predict.h:30:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/quant.h:29:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+1 warning generated.
+[ 80%] Building CXX object common/CMakeFiles/common.dir/deblock.cpp.o
+1 warning generated.
+[ 80%] Built target encoder
+[ 80%] Built target common
+Scanning dependencies of target x265-static
+Scanning dependencies of target x265-shared
+[ 83%] Linking CXX shared library libx265.dylib
+[ 83%] Linking CXX static library libx265.a
+[ 83%] Built target x265-static
+[ 83%] Built target x265-shared
+Scanning dependencies of target cli
+[ 91%] Building CXX object CMakeFiles/cli.dir/input/input.cpp.o
+[ 93%] Building CXX object CMakeFiles/cli.dir/input/y4m.cpp.o
+[ 93%] Building CXX object CMakeFiles/cli.dir/output/raw.cpp.o
+[ 93%] Building CXX object CMakeFiles/cli.dir/input/yuv.cpp.o
+[ 93%] Building CXX object CMakeFiles/cli.dir/output/output.cpp.o
+[ 93%] Building CXX object CMakeFiles/cli.dir/output/reconplay.cpp.o
+[ 95%] Building CXX object CMakeFiles/cli.dir/output/y4m.cpp.o
+[ 96%] Building CXX object CMakeFiles/cli.dir/output/yuv.cpp.o
+[ 98%] Building CXX object CMakeFiles/cli.dir/x265.cpp.o
+[100%] Linking CXX executable x265
+[100%] Built target cli
+[ 30%] Built target encoder
+[ 80%] Built target common
+[ 81%] Built target x265-shared
+[ 98%] Built target cli
+[100%] Built target x265-static
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/armeabi-v7a/usr/local/lib/libx265.a
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/armeabi-v7a/usr/local/include/x265.h
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/armeabi-v7a/usr/local/include/x265_config.h
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/armeabi-v7a/usr/local/lib/libx265.179.dylib
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/armeabi-v7a/usr/local/lib/libx265.dylib
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/armeabi-v7a/usr/local/lib/pkgconfig/x265.pc
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/armeabi-v7a/usr/local/bin/x265
+~/Documents/GitHub/libx265-android
+~/Documents/GitHub/libx265-android/x265/build/android/x86_64 ~/Documents/GitHub/libx265-android
+-- cmake version 3.16.1
+CMake Deprecation Warning at CMakeLists.txt:10 (cmake_policy):
+  The OLD behavior for policy CMP0025 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+CMake Deprecation Warning at CMakeLists.txt:16 (cmake_policy):
+  The OLD behavior for policy CMP0054 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+-- Android: Targeting API '16' with architecture 'x86_64', ABI 'x86_64', and processor 'x86_64'
+-- Android: Selected unified Clang toolchain
+-- The C compiler identification is Clang 8.0.7
+-- The CXX compiler identification is Clang 8.0.7
+CMake Error at /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/Platform/Android-Common.cmake:80 (message):
+  Android: STL 'gnustl_static' not supported by this NDK.
+Call Stack (most recent call first):
+  /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/Platform/Android-Clang.cmake:27 (include)
+  /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/Platform/Android-Clang-C.cmake:1 (include)
+  /usr/local/Cellar/cmake/3.16.1/share/cmake/Modules/CMakeCInformation.cmake:48 (include)
+  CMakeLists.txt:19 (project)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/x86_64/CMakeFiles/CMakeOutput.log".
+You have changed variables that require your cache to be deleted.
+Configure will be re-run and you may have to reset some variables.
+The following variables have changed:
+CMAKE_C_COMPILER= /Users/vincentsit/Library/Android/sdk/ndk/20.1.5948944/toolchains/llvm/prebuilt/darwin-x86_64/bin/x86_64-linux-androideabi16-clang
+CMAKE_CXX_COMPILER= /Users/vincentsit/Library/Android/sdk/ndk/20.1.5948944/toolchains/llvm/prebuilt/darwin-x86_64/bin/x86_64-linux-androideabi16-clang++
+
+-- Generating done
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    ENABLE_SHARED
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
+sed: CMakeFiles/cli.dir/link.txt: No such file or directory
+sed: CMakeFiles/x265-shared.dir/link.txt: No such file or directory
+sed: CMakeFiles/x265-static.dir/link.txt: No such file or directory
+-- cmake version 3.16.1
+CMake Deprecation Warning at CMakeLists.txt:10 (cmake_policy):
+  The OLD behavior for policy CMP0025 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+CMake Deprecation Warning at CMakeLists.txt:16 (cmake_policy):
+  The OLD behavior for policy CMP0054 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+
+
+-- The C compiler identification is AppleClang 11.0.0.11000033
+-- The CXX compiler identification is AppleClang 11.0.0.11000033
+-- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
+-- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++
+-- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Detected x86_64 target processor
+-- Could NOT find NUMA (missing: NUMA_ROOT_DIR NUMA_INCLUDE_DIR NUMA_LIBRARY)
+-- Looking for include file inttypes.h
+-- Looking for include file inttypes.h - found
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW
+-- Performing Test CC_HAS_NO_STRICT_OVERFLOW - Success
+-- Performing Test CC_HAS_NO_NARROWING
+-- Performing Test CC_HAS_NO_NARROWING - Success
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS
+-- Performing Test CC_HAS_NO_ARRAY_BOUNDS - Success
+-- Performing Test CC_HAS_FAST_MATH
+-- Performing Test CC_HAS_FAST_MATH - Success
+-- Performing Test CC_HAS_STACK_REALIGN
+-- Performing Test CC_HAS_STACK_REALIGN - Success
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG
+-- Performing Test CC_HAS_FNO_EXCEPTIONS_FLAG - Success
+-- Found nasm: /usr/bin/nasm
+-- Nasm version  is too old. 2.13.0 or later required
+-- x265 version 3.2.1+1-b5c86a64bbbe
+-- Looking for strtok_r
+-- Looking for strtok_r - found
+-- Looking for include file getopt.h
+-- Looking for include file getopt.h - found
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/vincentsit/Documents/GitHub/libx265-android/x265/build/android/x86_64
+Scanning dependencies of target encoder
+Scanning dependencies of target common
+[  1%] Building CXX object common/CMakeFiles/common.dir/ipfilter.cpp.o
+[  5%] Building CXX object common/CMakeFiles/common.dir/pixel.cpp.o
+[  5%] Building CXX object common/CMakeFiles/common.dir/dct.cpp.o
+[  6%] Building CXX object common/CMakeFiles/common.dir/primitives.cpp.o
+[  8%] Building CXX object common/CMakeFiles/common.dir/lowpassdct.cpp.o
+[ 10%] Building CXX object encoder/CMakeFiles/encoder.dir/analysis.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/analysis.cpp:33:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/analysis.h:30:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/predict.h:30:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/quant.h:29:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 13%] Building CXX object encoder/CMakeFiles/encoder.dir/search.cpp.o
+[ 13%] Building CXX object common/CMakeFiles/common.dir/intrapred.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/search.cpp:30:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/search.h:29:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/predict.h:30:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/quant.h:29:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 15%] Building CXX object encoder/CMakeFiles/encoder.dir/bitcost.cpp.o
+[ 16%] Building CXX object encoder/CMakeFiles/encoder.dir/motion.cpp.o
+[ 18%] Building CXX object common/CMakeFiles/common.dir/loopfilter.cpp.o
+1 warning generated.
+[ 20%] Building CXX object common/CMakeFiles/common.dir/constants.cpp.o
+[ 21%] Building CXX object encoder/CMakeFiles/encoder.dir/slicetype.cpp.o
+[ 23%] Building CXX object encoder/CMakeFiles/encoder.dir/frameencoder.cpp.o
+1 warning generated.
+[ 25%] Building CXX object common/CMakeFiles/common.dir/cpu.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/frameencoder.cpp:32:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/encoder.h:30:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 26%] Building CXX object encoder/CMakeFiles/encoder.dir/framefilter.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/framefilter.cpp:28:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/encoder.h:30:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 28%] Building CXX object common/CMakeFiles/common.dir/version.cpp.o
+[ 30%] Building CXX object encoder/CMakeFiles/encoder.dir/level.cpp.o
+1 warning generated.
+[ 31%] Building CXX object common/CMakeFiles/common.dir/threading.cpp.o
+[ 33%] Building CXX object common/CMakeFiles/common.dir/threadpool.cpp.o
+1 warning generated.
+[ 35%] Building CXX object common/CMakeFiles/common.dir/wavefront.cpp.o
+[ 36%] Building CXX object encoder/CMakeFiles/encoder.dir/nal.cpp.o
+[ 38%] Building CXX object common/CMakeFiles/common.dir/md5.cpp.o
+[ 40%] Building CXX object encoder/CMakeFiles/encoder.dir/sei.cpp.o
+[ 41%] Building CXX object common/CMakeFiles/common.dir/bitstream.cpp.o
+[ 43%] Building CXX object common/CMakeFiles/common.dir/yuv.cpp.o
+[ 45%] Building CXX object encoder/CMakeFiles/encoder.dir/sao.cpp.o
+[ 46%] Building CXX object common/CMakeFiles/common.dir/shortyuv.cpp.o
+[ 48%] Building CXX object encoder/CMakeFiles/encoder.dir/entropy.cpp.o
+[ 50%] Building CXX object encoder/CMakeFiles/encoder.dir/dpb.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/entropy.cpp:27:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 51%] Building CXX object encoder/CMakeFiles/encoder.dir/ratecontrol.cpp.o
+[ 53%] Building CXX object common/CMakeFiles/common.dir/picyuv.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/ratecontrol.cpp:36:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/encoder.h:30:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 55%] Building CXX object encoder/CMakeFiles/encoder.dir/reference.cpp.o
+[ 56%] Building CXX object common/CMakeFiles/common.dir/common.cpp.o
+1 warning generated.
+[ 58%] Building CXX object common/CMakeFiles/common.dir/param.cpp.o
+[ 60%] Building CXX object common/CMakeFiles/common.dir/frame.cpp.o
+[ 61%] Building CXX object common/CMakeFiles/common.dir/framedata.cpp.o
+[ 63%] Building CXX object encoder/CMakeFiles/encoder.dir/encoder.cpp.o
+[ 65%] Building CXX object encoder/CMakeFiles/encoder.dir/api.cpp.o
+1 warning generated.
+[ 66%] Building CXX object common/CMakeFiles/common.dir/cudata.cpp.o
+[ 68%] Building CXX object encoder/CMakeFiles/encoder.dir/weightPrediction.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/encoder.cpp:36:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/encoder/encoder.h:30:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 70%] Building CXX object common/CMakeFiles/common.dir/slice.cpp.o
+[ 71%] Building CXX object common/CMakeFiles/common.dir/lowres.cpp.o
+[ 73%] Building CXX object common/CMakeFiles/common.dir/piclist.cpp.o
+[ 75%] Building CXX object common/CMakeFiles/common.dir/predict.cpp.o
+[ 76%] Building CXX object common/CMakeFiles/common.dir/scalinglist.cpp.o
+[ 78%] Building CXX object common/CMakeFiles/common.dir/quant.cpp.o
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/predict.cpp:29:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/predict.h:30:
+In file included from /Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/quant.h:29:
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/scalinglist.h:36:12: warning: declaration shadows a variable in namespace 'x265' [-Wshadow]
+    enum { NUM_SIZES = 4 };            // 4x4, 8x8, 16x16, 32x32
+           ^
+/Users/vincentsit/Documents/GitHub/libx265-android/x265/source/common/cudata.h:51:5: note: previous declaration is here
+    NUM_SIZES
+    ^
+[ 80%] Building CXX object common/CMakeFiles/common.dir/deblock.cpp.o
+1 warning generated.
+1 warning generated.
+[ 80%] Built target encoder
+[ 80%] Built target common
+Scanning dependencies of target x265-shared
+Scanning dependencies of target x265-static
+[ 83%] Linking CXX shared library libx265.dylib
+[ 83%] Linking CXX static library libx265.a
+[ 83%] Built target x265-static
+[ 83%] Built target x265-shared
+Scanning dependencies of target cli
+[ 90%] Building CXX object CMakeFiles/cli.dir/input/yuv.cpp.o
+[ 90%] Building CXX object CMakeFiles/cli.dir/input/input.cpp.o
+[ 90%] Building CXX object CMakeFiles/cli.dir/input/y4m.cpp.o
+[ 90%] Building CXX object CMakeFiles/cli.dir/output/output.cpp.o
+[ 91%] Building CXX object CMakeFiles/cli.dir/output/raw.cpp.o
+[ 93%] Building CXX object CMakeFiles/cli.dir/output/reconplay.cpp.o
+[ 95%] Building CXX object CMakeFiles/cli.dir/output/y4m.cpp.o
+[ 96%] Building CXX object CMakeFiles/cli.dir/output/yuv.cpp.o
+[ 98%] Building CXX object CMakeFiles/cli.dir/x265.cpp.o
+[100%] Linking CXX executable x265
+[100%] Built target cli
+[ 50%] Built target common
+[ 80%] Built target encoder
+[ 81%] Built target x265-shared
+[ 98%] Built target cli
+[100%] Built target x265-static
+Install the project...
+-- Install configuration: "Release"
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/x86_64/usr/local/lib/libx265.a
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/x86_64/usr/local/include/x265.h
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/x86_64/usr/local/include/x265_config.h
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/x86_64/usr/local/lib/libx265.179.dylib
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/x86_64/usr/local/lib/libx265.dylib
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/x86_64/usr/local/lib/pkgconfig/x265.pc
+-- Installing: /Users/vincentsit/Documents/GitHub/libx265-android/build/x86_64/usr/local/bin/x265
+~/Documents/GitHub/libx265-android
+➜  libx265-android git:(master) ✗

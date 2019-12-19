@@ -1,3 +1,4 @@
+
 *********************
 Command Line Options
 *********************
@@ -388,7 +389,7 @@ Performance Options
 	be applied after :option:`--preset` but before all other parameters. Default none.
 	See :ref:`tunings <tunings>` for more detail.
 
-	**Values:** psnr, ssim, grain, zero-latency, fast-decode.
+	**Values:** psnr, ssim, grain, zero-latency, fast-decode, animation.
 
 .. option:: --slices <integer>
 
@@ -551,6 +552,10 @@ frame counts) are only applicable to the CLI application.
 	This feature can be enabled only in closed GOP structures.
 	Default 0 (disabled).
 
+.. option:: --field, --no-field
+
+	Enable or disable field coding. Default disabled.
+	
 Profile, Level, Tier
 ====================
 
@@ -930,6 +935,14 @@ will not reuse analysis if slice type parameters do not match.
 	Reuse MV information received through API call. Currently receives information for AVC size and the accepted 
 	string input is "avc". Default is disabled.
 
+.. option:: --refine-ctu-distortion <0/1>
+
+    Store/normalize ctu distortion in analysis-save/load.
+    0 - Disabled.
+    1 - Save ctu distortion to the analysis file specified during analysis-save.
+        Load CTU distortion from the analysis file and normalize it across every frame during analysis-load.
+    Default 0.
+
 .. option:: --scale-factor
 
 	Factor by which input video is scaled down for analysis save mode.
@@ -984,11 +997,16 @@ will not reuse analysis if slice type parameters do not match.
 	the encoder settings. It is recommended to use :option:`--refine-intra` 4 with dynamic 
 	refinement. Default disabled.
 
-.. option:: --refine-mv
-	
+.. option:: --refine-mv <1..3>
+
 	Enables refinement of motion vector for scaled video. Evaluates the best 
-	motion vector by searching the surrounding eight integer and subpel pixel
-	positions.
+	motion vector based on the level selected. Default 1.
+
+	Level 1 - Search around scaled MV.
+	
+	Level 2 - Level 1 + Search around best AMVP cand.
+	
+	Level 3 - Level 2 + Search around the other AMVP cand.
 
 Options which affect the transform unit quad-tree, sometimes referred to
 as the residual quad-tree (RQT).
@@ -1249,6 +1267,18 @@ Temporal / motion search options
 	Enable motion estimation with source frame pixels, in this mode, 
 	motion estimation can be computed independently. Default disabled.
 
+.. option:: --hme, --no-hme
+
+       Enable 3-level Hierarchical motion estimation at One-Sixteenth, 
+       Quarter and Full resolution. Default disabled.
+
+.. option:: --hme-search <integer|string>,<integer|string>,<integer|string>
+
+       Motion search method for HME Level 0, 1 and 2. Refer to :option:`--me` for values.
+       Specify search method for each level. Alternatively, specify a single value
+       which will apply to all levels. Default is hex,umh,umh for 
+       levels 0,1,2 respectively.
+
 Spatial/intra options
 =====================
 
@@ -1324,6 +1354,10 @@ because it is the best option psycho-visually (they have great amounts
 of energy and no residual cost). One can lower psy-rd settings when
 judder is happening, and allow the encoder to use some blur in these
 areas of high motion.
+
+In 444, chroma gets twice as much resolution, so halve the quality when psy-rd is enabled.
+So when psy-rd is enabled for 444 videos, cbQpOffset and crQpOffset are set to value 6,
+if they are not explicitly set.
 
 .. option:: --psy-rd <float>
 
@@ -1506,7 +1540,11 @@ Slice decision options
 	0 - flush the encoder only when all the input pictures are over.
 	1 - flush all the frames even when the input is not over. 
 	    slicetype decision may change with this option.
-	2 - flush the slicetype decided frames only.     
+	2 - flush the slicetype decided frames only.   
+
+.. option:: --fades, --no-fades
+
+	Detect and handle fade-in regions. Default disabled.
 
 Quality, rate control and rate distortion options
 =================================================
@@ -1613,7 +1651,7 @@ Quality, rate control and rate distortion options
 	ignored. Slower presets will generally achieve better compression
 	efficiency (and generate smaller bitstreams). Default disabled.
 
-.. option:: --aq-mode <0|1|2|3>
+.. option:: --aq-mode <0|1|2|3|4>
 
 	Adaptive Quantization operating mode. Raise or lower per-block
 	quantization based on complexity analysis of the source image. The
@@ -1622,11 +1660,12 @@ Quality, rate control and rate distortion options
 	and not enough in flat areas.
 
 	0. disabled
-	1. AQ enabled **(default)**
-	2. AQ enabled with auto-variance
+	1. AQ enabled 
+	2. AQ enabled with auto-variance **(default)**
 	3. AQ enabled with auto-variance and bias to dark scenes. This is 
 	recommended for 8-bit encodes or low-bitrate 10-bit encodes, to 
 	prevent color banding/blocking. 
+	4. AQ enabled with auto-variance and edge information.
 
 .. option:: --aq-strength <float>
 
@@ -1637,6 +1676,21 @@ Quality, rate control and rate distortion options
 
 	Default 1.0.
 	**Range of values:** 0.0 to 3.0
+
+.. option:: --hevc-aq
+
+	Enable adaptive quantization
+	It scales the quantization step size according to the spatial activity of one
+	coding unit relative to frame average spatial activity. This AQ method utilizes
+	the minimum variance of sub-unit in each coding unit to represent the coding
+	unit’s spatial complexity.
+
+.. option:: --qp-adaptation-range
+
+	Delta-QP range by QP adaptation based on a psycho-visual model.
+
+	Default 1.0.
+	**Range of values:** 1.0 to 6.0
 
 .. option:: --aq-motion, --no-aq-motion
 
@@ -1818,6 +1872,20 @@ Quality, rate control and rate distortion options
 
 	If zones overlap, whichever comes later in the list takes precedence.
 	Default none
+	
+	
+.. option:: --zonefile <filename>
+
+	Specify a text file which contains the boundaries of the zones where 
+	each of zones are configurable. The format of each line is:
+
+	<frame number> <options to be configured>
+
+	The frame number indicates the beginning of a zone. The options 
+	following this is applied until another zone begins. The reconfigurable 
+	options can be spcified as --<feature name> <feature value>
+	
+	**CLI ONLY**
 
 Quantization Options
 ====================
@@ -1930,6 +1998,25 @@ Loop filters
 	on inter prediction mode, CTU spatial-domain correlations, and relations
 	between luma and chroma.
 	Default disabled
+	
+.. option:: --selective-sao <0..4>
+
+	Toggles SAO at slice level. Default 0.
+
+	+--------------+------------------------------------------+
+	| Level        | Description                              |
+	+==============+==========================================+
+	| 0            | Disable SAO for all slices               |
+	+--------------+------------------------------------------+
+	| 1            | Enable SAO only for I-slices             |
+	+--------------+------------------------------------------+
+	| 2            | Enable SAO for I-slices & P-slices       |
+	+--------------+------------------------------------------+
+	| 3            | Enable SAO for all reference slices      |
+	+--------------+------------------------------------------+
+	| 4            | Enable SAO for all slices                |
+	+--------------+------------------------------------------+
+
 
 VUI (Video Usability Information) options
 =========================================
@@ -2105,6 +2192,12 @@ VUI fields must be manually specified.
 	Note that this string value will need to be escaped or quoted to
 	protect against shell expansion on many platforms. No default.
 
+.. option:: --cll, --no-cll
+
+    Emit content light level SEI. Enabled automatically when :option:`--dolby-vision-profile` 8.1
+    is specified. When enabled, signals max-cll and max-fall as 0 if :option:`max-cll` is unspecified.
+    Default enabled.
+
 .. option:: --hdr, --no-hdr
 
 	Force signalling of HDR parameters in SEI packets. Enabled
@@ -2194,6 +2287,36 @@ Bitstream options
 	parameters are carried by the Buffering Period SEI messages and
 	Picture Timing SEI messages providing timing information to the
 	decoder. Default disabled
+
+    	
+.. option:: --hrd-concat, --no-hrd-concat
+
+    Set concantenation flag for the first keyframe in the HRD buffering period SEI. This
+    is to signal the decoder if splicing is performed during bitstream generation. 
+    Recommended to enable this option during chunked encoding, except for the first chunk.
+    Default disabled.
+
+.. option:: --dolby-vision-profile <integer|float>
+
+    Generate bitstreams confirming to the specified Dolby Vision profile,
+    note that 0x7C01 makes RPU appear to be an unspecified NAL type in
+    HEVC stream. If BL is backward compatible, Dolby Vision single
+    layer VES will be equivalent to a backward compatible BL VES on legacy
+    device as RPU will be ignored.
+    
+    The value is specified as a float or as an integer with the profile times 10,
+    for example profile 5 is specified as "5" or "5.0" or "50".
+    
+    Currently only profile 5, profile 8.1 and profile 8.2 enabled, Default 0 (disabled)
+
+.. option:: --dolby-vision-rpu <filename>
+
+    File containing Dolby Vision RPU metadata. If given, x265's Dolby Vision 
+    metadata parser will fill the RPU field of input pictures with the metadata
+    read from the file. The library will interleave access units with RPUs in the 
+    bitstream. Default NULL (disabled).
+   
+    **CLI ONLY**
 
 .. option:: --info, --no-info
 
@@ -2316,5 +2439,109 @@ Debugging options
 	--recon-y4m-exec "ffplay -i pipe:0 -autoexit"
 
 	**CLI ONLY**
+
+SVT-HEVC Encoder Options
+========================
+This section lists options which are SVT-HEVC encoder specific.
+See section :ref:`svthevc <SvtHevc>` for more details.
+
+.. option:: --svt, --no-svt
+
+    Enable SVT-HEVC encoder if x265 is built with SVT-HEVC library. Default
+    disabled.
+
+.. option:: --svt-hme, --no-svt-hme
+
+    Enable Hierarchical Motion Estimation(HME) in SVT-HEVC. Default enabled.
+
+    **CLI_ONLY**
+
+.. option:: --svt-search-width <integer>
+
+    Search Area Width used during motion estimation. It depends on input resolution.
+    Values: [1-256]
+
+    **CLI_ONLY**
+
+.. option:: --svt-search-height <integer>
+
+    Search Area Height used during motion estimation. It depends on input resolution. 
+    Values: [1-256]
+
+    **CLI_ONLY**
+
+.. option:: --svt-compressed-ten-bit-format, --no-svt-compressed-ten-bit-format
+
+    In order to reduce the size of input YUV and to increase channel density,
+    SVT-HEVC accetps inputs in compressed-ten-bit-format. The conversion between
+    yuv420p10le and compressed ten bit format is a lossless operation. For more
+    details about the conversion refer
+    `here<https://github.com/intel/SVT-HEVC/blob/master/Docs/SVT-HEVC_Encoder_User_Guide.pdf>'_.
+
+    **CLI_ONLY**
+
+.. option:: --svt-speed-control, --no-svt-speed-control
+
+    Enable speed control functionality to achieve real time encoding speed defined
+    by :option:`--fps`. Default disabled.
+
+    **CLI_ONLY**
+
+.. option:: --svt-preset-tuner <integer>
+
+    SVT-HEVC exposes 13 presets. Presets [3-12] of SVT-HEVC is mapped to x265's
+    presets [placebo-ultrafast]. Ultrafast is mapped to preset(12) of SVT-HEVC,
+    superfast to preset(11), placebo to preset(3) and so on. svt-preset-tuner works
+    only on top of placebo preset and maps to presets (0-2) of SVT-HEVC.
+
+    Values: [0-2]
+
+    **CLI_ONLY**
+
+.. option:: --svt-hierarchical-level <integer>
+
+    Enables multiple hierarchical levels in SVT-HEVC. Accepts values in the range [0-3].
+    0    -  Flat
+    1    -  2-Level Hierarchy
+    2    -  3-Level Hierarchy
+    3    -  4-Level Hierarchy
+
+    Default: 3
+
+    **CLI_ONLY**
+
+.. option:: --svt-base-layer-switch-mode <integer>
+
+    Choose type of slices to be in base layer. Accepts values 0,1.
+    0    -  Use B-frames in the base layer
+    1    -  Use P-frames in the base layer
+
+    Default: 0
+
+    **CLI_ONLY**
+
+.. option:: --svt-pred-struct <integer>
+
+    Prediction structure forms the basis in deciding the GOP structure. SVT-HEVC
+    supports Low delay(P/B) and random access prediction structure. In a low delay
+    structure, pictures within a mini-gop can only refer to the previous pictures
+    in display order. In other words, picture with display order N can only refer
+    to pictures of display order lower than N. In random acccess method, pictures
+    can be referenced from both the directions. It accepts values in the range
+    [0-2]
+
+    0    -  Low Delay P
+    1    -  Low Delay B
+    2    -  Random Access
+
+    Default: 2
+
+    **CLI_ONLY**
+
+.. option:: --svt-fps-in-vps, --no-svt-fps-in-vps
+
+    Enable sending timing info in VPS. Default disabled.    
+
+    **CLI_ONLY**
 
 .. vim: noet

@@ -501,15 +501,8 @@ uint64_t Quant::ssimDistortion(const CUData& cu, const pixel* fenc, uint32_t fSt
 
     // Calculation of (X(k) - Y(k)) * (X(k) - Y(k)), AC
     ssBlock = 0;
-    for (int y = 0; y < trSize; y++)
-    {
-        for (int x = 0; x < trSize; x++)
-        {
-            int temp = fenc[y * fStride + x] - recon[y * rstride + x]; // copy of residual coeff
-            ssBlock += temp * temp;
-        }
-    }
-
+    uint64_t ac_k = 0;
+    primitives.cu[log2TrSize - 2].ssimDist(fenc, fStride, recon, rstride, &ssBlock, shift, &ac_k);
     ssAc = ssBlock - ssDc;
 
     // 1. Calculation of fdc'
@@ -535,15 +528,6 @@ uint64_t Quant::ssimDistortion(const CUData& cu, const pixel* fenc, uint32_t fSt
     uint64_t fAc_num = 0;
 
     // 2. Calculate ac component
-    uint64_t ac_k = 0;
-    for (int block_yy = 0; block_yy < trSize; block_yy += 1)
-    {
-        for (int block_xx = 0; block_xx < trSize; block_xx += 1)
-        {
-            uint32_t temp = fenc[block_yy * fStride + block_xx] >> shift;
-            ac_k += temp * temp;
-        }
-    }
     ac_k -= dc_k;
 
     double s = 1 + 0.005 * cu.m_qp[absPartIdx];
@@ -723,6 +707,7 @@ uint32_t Quant::rdoQuant(const CUData& cu, int16_t* dstCoeff, TextType ttype, ui
             X265_CHECK(coeffNum[cgScanPos] == 0, "count of coeff failure\n");
             uint32_t scanPosBase = (cgScanPos << MLS_CG_SIZE);
             uint32_t blkPos      = codeParams.scan[scanPosBase];
+#if X265_ARCH_X86
             bool enable512 = detect512();
             if (enable512)
                 primitives.cu[log2TrSize - 2].psyRdoQuant(m_resiDctCoeff, m_fencDctCoeff, costUncoded, &totalUncodedCost, &totalRdCost, &psyScale, blkPos);
@@ -731,6 +716,10 @@ uint32_t Quant::rdoQuant(const CUData& cu, int16_t* dstCoeff, TextType ttype, ui
                 primitives.cu[log2TrSize - 2].psyRdoQuant_1p(m_resiDctCoeff,  costUncoded, &totalUncodedCost, &totalRdCost,blkPos);
                 primitives.cu[log2TrSize - 2].psyRdoQuant_2p(m_resiDctCoeff, m_fencDctCoeff, costUncoded, &totalUncodedCost, &totalRdCost, &psyScale, blkPos);
             }
+#else
+            primitives.cu[log2TrSize - 2].psyRdoQuant_1p(m_resiDctCoeff, costUncoded, &totalUncodedCost, &totalRdCost, blkPos);
+            primitives.cu[log2TrSize - 2].psyRdoQuant_2p(m_resiDctCoeff, m_fencDctCoeff, costUncoded, &totalUncodedCost, &totalRdCost, &psyScale, blkPos);
+#endif
         }
     }
     else
@@ -805,8 +794,8 @@ uint32_t Quant::rdoQuant(const CUData& cu, int16_t* dstCoeff, TextType ttype, ui
             uint32_t blkPos = codeParams.scan[scanPosBase];
             if (usePsyMask)
             {
+#if X265_ARCH_X86
                 bool enable512 = detect512();
-
                 if (enable512)
                     primitives.cu[log2TrSize - 2].psyRdoQuant(m_resiDctCoeff, m_fencDctCoeff, costUncoded, &totalUncodedCost, &totalRdCost, &psyScale, blkPos);
                 else
@@ -814,6 +803,10 @@ uint32_t Quant::rdoQuant(const CUData& cu, int16_t* dstCoeff, TextType ttype, ui
                     primitives.cu[log2TrSize - 2].psyRdoQuant_1p(m_resiDctCoeff, costUncoded, &totalUncodedCost, &totalRdCost, blkPos);
                     primitives.cu[log2TrSize - 2].psyRdoQuant_2p(m_resiDctCoeff, m_fencDctCoeff, costUncoded, &totalUncodedCost, &totalRdCost, &psyScale, blkPos);
                 }
+#else
+                primitives.cu[log2TrSize - 2].psyRdoQuant_1p(m_resiDctCoeff, costUncoded, &totalUncodedCost, &totalRdCost, blkPos);
+                primitives.cu[log2TrSize - 2].psyRdoQuant_2p(m_resiDctCoeff, m_fencDctCoeff, costUncoded, &totalUncodedCost, &totalRdCost, &psyScale, blkPos);
+#endif
                 blkPos = codeParams.scan[scanPosBase];
                 for (int y = 0; y < MLS_CG_SIZE; y++)
                 {

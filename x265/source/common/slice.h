@@ -356,11 +356,13 @@ public:
     bool        m_bCheckLDC;       // TODO: is this necessary?
     bool        m_sLFaseFlag;      // loop filter boundary flag
     bool        m_colFromL0Flag;   // collocated picture from List0 or List1 flag
+    int         m_bUseSao;
 
     int         m_iPPSQpMinus26;
     int         numRefIdxDefault[2];
     int         m_iNumRPSInSPS;
     const x265_param *m_param;
+    int         m_fieldNum;
 
     Slice()
     {
@@ -376,6 +378,7 @@ public:
         numRefIdxDefault[1] = 1;
         m_rpsIdx = -1;
         m_chromaQpOffset[0] = m_chromaQpOffset[1] = 0;
+        m_fieldNum = 0;
     }
 
     void disableWeights();

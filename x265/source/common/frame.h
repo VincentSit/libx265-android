@@ -98,6 +98,7 @@ public:
 
     float*                 m_quantOffsets;       // points to quantOffsets in x265_picture
     x265_sei               m_userSEI;
+    x265_dolby_vision_rpu            m_rpu;
 
     /* Frame Parallelism - notification between FrameEncoders of available motion reference rows */
     ThreadSafeInteger*     m_reconRowFlag;       // flag of CTU rows completely reconstructed and extended for motion reference
@@ -128,6 +129,12 @@ public:
     uint32_t*              m_classifyCount;
 
     bool                   m_classifyFrame;
+    int                    m_fieldNum;
+
+    /* aq-mode 4 : Gaussian, edge and theta frames for edge information */
+    pixel*                 m_edgePic;
+    pixel*                 m_gaussianPic;
+    pixel*                 m_thetaPic;
 
     Frame();
 

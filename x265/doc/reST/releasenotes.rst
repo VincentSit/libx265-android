@@ -2,6 +2,137 @@
 Release Notes
 *************
 
+Version 3.2
+===========
+
+Release date - 25th September, 2019.
+
+New features
+------------
+1. 3-level hierarchical motion estimation using :option:`--hme` and :option:`--hme-search`.
+2. New AQ mode (:option:`--aq-mode` 4) with variance and edge information.
+3. :option:`selective-sao` to selectively enable SAO at slice level.
+
+Enhancements to existing features
+---------------------------------
+1. New implementation of :option:`--refine-mv` with 3 refinement levels.
+
+Encoder enhancements
+--------------------
+1. Improved quality in the frames following dark scenes in ABR mode.
+
+API changes
+-----------
+1. Additions to x265_param structure to support the newly added features :option:`--hme`, :option:`--hme-search` and :option:`selective-sao`.
+
+Bug fixes
+---------
+1. Fixed encoder crash with :option:`--zonefile` during failures in encoder_open().
+2. Fixed JSON11 build errors with HDR10+ on MacOS high sierra.
+3. Signalling out of range scaling list data fixed.
+4. Inconsistent output fix for 2-pass rate-control with cutree ON.
+
+Known issues
+------------
+1. Build dependency on changeset cf37911 of SVT-HEVC.
+
+Version 3.1
+===========
+
+Release date - 18th June, 2019.
+
+New features
+----------------
+1. x265 can invoke SVT-HEVC library for encoding through :option:`--svt`.
+2. x265 can now accept interlaced inputs directly (no need to separate fields), and sends it to the encoder with proper fps and frame-size through :option:`--field`.
+3. :option:`--fades` can detect and handle fade-in regions. This option will force I-slice and initialize RC history for the brightest frame after fade-in.
+ 
+API changes
+-----------
+1. A new flag to signal MasterDisplayParams and maxCll/Fall separately
+
+Encoder enhancements
+--------------------
+1. Improved the performance of inter-refine level 1 by skipping the evaluation of smaller CUs when the current block is decided as "skip" by the save mode.
+2. New AVX2 primitives to improve the performance of encodes that enable :option:`--ssim-rd`.
+3. Improved performance in medium preset with negligible loss in quality.
+
+Bug fixes
+---------
+1. Bug fixes for zones.
+2. Fixed wrap-around from MV structure overflow occurred around 8K pixels or over.
+3. Fixed issues in configuring cbQpOffset and crQpOffset for 444 input
+4. Fixed cutree offset computation in 2nd pass encodes.
+
+Known issues
+------------
+1. AVX512 main12 asm disabling.
+2. Inconsistent output with 2-pass due to cutree offset sharing.
+
+Version 3.0
+===========
+
+Release date - 23/01/2019 
+
+New features
+-------------
+1. option:: '--dolby-vision-profile <integer|float>' generates bitstreams confirming to the specified Dolby Vision profile. Currently profile 5, profile 8.1 and profile 8.2 enabled, Default 0 (disabled)
+
+2. option:: '--dolby-vision-rpu' File containing Dolby Vision RPU metadata. If given, x265's Dolby Vision metadata parser will fill the RPU field of input pictures with the metadata
+    read from the file. The library will interleave access units with RPUs in the bitstream. Default NULL (disabled).	
+
+3. option:: '--zonefile <filename>' specifies a text file which contains the boundaries of the zones where each of zones are configurable.
+
+4. option:: '--qp-adaptation-range'	Delta-QP range by QP adaptation based on a psycho-visual model. Default 1.0. 
+
+5. option:: '--refine-ctu-distortion <0/1>' store/normalize ctu distortion in analysis-save/load. Default 0. 
+
+6. Experimental feature option:: '--hevc-aq' enables adaptive quantization
+	It scales the quantization step size according to the spatial activity of one coding unit relative to frame average spatial activity. This AQ method utilizes
+	the minimum variance of sub-unit in each coding unit to represent the coding unit’s spatial complexity. 
+
+Encoder enhancements
+--------------------
+1. Preset: change param defaults for veryslow and slower preset. Replace slower preset with defaults used in veryslow preset and change param defaults in veryslow preset as per experimental results.
+2. AQ: change default AQ mode to auto-variance
+3. Cutree offset reuse: restricted to analysis reuse-level 10 for analysis-save -> analysis-load 
+4. Tune: introduce --tune animation option which improves encode quality for animated content 
+5. Reuse CU depth for B frame and allow I, P frame to follow x265 depth decision
+
+Bug fixes
+---------
+1. RC: fix rowStat computation in const-vbv
+2. Dynamic-refine: fix memory reset size.
+3. Fix Issue #442: linking issue on non x86 platform
+4. Encoder: Do not include CLL SEI message if empty
+5. Fix issue #441 build error in VMAF lib
+
+Version 2.9
+===========
+
+Release date - 05/10/2018
+
+New features
+-------------
+1. Support for chunked encoding
+
+   :option:`--chunk-start and --chunk-end` 
+   Frames preceding first frame of chunk in display order will be encoded, however, they will be discarded in the bitstream.
+   Frames following last frame of the chunk in display order will be used in taking lookahead decisions, but, they will not be encoded. 
+   This feature can be enabled only in closed GOP structures. Default disabled.
+
+2. Support for HDR10+ version 1 SEI messages.
+
+Encoder enhancements
+--------------------
+1. Create API function for allocating and freeing x265_analysis_data.
+2. CEA 608/708 support: Read SEI messages from text file and encode it using userSEI message.
+
+Bug fixes
+---------
+1. Disable noise reduction when vbv is enabled.
+2. Support minLuma and maxLuma values changed by the commandline.
+
 Version 2.8
 ===========
 

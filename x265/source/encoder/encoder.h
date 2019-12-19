@@ -31,6 +31,7 @@
 #include "x265.h"
 #include "nal.h"
 #include "framedata.h"
+#include "svt.h"
 #ifdef ENABLE_HDR10_PLUS
     #include "dynamicHDR10/hdr10plus.h"
 #endif
@@ -40,6 +41,20 @@ namespace X265_NS {
 extern const char g_sliceTypeToChar[3];
 
 class Entropy;
+
+#ifdef SVT_HEVC
+typedef struct SvtAppContext
+{
+    EB_COMPONENTTYPE*          svtEncoderHandle;
+    EB_H265_ENC_CONFIGURATION* svtHevcParams;
+
+    // Buffer Pools
+    EB_BUFFERHEADERTYPE*       inputPictureBuffer;
+    uint64_t                   byteCount;
+    uint64_t                   outFrameCount;
+
+}SvtAppContext;
+#endif
 
 struct EncStats
 {
@@ -188,11 +203,13 @@ public:
     ScalingList        m_scalingList;      // quantization matrix information
     Window             m_conformanceWindow;
 
-    bool               m_emitCLLSEI;
     bool               m_bZeroLatency;     // x265_encoder_encode() returns NALs for the input picture, zero lag
     bool               m_aborted;          // fatal error detected
     bool               m_reconfigure;      // Encoder reconfigure in progress
     bool               m_reconfigureRc;
+    bool               m_reconfigureZone;
+
+    int               m_saveCtuDistortionLevel;
 
     /* Begin intra refresh when one not in progress or else begin one as soon as the current 
      * one is done. Requires bIntraRefresh to be set.*/
@@ -219,6 +236,10 @@ public:
     const hdr10plus_api     *m_hdr10plus_api;
     uint8_t                 **m_cim;
     int                     m_numCimInfo;
+#endif
+
+#ifdef SVT_HEVC
+    SvtAppContext*          m_svtAppData;
 #endif
 
     x265_sei_payload        m_prevTonemapPayload;
@@ -273,6 +294,8 @@ public:
 
     void configure(x265_param *param);
 
+    void configureZone(x265_param *p, x265_param *zone);
+
     void updateVbvPlan(RateControl* rc);
 
     void readAnalysisFile(x265_analysis_data* analysis, int poc, int sliceType);
@@ -281,6 +304,8 @@ public:
 
     void readAnalysisFile(x265_analysis_data* analysis, int poc, const x265_picture* picIn, int paramBytes, cuLocation cuLoc);
 
+    void computeDistortionOffset(x265_analysis_data* analysis);
+
     int getCUIndex(cuLocation* cuLoc, uint32_t* count, int bytes, int flag);
 
     int getPuShape(puOrientation* puOrient, int partSize, int numCTU);
@@ -288,6 +313,8 @@ public:
     void writeAnalysisFile(x265_analysis_data* analysis, FrameData &curEncData);
 
     void writeAnalysisFileRefine(x265_analysis_data* analysis, FrameData &curEncData);
+
+    void copyDistortionData(x265_analysis_data* analysis, FrameData &curEncData);
 
     void finishFrameStats(Frame* pic, FrameEncoder *curEncoder, x265_frame_stats* frameStats, int inPoc);
 
@@ -303,6 +330,8 @@ public:
     bool computeSPSRPSIndex();
 
     void copyUserSEIMessages(Frame *frame, const x265_picture* pic_in);
+
+    void configureDolbyVisionParams(x265_param* p);
 
 protected:
 

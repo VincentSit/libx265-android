@@ -40,6 +40,8 @@ class Lookahead;
 
 #define LOWRES_COST_MASK  ((1 << 14) - 1)
 #define LOWRES_COST_SHIFT 14
+#define AQ_EDGE_BIAS 0.5
+#define EDGE_INCLINATION 45
 
 /* Thread local data for lookahead tasks */
 struct LookaheadTLD
@@ -87,10 +89,12 @@ struct LookaheadTLD
     void lowresIntraEstimate(Lowres& fenc, uint32_t qgSize);
 
     void weightsAnalyse(Lowres& fenc, Lowres& ref);
-
+    void xPreanalyze(Frame* curFrame);
+    void xPreanalyzeQp(Frame* curFrame);
 protected:
 
     uint32_t acEnergyCu(Frame* curFrame, uint32_t blockX, uint32_t blockY, int csp, uint32_t qgSize);
+    uint32_t edgeDensityCu(Frame*curFrame, uint32_t &avgAngle, uint32_t blockX, uint32_t blockY, uint32_t qgSize);
     uint32_t lumaSumCu(Frame* curFrame, uint32_t blockX, uint32_t blockY, uint32_t qgSize);
     uint32_t weightCostLuma(Lowres& fenc, Lowres& ref, WeightParam& wp);
     bool     allocWeightedRef(Lowres& fenc);
@@ -123,6 +127,10 @@ public:
     int           m_inputCount;
     double        m_cuTreeStrength;
 
+    /* HME */
+    int           m_4x4Width;
+    int           m_4x4Height;
+
     bool          m_isActive;
     bool          m_sliceTypeBusy;
     bool          m_bAdaptiveQuant;
@@ -133,6 +141,10 @@ public:
     bool          m_isSceneTransition;
     int           m_numPools;
     bool          m_extendGopBoundary;
+    double        m_frameVariance[X265_BFRAME_MAX + 4];
+    bool          m_isFadeIn;
+    uint64_t      m_fadeCount;
+    int           m_fadeStart;
     Lookahead(x265_param *param, ThreadPool *pool);
 #if DETAILED_CU_STATS
     int64_t       m_slicetypeDecideElapsedTime;
@@ -175,6 +187,7 @@ protected:
     void    cuTree(Lowres **frames, int numframes, bool bintra);
     void    estimateCUPropagate(Lowres **frames, double average_duration, int p0, int p1, int b, int referenced);
     void    cuTreeFinish(Lowres *frame, double averageDuration, int ref0Distance);
+    void    computeCUTreeQpOffset(Lowres *frame, double averageDuration, int ref0Distance);
 
     /* called by getEstimatedPictureCost() to finalize cuTree costs */
     int64_t frameCostRecalculate(Lowres **frames, int p0, int p1, int b);
@@ -240,7 +253,7 @@ protected:
     void    processTasks(int workerThreadID);
 
     int64_t estimateFrameCost(LookaheadTLD& tld, int p0, int p1, int b, bool intraPenalty);
-    void    estimateCUCost(LookaheadTLD& tld, int cux, int cuy, int p0, int p1, int b, bool bDoSearch[2], bool lastRow, int slice);
+    void    estimateCUCost(LookaheadTLD& tld, int cux, int cuy, int p0, int p1, int b, bool bDoSearch[2], bool lastRow, int slice, bool hme);
 
     CostEstimateGroup& operator=(const CostEstimateGroup&);
 };
